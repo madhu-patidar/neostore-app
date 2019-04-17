@@ -1,0 +1,357 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "NeoSTORE Backend (Shopping Website)",
+    "description": "A most attracting platform for purchasing different products according to your choice.",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:5000",
+  "schemes": ["http", "https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/register": {
+      "post": {
+        "tags": ["Customer Registration"],
+        "summary": "Registering new Customer",
+        "description": "This API is used for registering details of new customer.",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "RegisterRequestObj",
+            "required": true,
+            "description": "Registration api for all customers",
+            "schema": {
+              "$ref": "#/definitions/CustomerRegistration"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404":{
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": ["Customer Authenticate"],
+        "summary": "Check for Valid user or not.",
+        "description": "This API validates email and password of Customer",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "AuthenticationRequestObj",
+            "required": true,
+            "description": "Authentication of Customer",
+            "schema": {
+              "$ref": "#/definitions/CustomerAuthentication"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404":{
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/profile": {
+      "post": {
+        "tags": ["Customer Update Profile"],
+        "summary": "Update about yourself.",
+        "description": "Here, Customer can update his/her profile.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "profile_image",
+            "description": "Upload Profile Image ",
+            "in": "formData",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "cust_Fname",
+            "description": "Enter First Name",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "cust_Lname",
+            "description": "Enter Last Name",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "cust_email",
+            "description": "Enter Email",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "cust_dob",
+            "description": "Enter DOB",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "cust_phone",
+            "description": "Enter Contact No",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "cust_gender",
+            "description": "Enter Gender",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404":{
+            "description": "Operation Failed"
+          }
+        }
+      
+    }
+    },
+    "/address": {
+      "post": {
+        "tags": ["Customer Update Address"],
+        "summary": "Update your address.",
+        "description": "Here, Customer can update his/her address.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "cust_address",
+            "description": "Enter Address",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "cust_pincode",
+            "description": "Enter Your Pincode",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "cust_city",
+            "description": "Enter Your City",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "cust_state",
+            "description": "Enter Your State",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "cust_country",
+            "description": "Enter Your Country",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404":{
+            "description": "Operation Failed"
+          }
+        }
+    }
+  },
+  "/deladdress/{id}": {
+    "post": {
+      "tags": ["Customer Delete Address"],
+      "summary": "Delete your address.",
+      "description": "Here, Customer can delete his/her address.",
+      "consumes": ["application/x-www-form-urlencoded"],
+      "produces": ["application/json"],
+      "parameters": [
+        {
+          "name": "id",
+          "description": "Enter Address Id",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }       
+      ],
+      "responses": {
+        "200": {
+          "description": "Operation Successful"
+        },
+        "404":{
+          "description": "Operation Failed"
+        }
+      }
+  }
+}
+  },
+  "definitions": {
+    "CustomerRegistration": {
+      "type": "object",
+      "required": [
+        "cust_email",
+        "cust_pass",
+        "cust_confirmPass",
+        "cust_phone",
+        "cust_gender"
+      ],
+      "properties": {
+        "cust_email": {
+          "type": "string"
+        },
+        "cust_pass": {
+          "type": "string"
+        },
+        "cust_confirmPass": {
+          "type": "string"
+        },
+        "cust_phone": {
+          "type": "string"
+        },
+        "cust_gender": {
+          "type": "string"
+        }
+      }
+    },
+    "CustomerAuthentication": {
+      "type": "object",
+      "required": ["cust_email", "cust_pass"],
+      "properties": {
+        "cust_email": {
+          "type": "string"
+        },
+        "cust_pass": {
+          "type": "string"
+        }
+      }
+    },
+    "CustomerUpdateProfile": {
+      "type": "object",
+      "required": [
+        "cust_Fname",
+        "cust_Lname",
+        "cust_email",
+        "cust_dob",
+        "cust_phone",
+        "cust_gender",
+        "profile_image"
+      ],
+      "properties": {
+        "cust_Fname": {
+          "type": "string"   
+        },
+        "cust_Lname": {
+          "type": "string"
+        },
+        "cust_email": {
+          "type": "string"       
+        },
+        "cust_dob": {
+          "type": "string"         
+        },
+        "cust_phone": {
+          "type": "string"         
+        },
+        "cust_gender": {
+          "type": "string"
+        },
+        "profile_image": {
+          "type": "string"
+        }
+      }
+    },
+    "CustomerUpdateAddress": {
+      "type": "object",
+      "required": [
+        "cust_id",
+        "cust_address",
+        "cust_pincode",
+        "cust_city",
+        "cust_state",
+        "cust_country"
+      ],
+      "properties": {
+        "cust_id": {
+          "type": "integer"   
+        },
+        "cust_address": {
+          "type": "string"   
+        },
+        "cust_pincode": {
+          "type": "string"
+        },
+        "cust_city": {
+          "type": "string"       
+        },
+        "cust_state": {
+          "type": "string"         
+        },
+        "cust_country": {
+          "type": "string"         
+        },
+        "cust_gender": {
+          "type": "string"
+        }
+      }
+    },
+    "CustomerDeleteAddress": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer"   
+        }
+      }
+    }
+  },
+ "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "authorization",
+      "in": "headers",
+      "scheme": "bearer"    
+    }
+  },
+  "security":[
+    {
+    "api_key":[]
+    }
+  ]
+}
