@@ -5,6 +5,7 @@ import { Routes } from './routes/customer_routes';
 import swaggerUi from 'swagger-ui-express'
 //import * as swaggerUi from 'swagger-ui-dist'
 import * as swaggerDocument from './swagger.json'
+import mongoose from 'mongoose'
 
 
 export class App{
@@ -14,6 +15,7 @@ export class App{
     constructor(){
         this.app=express();
         this.config();
+        this.mongooSetup();
         this.routePrv.routes(this.app)
     }
     
@@ -21,10 +23,11 @@ export class App{
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({extended:false}));
         this.app.use('/swagger',swaggerUi.serve,swaggerUi.setup(swaggerDocument))
-    // let swaggerUi1 = swaggerUi.absolutePath();
-    // this.app.use('/swagger',express.static(swaggerUi))
-    // this.app.use("/openapi-data", express.static("./data/openapi/"));
-    // this.app.use("/docs", express.static("./public/swagger"));
+    }
+    private mongooSetup():void{
+        mongoose.connect("mongodb://localhost:27017/student")
+        .then(()=>console.log("MongoDB Connected Successfully"))
+        .catch(err=>console.log(err))
     }
 }
 

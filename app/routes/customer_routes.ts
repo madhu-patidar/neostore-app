@@ -3,7 +3,7 @@ import upload from '../configFiles/fileUpload'
 import images_allCategories from '../controllers/imagesAllCategories'
 import customerAuthentication from '../controllers/customer/customer_authentication'
 import updateProfile from '../controllers/customer/customer_updateProfile'
-import updateAddress from '../controllers/customer/customer_updateAddress'
+import addAddress from '../controllers/customer/customer_addAddress'
 import deleteAddress from '../controllers/customer/customer_deleteAddress'
 import verifyToken from '../configFiles/verifyTokenMiddleware'
 
@@ -23,7 +23,7 @@ export class Routes{
         .post(upload.single('profile_image'),verifyToken,updateProfile)
 
         app.route('/address')
-        .post(verifyToken,updateAddress)
+        .post(verifyToken,addAddress)
 
         app.route('/deladdress/:id')
         .post(verifyToken,deleteAddress)

@@ -1,12 +1,13 @@
-import client from '../../configFiles/database'
+import client from '../../configFiles/database_postgresql'
 import {Request,Response} from 'express'
 import Joi from 'joi'
 import bcrypt from 'bcryptjs'
 
 const insertCustomerData=(req:Request,res:Response)=>{
-    let pass:string=req.body.pass;
-    let confirm_pass:string=req.body.confirm_pass;
+    let pass:string=req.body.cust_pass;
+    let confirm_pass:string=req.body.cust_confirmPass;
     let hash_pass:string;
+    console.log(req.body)
     if(!req.body)
     res.status(404).json({success:"false",message:"Body can not be blank"})
    const schema = Joi.object().keys({
@@ -29,7 +30,7 @@ const insertCustomerData=(req:Request,res:Response)=>{
                     else{
                     hash_pass=hash
                     
-                    client.query('Insert into neo_user(cust_email,cust_pass,cust_phone,cust_gender) values($1,$2,$3,$4)',[req.body.email,hash_pass,req.body.phone,req.body.gender],(err,result)=>{
+                    client.query('Insert into neo_user(cust_email,cust_pass,cust_phone,cust_gender) values($1,$2,$3,$4)',[req.body.cust_email,hash_pass,req.body.cust_phone,req.body.cust_gender],(err,result)=>{
                         if(err){
                             res.status(404).json({success:"false",message:err})
                         }

@@ -1,14 +1,10 @@
-import client from '../../configFiles/database'
+import client from '../../configFiles/database_postgresql'
 import {Request,Response} from 'express'
 import Joi from 'joi'
 
 
 const updateProfile=(req:Request,res:Response)=>{
     const id:number=req.body.id
-if(req.file==undefined){
-    res.status(404).json({success:"false",message:"Please upload your profile pic"})
-}
-else{
     const schema = Joi.object().keys({
         u_Fname:Joi.string().regex(/^[A-Za-z]+$/).required(),
         u_Lname:Joi.string().regex(/^[A-Za-z]+$/).required(),
@@ -43,7 +39,7 @@ else{
 
         }
    })
-}
+
 
 
 

@@ -19,17 +19,43 @@
         "tags": ["Customer Registration"],
         "summary": "Registering new Customer",
         "description": "This API is used for registering details of new customer.",
-        "consumes": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
         "produces": ["application/json"],
         "parameters": [
           {
-            "in": "body",
-            "name": "RegisterRequestObj",
+            "name": "cust_email",
+            "description": "Enter Email",
+            "in": "formData",
             "required": true,
-            "description": "Registration api for all customers",
-            "schema": {
-              "$ref": "#/definitions/CustomerRegistration"
-            }
+            "type": "string"
+          },
+          {
+            "name": "cust_pass",
+            "description": "Enter Password",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "cust_confirmPass",
+            "description": "Enter Confirm Password",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "cust_phone",
+            "description": "Enter Contact No",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "cust_gender",
+            "description": "Enter Gender",
+            "in": "formData",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
@@ -47,17 +73,23 @@
         "tags": ["Customer Authenticate"],
         "summary": "Check for Valid user or not.",
         "description": "This API validates email and password of Customer",
-        "consumes": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
         "produces": ["application/json"],
         "parameters": [
+          
           {
-            "in": "body",
-            "name": "AuthenticationRequestObj",
+            "name": "cust_email",
+            "description": "Enter Email",
+            "in": "formData",
             "required": true,
-            "description": "Authentication of Customer",
-            "schema": {
-              "$ref": "#/definitions/CustomerAuthentication"
-            }
+            "type": "string"
+          },
+          {
+            "name": "cust_pass",
+            "description": "Enter Password",
+            "in": "formData",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
@@ -141,9 +173,9 @@
     },
     "/address": {
       "post": {
-        "tags": ["Customer Update Address"],
-        "summary": "Update your address.",
-        "description": "Here, Customer can update his/her address.",
+        "tags": ["Customer Add Address"],
+        "summary": "Add your address.",
+        "description": "Here, Customer can add his/her address.",
         "consumes": ["application/x-www-form-urlencoded"],
         "produces": ["application/json"],
         "parameters": [

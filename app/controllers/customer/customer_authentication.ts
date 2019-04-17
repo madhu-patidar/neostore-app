@@ -1,4 +1,4 @@
-import client from '../../configFiles/database'
+import client from '../../configFiles/database_postgresql'
 import {Request,Response} from 'express'
 import Joi from 'joi'
 import bcrypt from 'bcryptjs'
