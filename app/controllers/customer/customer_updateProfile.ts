@@ -2,7 +2,7 @@ import client from '../../configFiles/database_postgresql'
 import {Request,Response} from 'express'
 import Joi from 'joi'
 
-
+//Update Customer Profile
 const updateProfile=(req:Request,res:Response)=>{
     const id:number=req.body.id
     const schema = Joi.object().keys({
@@ -39,10 +39,7 @@ const updateProfile=(req:Request,res:Response)=>{
 
         }
    })
-
-
-
-
 }
 
+//Available for Routes
 export default updateProfile;

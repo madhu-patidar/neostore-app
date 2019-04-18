@@ -1,13 +1,11 @@
 import client from '../../configFiles/database_postgresql'
 import {Request,Response} from 'express'
 
-
+//Delete Customer Address
 const deleteAddress= (req:Request,res:Response)=>{
     const id:number=req.body.id
     const id1:number=req.params.id
  
-    
-
     if(req.params.id=='undefined'){
         res.status(404).json({success:"false",message:"Please provide your address id"})
     }
@@ -27,4 +25,5 @@ const deleteAddress= (req:Request,res:Response)=>{
         }
 }
 
+//Available for Routes
 export default deleteAddress;

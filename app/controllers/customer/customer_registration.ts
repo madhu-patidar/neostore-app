@@ -3,11 +3,11 @@ import {Request,Response} from 'express'
 import Joi from 'joi'
 import bcrypt from 'bcryptjs'
 
+//Register New Customer
 const insertCustomerData=(req:Request,res:Response)=>{
     let pass:string=req.body.cust_pass;
     let confirm_pass:string=req.body.cust_confirmPass;
     let hash_pass:string;
-    console.log(req.body)
     if(!req.body)
     res.status(404).json({success:"false",message:"Body can not be blank"})
    const schema = Joi.object().keys({
@@ -48,7 +48,7 @@ const insertCustomerData=(req:Request,res:Response)=>{
     }
  
 })
-
 }
 
+//Available for Routes
 export default insertCustomerData;

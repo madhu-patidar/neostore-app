@@ -4,6 +4,7 @@ import Joi from 'joi'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
+//Authenticate Customer
 const customerAuthentication=(req:Request,res:Response)=>{
     let cust_data:any;
     let id:number;
@@ -61,4 +62,5 @@ const customerAuthentication=(req:Request,res:Response)=>{
     }
 }
 
+//Available for Routes
 export default customerAuthentication;

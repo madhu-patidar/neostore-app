@@ -2,6 +2,7 @@ import client from '../../configFiles/database_postgresql'
 import {Request,Response} from 'express'
 import Joi from 'joi'
 
+//Add Customer Address
 const addAddress= (req:Request,res:Response)=>{
     const id:number=req.body.id
 
@@ -40,4 +41,5 @@ const addAddress= (req:Request,res:Response)=>{
 
 }
 
+//Available for Routes
 export default addAddress;

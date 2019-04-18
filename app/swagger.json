@@ -62,7 +62,7 @@
           "200": {
             "description": "Operation Successful"
           },
-          "404":{
+          "404": {
             "description": "Operation Failed"
           }
         }
@@ -76,7 +76,6 @@
         "consumes": ["application/x-www-form-urlencoded"],
         "produces": ["application/json"],
         "parameters": [
-          
           {
             "name": "cust_email",
             "description": "Enter Email",
@@ -96,7 +95,7 @@
           "200": {
             "description": "Operation Successful"
           },
-          "404":{
+          "404": {
             "description": "Operation Failed"
           }
         }
@@ -164,12 +163,11 @@
           "200": {
             "description": "Operation Successful"
           },
-          "404":{
+          "404": {
             "description": "Operation Failed"
           }
         }
-      
-    }
+      }
     },
     "/address": {
       "post": {
@@ -219,38 +217,297 @@
           "200": {
             "description": "Operation Successful"
           },
-          "404":{
+          "404": {
             "description": "Operation Failed"
           }
         }
-    }
-  },
-  "/deladdress/{id}": {
-    "post": {
-      "tags": ["Customer Delete Address"],
-      "summary": "Delete your address.",
-      "description": "Here, Customer can delete his/her address.",
-      "consumes": ["application/x-www-form-urlencoded"],
-      "produces": ["application/json"],
-      "parameters": [
-        {
-          "name": "id",
-          "description": "Enter Address Id",
-          "in": "path",
-          "required": true,
-          "type": "integer"
-        }       
-      ],
-      "responses": {
-        "200": {
-          "description": "Operation Successful"
-        },
-        "404":{
-          "description": "Operation Failed"
+      }
+    },
+    "/deladdress/{id}": {
+      "post": {
+        "tags": ["Customer Delete Address"],
+        "summary": "Delete your address.",
+        "description": "Here, Customer can delete his/her address.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Enter Address Id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
         }
       }
-  }
-}
+    },
+    "/category": {
+      "post": {
+        "tags": ["Product Category"],
+        "summary": "(Table, Chair, Bed, Sofa)",
+        "description": "API, for adding categories of product.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "_id",
+            "description": "Enter Category Id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "category_name",
+            "description": "Enter Category Name",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/color": {
+      "post": {
+        "tags": ["Product Color"],
+        "summary": "Products of different colors",
+        "description": "API, for adding colors of product.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "_id",
+            "description": "Enter Category Id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "color_parent",
+            "description": "Enter Color Parent Name",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "color_name",
+            "description": "Enter Color Name",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "color_code",
+            "description": "Enter Color Code",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/product": {
+      "post": {
+        "tags": ["Product List"],
+        "summary": "Products of different types",
+        "description": "API, for adding products of different categories.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "_id",
+            "description": "Enter Product Id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "categ_id",
+            "description": "Enter Category Id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "color_id",
+            "description": "Enter Color Id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "prod_name",
+            "description": "Enter Product Name",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "prod_image",
+            "description": "Enter Product Image",
+            "in": "formData",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "prod_desc",
+            "description": "Enter Product Description",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "prod_rating",
+            "description": "Enter Product Rating",
+            "in": "formData",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "prod_producer",
+            "description": "Enter Product Producer",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "prod_cost",
+            "description": "Enter Product Cost",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "prod_stock",
+            "description": "Enter Product Stock",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "prod_dimension",
+            "description": "Enter Product Dimensions",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "prod_material",
+            "description": "Enter Product Material",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getAllProducts": {
+      "get": {
+        "tags": ["Access for All Products"],
+        "summary": "Customer can see all Products",
+        "description": "API, for fetching all stored products.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getProductByCateg/{categ_id}": {
+      "get": {
+        "tags": ["Access for Products by Category"],
+        "summary": "Filter on Products in terms of categories.",
+        "description": "Here, Customer can access the product by applying filter category.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "categ_id",
+            "description": "Enter Category Id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getProductByColor/{categ_id}/{color_id}": {
+      "get": {
+        "tags": ["Access for Products by Category and Color"],
+        "summary": "Filter on Products in terms of categories and color.",
+        "description": "Here, Customer can access the product by applying filter category and color.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "categ_id",
+            "description": "Enter Category Id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "color_id",
+            "description": "Enter Color Id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    }
   },
   "definitions": {
     "CustomerRegistration": {
@@ -305,19 +562,19 @@
       ],
       "properties": {
         "cust_Fname": {
-          "type": "string"   
+          "type": "string"
         },
         "cust_Lname": {
           "type": "string"
         },
         "cust_email": {
-          "type": "string"       
+          "type": "string"
         },
         "cust_dob": {
-          "type": "string"         
+          "type": "string"
         },
         "cust_phone": {
-          "type": "string"         
+          "type": "string"
         },
         "cust_gender": {
           "type": "string"
@@ -339,22 +596,22 @@
       ],
       "properties": {
         "cust_id": {
-          "type": "integer"   
+          "type": "integer"
         },
         "cust_address": {
-          "type": "string"   
+          "type": "string"
         },
         "cust_pincode": {
           "type": "string"
         },
         "cust_city": {
-          "type": "string"       
+          "type": "string"
         },
         "cust_state": {
-          "type": "string"         
+          "type": "string"
         },
         "cust_country": {
-          "type": "string"         
+          "type": "string"
         },
         "cust_gender": {
           "type": "string"
@@ -363,27 +620,111 @@
     },
     "CustomerDeleteAddress": {
       "type": "object",
-      "required": [
-        "id"
-      ],
+      "required": ["id"],
       "properties": {
         "id": {
-          "type": "integer"   
+          "type": "integer"
+        }
+      }
+    },
+    "ProductCategory": {
+      "type": "object",
+      "required": ["_id", "category_name"],
+      "properties": {
+        "_id": {
+          "type": "integer"
+        },
+        "category_name": {
+          "type": "string"
+        }
+      }
+    },
+    "ProductColor": {
+      "type": "object",
+      "required": ["_id", "color_parent", "color_name", "color_code"],
+      "properties": {
+        "_id": {
+          "type": "integer"
+        },
+        "color_parent": {
+          "type": "string"
+        },
+        "color_name": {
+          "type": "string"
+        },
+        "color_code": {
+          "type": "string"
+        }
+      }
+    },
+    "ProductList": {
+      "type": "object",
+      "required": [
+        "_id",
+        "categ_id",
+        "color_id",
+        "prod_name",
+        "prod_image",
+        "prod_desc",
+        "prod_rating",
+        "prod_producer",
+        "prod_cost",
+        "prod_stock"
+      ],
+      "properties": {
+        "_id": {
+          "type": "integer"
+        },
+        "categ_id": {
+          "type": "integer"
+        },
+        "color_id": {
+          "type": "integer"
+        },
+        "prod_name": {
+          "type": "string"
+        },
+        "prod_image": {
+          "type": "string"
+        },
+        "prod_desc": {
+          "type": "string"
+        },
+        "prod_rating": {
+          "type": "integer"
+        },
+        "prod_producer": {
+          "type": "string"
+        },
+        "prod_cost": {
+          "type": "integer"
+        },
+        "prod_stock": {
+          "type": "integer"
+        },
+        "prod_created_at": {
+          "type": "date"
+        },
+        "prod_dimension": {
+          "type": "string"
+        },
+        "prod_material": {
+          "type": "string"
         }
       }
     }
   },
- "securityDefinitions": {
+  "securityDefinitions": {
     "api_key": {
       "type": "apiKey",
       "name": "authorization",
       "in": "headers",
-      "scheme": "bearer"    
+      "scheme": "bearer"
     }
   },
-  "security":[
+  "security": [
     {
-    "api_key":[]
+      "api_key": []
     }
   ]
 }
