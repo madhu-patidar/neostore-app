@@ -4,7 +4,7 @@ import ProductListModel from '../../../models/products/product_list'
 //Update Products by id
 const updateProductsById=(req:Request,res:Response)=>{
   const prod_id=req.body.prod_id
-console.log(req.file.filename)
+  let prod_image:string
 
   if(prod_id==undefined){
       res.status(404).json({success:"false",message:"Please Provide Product Id"})
@@ -43,12 +43,18 @@ console.log(req.file.filename)
                   res.status(404).json({success:"false",error_message:err})
               })
               } 
-              if(req.file.filename){
-                ProductListModel.findByIdAndUpdate(prod_id,{prod_image:req.file.filename},(err,result)=>{
-                  if(err)
-                  res.status(404).json({success:"false",error_message:err})
-              })
-              } 
+              try{
+                if(req.file.filename){
+                  ProductListModel.findByIdAndUpdate(prod_id,{prod_image:req.file.filename},(err,result)=>{
+                    if(err)
+                    res.status(404).json({success:"false",error_message:err})
+                })
+                }
+              }
+              catch(err){
+              
+              }
+
               if(req.body.prod_rating){
                 ProductListModel.findByIdAndUpdate(prod_id,{prod_rating:req.body.prod_rating},(err,result)=>{
                   if(err)
@@ -93,11 +99,7 @@ console.log(req.file.filename)
             }
   
         })
-      }
-
-    
- 
-    
+      } 
 
   }
   
