@@ -1,9 +1,9 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "1.0.0",
-    "title": "NeoSTORE Backend (Shopping Website)",
-    "description": "A most attracting platform for purchasing different products according to your choice.",
+    "version": "3.0.0",
+    "title": "NeoSTORE (Shopping Website)",
+    "description": "A most attracting platform for purchasing different products according to your choice. Online shopping is a form of electronic commerce which allows consumers to directly buy goods or services from a seller over the Internet using a web browser. Consumers find a product of interest by visiting the website of the retailer directly or by searching among alternative vendors using a shopping search engine, which displays the same product's availability and pricing at different e-retailers. \n\n ABOUT TECHSTACK\n\nFront-end:- AngularJS\nBack-end:- NodeJS\nDatabase:- PostgreSQL, MongoDB",
     "license": {
       "name": "MIT",
       "url": "https://opensource.org/licenses/MIT"
@@ -449,6 +449,92 @@
         }
       }
     },
+    "/getAllColors": {
+      "get": {
+        "tags": ["Access for All Products Colors"],
+        "summary": "Customer can see all Products Colors",
+        "description": "API, for fetching all stored products Colors.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getAllCategories": {
+      "get": {
+        "tags": ["Access for All Products Categories"],
+        "summary": "Customer can see all Products categories",
+        "description": "API, for fetching all stored products categories.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getCategoryById/{categ_id}": {
+      "get": {
+        "tags": ["Access for Categories by id"],
+        "summary": "Customer can see categories by id",
+        "description": "API, for fetching categories by id.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "categ_id",
+            "description": "Enter Category Id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getColorById/{color_id}": {
+      "get": {
+        "tags": ["Access for Colors by id"],
+        "summary": "Customer can see colors by id",
+        "description": "API, for fetching colors by id.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "color_id",
+            "description": "Enter Color Id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
     "/getProductByCateg/{categ_id}": {
       "get": {
         "tags": ["Access for Products by Category"],
@@ -460,6 +546,32 @@
           {
             "name": "categ_id",
             "description": "Enter Category Id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getProductByProdId/{prod_id}": {
+      "get": {
+        "tags": ["Access for Products by product id"],
+        "summary": "Filter on Products in terms of product id.",
+        "description": "Here, Customer can access the product id.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "prod_id",
+            "description": "Enter Product Id",
             "in": "path",
             "required": true,
             "type": "integer"
@@ -497,6 +609,305 @@
             "required": true,
             "type": "integer"
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/deleteProductByProdId/{prod_id}": {
+      "delete": {
+        "tags": ["Delete One Product"],
+        "summary": "Delete Product by its product id",
+        "description": "Here, Admin can delete one product at a time by giving its product id.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "prod_id",
+            "description": "Enter Product Id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/deleteAllProducts": {
+      "delete": {
+        "tags": ["Delete All Products"],
+        "summary": "Admin can delete all Products",
+        "description": "API, for deleting all stored products in one time.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/deleteAllCategories": {
+      "delete": {
+        "tags": ["Delete All Categories"],
+        "summary": "Admin can delete all Categories",
+        "description": "API, for deleting all stored Categories in one time.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/deleteAllColors": {
+      "delete": {
+        "tags": ["Delete All Colors"],
+        "summary": "Admin can delete all Products Colors",
+        "description": "API, for deleting all stored products colors in one time.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/deleteCategoryByCategId/{categ_id}": {
+      "delete": {
+        "tags": ["Delete One Categories"],
+        "summary": "Admin can delete One Categories",
+        "description": "API, for deleting  Categories in one time.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "categ_id",
+            "description": "Enter Category Id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/deleteColorByColorId/{color_id}": {
+      "delete": {
+        "tags": ["Delete One Color"],
+        "summary": "Admin can delete One Color",
+        "description": "API, for deleting  Color in one time.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "color_id",
+            "description": "Enter Color Id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/updateProductByProdId": {
+      "put": {
+        "tags": ["Product Update"],
+        "summary": "Update exisiting product",
+        "description": "API, for update parametres  of product.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "prod_id",
+            "description": "Enter Product Id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "categ_id",
+            "description": "Enter Category Id",
+            "in": "formData",
+            "type": "integer"
+          },
+          {
+            "name": "color_id",
+            "description": "Enter Color Id",
+            "in": "formData",
+            "type": "integer"
+          },
+          {
+            "name": "prod_name",
+            "description": "Enter Product Name",
+            "in": "formData",
+            "type": "string"
+          }, 
+          {
+            "name": "prod_image",
+            "description": "Enter Product Image",
+            "in": "formData",
+            "type": "file"
+          },
+          {
+            "name": "prod_desc",
+            "description": "Enter Product Description",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "prod_rating",
+            "description": "Enter Product Rating",
+            "in": "formData",
+            "type": "number"
+          },
+          {
+            "name": "prod_producer",
+            "description": "Enter Product Producer",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "prod_cost",
+            "description": "Enter Product Cost",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "prod_stock",
+            "description": "Enter Product Stock",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "prod_dimension",
+            "description": "Enter Product Dimensions",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "prod_material",
+            "description": "Enter Product Material",
+            "in": "formData",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/updateCategoryByCategId": {
+      "put": {
+        "tags": ["Category Update"],
+        "summary": "Update exisiting category",
+        "description": "API, for update parametres of category.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "categ_id",
+            "description": "Enter Category Id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "category_name",
+            "description": "Enter Category name",
+            "in": "formData",
+            "type": "string"
+          }
+          
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/updateColorByColorId": {
+      "put": {
+        "tags": ["Color Update"],
+        "summary": "Update exisiting Color",
+        "description": "API, for update parametres of Color.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "color_id",
+            "description": "Enter Color Id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "color_parent",
+            "description": "Enter Color Parent name",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "color_name",
+            "description": "Enter Color name",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "color_code",
+            "description": "Enter Color code",
+            "in": "formData",
+            "type": "string"
+          }
+          
         ],
         "responses": {
           "200": {

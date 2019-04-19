@@ -1,8 +1,8 @@
 import {Request,Response} from 'express'
-import ProductListModel from '../../models/products/product_list'
+import ProductListModel from '../../../models/products/product_list'
 
 //Add Product Category
-const productList = (req:Request,res:Response)=>{
+const postProductList = (req:Request,res:Response)=>{
     const newProduct = new ProductListModel({
         _id:req.body._id,
         categ_id:req.body.categ_id,
@@ -21,12 +21,12 @@ const productList = (req:Request,res:Response)=>{
     
     newProduct.save()
     .then(result=>{
-        res.status(200).json({success:"true",message:"Data was inserted successfully",data:result})
+        res.status(200).json({success:"true",message:"Data was inserted successfully",product_details:result})
     })
     .catch(err=>{
         res.status(404).json({success:"false",message:"Something went wrong",error_message:err})
     })
 }
 
-//Available for Routes
-export default productList;
+//Available for ProductRoutes
+export default postProductList;
