@@ -3,10 +3,10 @@ import ProdCategoryModel from '../../../models/products/product_category'
 
 //Update Products by id
 const updateCategoryById=(req:Request,res:Response)=>{
-    const categ_id:number=req.body.categ_id
+    const categ_id:number=req.params.categ_id
   
     if(categ_id==undefined){
-        res.status(404).json({success:"false",message:"Please Provide Product Id"})
+        res.status(404).json({success:"false",message:"Please Provide Category Id"})
     }
     else{
       
@@ -32,15 +32,8 @@ const updateCategoryById=(req:Request,res:Response)=>{
               }
     
           })
-        }
-  
-      
-   
-      
-  
-    }
-    
-     
+        } 
+    }    
   }
   
   //Available for ProductRoutes

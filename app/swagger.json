@@ -23,35 +23,35 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "cust_email",
+            "name": "email",
             "description": "Enter Email",
             "in": "formData",
             "required": true,
             "type": "string"
           },
           {
-            "name": "cust_pass",
+            "name": "pass",
             "description": "Enter Password",
             "in": "formData",
             "required": true,
             "type": "string"
           },
           {
-            "name": "cust_confirmPass",
+            "name": "confirmPass",
             "description": "Enter Confirm Password",
             "in": "formData",
             "required": true,
             "type": "string"
           },
           {
-            "name": "cust_phone",
+            "name": "phone_no",
             "description": "Enter Contact No",
             "in": "formData",
             "required": true,
             "type": "string"
           },
           {
-            "name": "cust_gender",
+            "name": "gender",
             "description": "Enter Gender",
             "in": "formData",
             "required": true,
@@ -77,14 +77,14 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "cust_email",
+            "name": "email",
             "description": "Enter Email",
             "in": "formData",
             "required": true,
             "type": "string"
           },
           {
-            "name": "cust_pass",
+            "name": "pass",
             "description": "Enter Password",
             "in": "formData",
             "required": true,
@@ -102,7 +102,7 @@
       }
     },
     "/profile": {
-      "post": {
+      "put": {
         "tags": ["Customer Update Profile"],
         "summary": "Update about yourself.",
         "description": "Here, Customer can update his/her profile.",
@@ -110,55 +110,134 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "profile_image",
+            "name": "customer_id",
+            "description": "Enter Customer Id ",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "profile_img",
             "description": "Upload Profile Image ",
             "in": "formData",
             "required": true,
             "type": "file"
           },
           {
-            "name": "cust_Fname",
+            "name": "first_name",
             "description": "Enter First Name",
             "in": "formData",
             "required": true,
             "type": "string"
           },
           {
-            "name": "cust_Lname",
+            "name": "last_name",
             "description": "Enter Last Name",
             "in": "formData",
             "required": true,
             "type": "string"
           },
           {
-            "name": "cust_email",
+            "name": "email",
             "description": "Enter Email",
             "in": "formData",
             "required": true,
             "type": "string"
           },
           {
-            "name": "cust_dob",
+            "name": "dob",
             "description": "Enter DOB",
             "in": "formData",
             "required": true,
             "type": "string"
           },
           {
-            "name": "cust_phone",
+            "name": "phone_no",
             "description": "Enter Contact No",
             "in": "formData",
             "required": true,
             "type": "string"
           },
           {
-            "name": "cust_gender",
+            "name": "gender",
             "description": "Enter Gender",
             "in": "formData",
             "required": true,
             "type": "string"
           }
         ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getCustProfile": {
+      "get": {
+        "tags": ["Access Customer Profile"],
+        "summary": "Customer Profile Details.",
+        "description": "This API gives profile details of Customer",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+      
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getAllCustProfile": {
+      "get": {
+        "tags": ["Access for All Customer Profile"],
+        "summary": "Customer Profile Details.",
+        "description": "This API gives profile details of Customer",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+      
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getCustAddress": {
+      "get": {
+        "tags": ["Access Customer Address"],
+        "summary": "Customer Address Details.",
+        "description": "This API gives Address details of Customer",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+      
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getCustAllAddress": {
+      "get": {
+        "tags": ["Access for All Customer Address"],
+        "summary": "Customer Address Details.",
+        "description": "This API gives Address details of Customer",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+      
         "responses": {
           "200": {
             "description": "Operation Successful"
@@ -178,35 +257,35 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "cust_address",
+            "name": "address",
             "description": "Enter Address",
             "in": "formData",
             "required": true,
             "type": "string"
           },
           {
-            "name": "cust_pincode",
+            "name": "pincode",
             "description": "Enter Your Pincode",
             "in": "formData",
             "required": true,
             "type": "string"
           },
           {
-            "name": "cust_city",
+            "name": "city",
             "description": "Enter Your City",
             "in": "formData",
             "required": true,
             "type": "string"
           },
           {
-            "name": "cust_state",
+            "name": "state",
             "description": "Enter Your State",
             "in": "formData",
             "required": true,
             "type": "string"
           },
           {
-            "name": "cust_country",
+            "name": "country",
             "description": "Enter Your Country",
             "in": "formData",
             "required": true,
@@ -223,8 +302,8 @@
         }
       }
     },
-    "/deladdress/{id}": {
-      "post": {
+    "/deladdress": {
+      "delete": {
         "tags": ["Customer Delete Address"],
         "summary": "Delete your address.",
         "description": "Here, Customer can delete his/her address.",
@@ -232,11 +311,134 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "id",
+            "name": "address_id",
             "description": "Enter Address Id",
-            "in": "path",
+            "in": "formData",
             "required": true,
             "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/delAlladdress": {
+      "delete": {
+        "tags": ["All Customer Delete Address"],
+        "summary": "Delete your address.",
+        "description": "Here, Customer can delete his/her address.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/delAllCustomer": {
+      "delete": {
+        "tags": ["Delete All Customer"],
+        "summary": "Delete customer.",
+        "description": "Here, All Customer can be deleted at time.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/delCustomer": {
+      "delete": {
+        "tags": ["Delete Customer by ID"],
+        "summary": "One Customer can be deleted.",
+        "description": "Here, Customer can delete his/her data.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "customer_id",
+            "description": "Enter Customer Id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/updateAddress": {
+      "put": {
+        "tags": ["Update Address by ID"],
+        "summary": "One Customer can update the address.",
+        "description": "Here, Customer can update his/her address.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "customer_id",
+            "description": "Enter Customer Id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "address_id",
+            "description": "Enter Address Id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "address",
+            "description": "Enter Address",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "pincode",
+            "description": "Enter Your Pincode",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "city",
+            "description": "Enter Your City",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "description": "Enter Your State",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "country",
+            "description": "Enter Your Country",
+            "in": "formData",
+            "type": "string"
           }
         ],
         "responses": {
@@ -749,7 +951,7 @@
         }
       }
     },
-    "/updateProductByProdId": {
+    "/updateProductByProdId/{prod_id}": {
       "put": {
         "tags": ["Product Update"],
         "summary": "Update exisiting product",
@@ -760,7 +962,7 @@
           {
             "name": "prod_id",
             "description": "Enter Product Id",
-            "in": "formData",
+            "in": "path",
             "required": true,
             "type": "integer"
           },
@@ -841,7 +1043,40 @@
         }
       }
     },
-    "/updateCategoryByCategId": {
+    "/updateProductRatingProdId/{prod_id}": {
+      "put": {
+        "tags": ["Product Rating Update"],
+        "summary": "Update exisiting Rating of Product",
+        "description": "API, for update rating of product.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "prod_id",
+            "description": "Enter Category Id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "prod_rating",
+            "description": "Enter Product Rating",
+            "in": "formData",
+            "type": "number"
+          }
+          
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/updateCategoryByCategId/{categ_id}": {
       "put": {
         "tags": ["Category Update"],
         "summary": "Update exisiting category",
@@ -852,7 +1087,7 @@
           {
             "name": "categ_id",
             "description": "Enter Category Id",
-            "in": "formData",
+            "in": "path",
             "required": true,
             "type": "integer"
           },
@@ -874,7 +1109,7 @@
         }
       }
     },
-    "/updateColorByColorId": {
+    "/updateColorByColorId/{color_id}": {
       "put": {
         "tags": ["Color Update"],
         "summary": "Update exisiting Color",
@@ -885,7 +1120,7 @@
           {
             "name": "color_id",
             "description": "Enter Color Id",
-            "in": "formData",
+            "in": "path",
             "required": true,
             "type": "integer"
           },
@@ -924,26 +1159,26 @@
     "CustomerRegistration": {
       "type": "object",
       "required": [
-        "cust_email",
-        "cust_pass",
-        "cust_confirmPass",
-        "cust_phone",
-        "cust_gender"
+        "email",
+        "pass",
+        "confirmPass",
+        "phone_no",
+        "gender"
       ],
       "properties": {
-        "cust_email": {
+        "email": {
           "type": "string"
         },
-        "cust_pass": {
+        "pass": {
           "type": "string"
         },
-        "cust_confirmPass": {
+        "confirmPass": {
           "type": "string"
         },
-        "cust_phone": {
+        "phone_no": {
           "type": "string"
         },
-        "cust_gender": {
+        "gender": {
           "type": "string"
         }
       }
@@ -952,10 +1187,10 @@
       "type": "object",
       "required": ["cust_email", "cust_pass"],
       "properties": {
-        "cust_email": {
+        "email": {
           "type": "string"
         },
-        "cust_pass": {
+        "pass": {
           "type": "string"
         }
       }
@@ -963,34 +1198,34 @@
     "CustomerUpdateProfile": {
       "type": "object",
       "required": [
-        "cust_Fname",
-        "cust_Lname",
-        "cust_email",
-        "cust_dob",
-        "cust_phone",
-        "cust_gender",
-        "profile_image"
+        "first_name",
+        "last_name",
+        "email",
+        "dob",
+        "phone_no",
+        "gender",
+        "profile_img"
       ],
       "properties": {
-        "cust_Fname": {
+        "first_name": {
           "type": "string"
         },
-        "cust_Lname": {
+        "last_name": {
           "type": "string"
         },
-        "cust_email": {
+        "email": {
           "type": "string"
         },
-        "cust_dob": {
+        "dob": {
           "type": "string"
         },
-        "cust_phone": {
+        "phone_no": {
           "type": "string"
         },
-        "cust_gender": {
+        "gender": {
           "type": "string"
         },
-        "profile_image": {
+        "profile_img": {
           "type": "string"
         }
       }
@@ -998,33 +1233,30 @@
     "CustomerUpdateAddress": {
       "type": "object",
       "required": [
-        "cust_id",
-        "cust_address",
-        "cust_pincode",
-        "cust_city",
-        "cust_state",
-        "cust_country"
+        "id",
+        "address",
+        "pincode",
+        "city",
+        "state",
+        "country"
       ],
       "properties": {
-        "cust_id": {
+        "id": {
           "type": "integer"
         },
-        "cust_address": {
+        "address": {
           "type": "string"
         },
-        "cust_pincode": {
+        "pincode": {
           "type": "string"
         },
-        "cust_city": {
+        "city": {
           "type": "string"
         },
-        "cust_state": {
+        "state": {
           "type": "string"
         },
-        "cust_country": {
-          "type": "string"
-        },
-        "cust_gender": {
+        "country": {
           "type": "string"
         }
       }

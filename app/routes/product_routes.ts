@@ -14,6 +14,7 @@ import deleteAllProducts from '../controllers/products/delete_products/deleteAll
 
 //Update Products
 import updateProductsById from '../controllers/products/update_products/updateProductById'
+import updateProductRating from '../controllers/products/update_products/updateProductRating'
 
 //Post Product category
 import postProductCategory from '../controllers/products/post_products/product_category'
@@ -45,6 +46,7 @@ import updateColorById from '../controllers/products/update_products/updateColor
 
 //Config files
 import upload from '../configFiles/fileUpload'
+import verifyToken from '../configFiles/verifyTokenMiddleware'
 
 export class ProductRoutes{
 
@@ -119,15 +121,19 @@ export class ProductRoutes{
         .delete(deleteColorById)
 
         //Update Products By id
-        app.route('/updateProductByProdId')
+        app.route('/updateProductByProdId/:prod_id')
         .put(upload.single('prod_image'),updateProductsById)
 
+        //Update Product Rating
+        app.route('/updateProductRatingProdId/:prod_id')
+        .put(verifyToken,updateProductsById)
+
         //Update Category By id
-        app.route('/updateCategoryByCategId')
+        app.route('/updateCategoryByCategId/:categ_id')
         .put(updateCategoryById)
 
         //Update Color By id
-        app.route('/updateColorByColorId')
+        app.route('/updateColorByColorId/:color_id')
         .put(updateColorById)
     
 

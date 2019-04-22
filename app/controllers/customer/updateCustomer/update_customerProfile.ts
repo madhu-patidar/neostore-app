@@ -1,10 +1,11 @@
-import client from '../../configFiles/database_postgresql'
+import client from '../../../configFiles/database_postgresql'
 import {Request,Response} from 'express'
 import Joi from 'joi'
 
 //Update Customer Profile
 const updateProfile=(req:Request,res:Response)=>{
-    const id:number=req.body.id
+    const id:number=parseInt(req.body.id)
+    const id1:number=parseInt(req.body.customer_id)
     const schema = Joi.object().keys({
         u_Fname:Joi.string().regex(/^[A-Za-z]+$/).required(),
         u_Lname:Joi.string().regex(/^[A-Za-z]+$/).required(),
@@ -13,16 +14,16 @@ const updateProfile=(req:Request,res:Response)=>{
         u_phone:Joi.string().regex(/^[0-9]+$/).min(10).max(10).required(),
         u_gender:Joi.string().required(),
    })
-   Joi.validate({u_Fname:req.body.cust_Fname,u_Lname:req.body.cust_Lname,u_email:req.body.cust_email,u_DOB:req.body.cust_dob,u_phone:req.body.cust_phone,u_gender:req.body.cust_gender},schema,(err,result)=>{
+   Joi.validate({u_Fname:req.body.first_name,u_Lname:req.body.last_name,u_email:req.body.email,u_DOB:req.body.dob,u_phone:req.body.phone_no,u_gender:req.body.gender},schema,(err,result)=>{
         if(err){
             res.status(404).json({success:"false",error_message:err.message})
-
         }
         else{
-            client.query('Update neo_user set cust_fname=$1,cust_lname=$2,cust_email=$3,cust_dob=$4,cust_phone=$5,cust_gender=$6,cust_image=$7 where cust_id=$8',[req.body.cust_Fname,req.body.cust_Lname,req.body.cust_email,req.body.cust_dob,req.body.cust_phone,req.body.cust_gender,req.file.filename,id])
+            if(id===id1){
+            client.query('Update neo_user set first_name=$1,last_name=$2,email=$3,dob=$4,phone_no=$5,gender=$6,profile_img=$7 where id=$8',[req.body.first_name,req.body.last_name,req.body.email,req.body.dob,req.body.phone_no,req.body.gender,req.file.filename,id])
             .then(user=>{
                 if(user){
-                    client.query('Select cust_id,cust_fname,cust_lname,cust_email,cust_dob,cust_phone,cust_gender,cust_image,cust_created_at from neo_user where cust_id=$1',[id],(err,result)=>{
+                    client.query('Select id,first_name,last_name,email,dob,phone_no,gender,profile_img, created_at from neo_user where id=$1',[id],(err,result)=>{
                         if(result){
                             res.status(200).json({success:"true",message:"Updated profile",customer_details:result.rows})
                         }
@@ -36,6 +37,11 @@ const updateProfile=(req:Request,res:Response)=>{
             .catch(err=>{
                 res.status(404).json({success:"false",message:err})
             })
+        }
+        else{
+            res.status(404).json({success:"false",message:"Customer id not matched"})
+
+        }
 
         }
    })

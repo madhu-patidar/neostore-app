@@ -4,6 +4,7 @@ import path from 'path'
 import { CustomerRoutes } from './routes/customer_routes'
 import {ProductRoutes} from './routes/product_routes'
 import swaggerUi from 'swagger-ui-express'
+import cors from 'cors'
 import * as swaggerDocument from './swagger.json'
 import mongoose from 'mongoose'
 
@@ -24,6 +25,7 @@ export class App{
     
     //Configuration setup
     private config(){
+        this.app.use(cors())
         this.app.use(bodyParser.json())
         this.app.use(bodyParser.urlencoded({extended:false}))
         this.app.use('/swagger',swaggerUi.serve,swaggerUi.setup(swaggerDocument))

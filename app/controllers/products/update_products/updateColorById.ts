@@ -3,10 +3,10 @@ import {Request,Response} from 'express'
 
 //Update Color by id
 const updateColorById=(req:Request,res:Response)=>{
-    const color_id:number=req.body.color_id
+    const color_id:number=req.params.color_id
   
     if(color_id==undefined){
-        res.status(404).json({success:"false",message:"Please Provide Product Id"})
+        res.status(404).json({success:"false",message:"Please Provide Color Id"})
     }
     else{
       
@@ -42,7 +42,7 @@ const updateColorById=(req:Request,res:Response)=>{
                 res.status(200).json({success:"true",message:"Color Updated"})
               }
               else{
-                  res.status(404).json({success:"false",message:"Please enter correct Category id"})
+                  res.status(404).json({success:"false",message:"Please enter correct Color id"})
               }
     
           })

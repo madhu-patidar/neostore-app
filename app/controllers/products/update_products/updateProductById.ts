@@ -3,8 +3,7 @@ import ProductListModel from '../../../models/products/product_list'
 
 //Update Products by id
 const updateProductsById=(req:Request,res:Response)=>{
-  const prod_id=req.body.prod_id
-  let prod_image:string
+  const prod_id=req.params.prod_id
 
   if(prod_id==undefined){
       res.status(404).json({success:"false",message:"Please Provide Product Id"})
