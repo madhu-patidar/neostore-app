@@ -46,7 +46,7 @@ const customerAuthentication=(req:Request,res:Response)=>{
                         //Compare requested password with database password
                         bcrypt.compare(req.body.pass, cust_data.pass)
                             .then((result) => {
-                                //Fetch feedback for loggedin user
+                                
                                 if (result) {
                                     jwt.sign({id},'secretkey',(err:any,token:any)=>{
                                         res.status(200).json({ success:"true",message:"You have logged In",customer_details:customer_details,token:token })           

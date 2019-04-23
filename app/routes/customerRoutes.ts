@@ -12,6 +12,7 @@ import getCustomerAllAddress from '../controllers/customer/getCustomer/get_AllCu
 import deleteAllCustomer from '../controllers/customer/deleteCustomer/delete_AllCustProfile'
 import deleteOneCustomer from '../controllers/customer/deleteCustomer/delete_OneCustProfile'
 import updateAddress from '../controllers/customer/updateCustomer/update_customerAdd'
+import updateAllCustomer from '../controllers/customer/updateCustomer/update_AllCustomer'
 
 //Config files
 import verifyToken from '../configFiles/verifyTokenMiddleware'
@@ -78,6 +79,9 @@ export class CustomerRoutes{
         //Update Customer Address
         app.route('/updateAddress')
         .put(verifyToken,updateAddress)
+
+        app.route('/updateAllCustomer')
+        .put(upload.single('profile_img'),updateAllCustomer)
 
     }
 

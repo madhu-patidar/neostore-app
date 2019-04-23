@@ -1,18 +1,20 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import path from 'path'
-import { CustomerRoutes } from './routes/customer_routes'
-import {ProductRoutes} from './routes/product_routes'
+import { CustomerRoutes } from './routes/customerRoutes'
+import {ProductRoutes} from './routes/productRoutes'
+import {CartRoutes} from './routes/cartRoutes'
 import swaggerUi from 'swagger-ui-express'
 import cors from 'cors'
 import * as swaggerDocument from './swagger.json'
 import mongoose from 'mongoose'
-
+import {URL} from './configFiles/environment_variables'
 
 export class App{
     public app:express.Application
     public routeCustomer:CustomerRoutes=new CustomerRoutes()
     public routeProduct:ProductRoutes=new ProductRoutes()
+    public routeCart:CartRoutes=new CartRoutes()
     
     //Initialisation
     constructor(){
@@ -21,6 +23,7 @@ export class App{
         this.mongooSetup()
         this.routeCustomer.routes(this.app)
         this.routeProduct.routes(this.app)
+        this.routeCart.routes(this.app)
     }
     
     //Configuration setup
@@ -29,11 +32,16 @@ export class App{
         this.app.use(bodyParser.json())
         this.app.use(bodyParser.urlencoded({extended:false}))
         this.app.use('/swagger',swaggerUi.serve,swaggerUi.setup(swaggerDocument))
+        
+        //Make public upload directory to the front-end
+        const publicDir=path.join(__dirname,'../uploads')
+        this.app.use(express.static(publicDir))
     }
 
     //Mongoose Connection Setup
     private mongooSetup():void{
-        mongoose.connect("mongodb://localhost:27017/neostore",{useNewUrlParser:true,useFindAndModify: false})
+       const url:any=URL
+        mongoose.connect(url,{useNewUrlParser:true,useFindAndModify: false})
         .then(()=>console.log("MongoDB Connected Successfully"))
         .catch(err=>console.log(err))
     }

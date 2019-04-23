@@ -3,7 +3,7 @@ import {Request,Response} from 'express'
 
 //Update Color by id
 const updateColorById=(req:Request,res:Response)=>{
-    const color_id:number=req.params.color_id
+    const color_id:number=parseInt(req.body.color_id)
   
     if(color_id==undefined){
         res.status(404).json({success:"false",message:"Please Provide Color Id"})
@@ -14,10 +14,10 @@ const updateColorById=(req:Request,res:Response)=>{
           res.status(404).json({success:"false",message:"No Data found to update"})
         }
         else{
-            ProductColorModel.findById({_id:color_id},(err,result)=>{
+            ProductColorModel.find({_id:color_id},(err,result)=>{
               if(err)
               res.status(404).json({success:"false",error_message:err})
-              else if(result){
+              else if(result.length!==0){
                 if(req.body.color_parent){
                     ProductColorModel.findByIdAndUpdate(color_id,{color_parent:req.body.color_parent},(err,result)=>{
                         if(err)

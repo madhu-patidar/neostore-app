@@ -3,8 +3,8 @@ import {Request,Response} from 'express'
 
 //Delete Customer One Address
 const deleteAddress= (req:Request,res:Response)=>{
-    const id:number=req.body.id
-    const id1:number=req.body.address_id
+    const id:number=parseInt(req.body.id)
+    const id1:number=parseInt(req.body.address_id)
 
     
     if(req.body.id=='undefined'){

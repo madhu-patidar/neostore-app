@@ -5,8 +5,9 @@ import postProductList from '../controllers/products/post_products/product_list'
 //Get Products
 import getProducts from '../controllers/products/get_Products/getProducts'
 import getProductsByCategory from '../controllers/products/get_Products/getProductsByCategory'
-import getProductsByColor from '../controllers/products/get_Products/getProductsByColor'
+import getProductsByColorandCateg from '../controllers/products/get_Products/getProductsByCategandColor'
 import getProductsByProductId from '../controllers/products/get_Products/getProductByProductId'
+import getProductsByColor from '../controllers/products/get_Products/getProductByColorId'
 
 //Delete Products
 import deleteProductByProdId from '../controllers/products/delete_products/deleteProductById'
@@ -15,6 +16,7 @@ import deleteAllProducts from '../controllers/products/delete_products/deleteAll
 //Update Products
 import updateProductsById from '../controllers/products/update_products/updateProductById'
 import updateProductRating from '../controllers/products/update_products/updateProductRating'
+//import updateAllProducts from '../controllers/products/update_products/update_AllProducts'
 
 //Post Product category
 import postProductCategory from '../controllers/products/post_products/product_category'
@@ -76,9 +78,13 @@ export class ProductRoutes{
         app.route('/getProductByProdId/:prod_id')
         .get(getProductsByProductId)
 
+        //Get Products By its color
+        app.route('/getProductBycolor/:color_id')
+        .get(getProductsByColor)
+
         //Get Products By its category and color
         app.route('/getProductByColor/:categ_id/:color_id')
-        .get(getProductsByColor)
+        .get(getProductsByColorandCateg)
 
         //Get all Category of Products
         app.route('/getAllCategories')
@@ -97,7 +103,7 @@ export class ProductRoutes{
         .get(getColorsByColorId)
 
         //Delete Product By its product id
-        app.route('/deleteProductByProdId/:prod_id')
+        app.route('/deleteProductByProdId')
         .delete(deleteProductByProdId)
 
         //Delete All Products
@@ -113,11 +119,11 @@ export class ProductRoutes{
         .delete(deleteAllColors)
 
         //Delete category By id
-        app.route('/deleteCategoryByCategId/:categ_id')
+        app.route('/deleteCategoryByCategId')
         .delete(deleteCategoryById)
 
         //Delete color By id
-        app.route('/deleteColorByColorId/:color_id')
+        app.route('/deleteColorByColorId')
         .delete(deleteColorById)
 
         //Update Products By id
@@ -125,17 +131,16 @@ export class ProductRoutes{
         .put(upload.single('prod_image'),updateProductsById)
 
         //Update Product Rating
-        app.route('/updateProductRatingProdId/:prod_id')
-        .put(verifyToken,updateProductsById)
+        app.route('/updateProductRatingProdId')
+        .put(verifyToken,updateProductRating)
 
         //Update Category By id
-        app.route('/updateCategoryByCategId/:categ_id')
+        app.route('/updateCategoryByCategId')
         .put(updateCategoryById)
 
         //Update Color By id
-        app.route('/updateColorByColorId/:color_id')
+        app.route('/updateColorByColorId')
         .put(updateColorById)
-    
 
     }
 }

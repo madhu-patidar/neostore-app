@@ -3,7 +3,7 @@ import ProductListModel from '../../../models/products/product_list'
 
 //Delete Product by its Product id
 const deleteProductByProdId=(req:Request,res:Response)=>{
-    const prod_id:number=req.params.prod_id
+    const prod_id:number=parseInt(req.body.prod_id)
 
     ProductListModel.findByIdAndRemove({_id:prod_id})
     .then(result=>{

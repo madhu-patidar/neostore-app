@@ -3,9 +3,9 @@ import {Request,Response} from 'express'
 
 //Delete Customer All Address
 const deleteOneCustomer= (req:Request,res:Response)=>{
-    const id1:number=req.body.id
+    const id1:number=parseInt(req.body.id)
     const id2:number=parseInt(req.body.customer_id)
- console.log(id1,id2)
+ 
 
     if(id1===id2){
             client.query('delete from neo_user where id=$1',[id1])

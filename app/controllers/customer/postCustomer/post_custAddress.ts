@@ -4,7 +4,7 @@ import Joi from 'joi'
 
 //Add Customer Address
 const addAddress= (req:Request,res:Response)=>{
-    const id:number=req.body.id
+    const id:number=parseInt(req.body.id)
 
     const schema = Joi.object().keys({
         u_id:Joi.number().integer().required(),

@@ -3,7 +3,7 @@ import ProductListModel from '../../../models/products/product_list'
 
 //Update Products by id
 const updateProductRating=(req:Request,res:Response)=>{
-  const prod_id=req.params.prod_id
+  const prod_id=parseInt(req.body.prod_id)
  
 
   if(prod_id==undefined){
@@ -15,11 +15,10 @@ const updateProductRating=(req:Request,res:Response)=>{
         res.status(404).json({success:"false",message:"No Data found to update"})
       }
       else{
-        ProductListModel.findById({_id:prod_id},(err,result)=>{
+        ProductListModel.find({_id:prod_id},(err,result)=>{
             if(err)
             res.status(404).json({success:"false",error_message:err})
-            else if(result){
-           
+            else if(result.length!==0){
               if(req.body.prod_rating){
                 ProductListModel.findByIdAndUpdate(prod_id,{prod_rating:req.body.prod_rating},(err,result)=>{
                   if(err)

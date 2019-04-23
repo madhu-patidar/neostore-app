@@ -3,7 +3,7 @@ import ProdCategoryModel from '../../../models/products/product_category'
 
 //Get Products By its Id
 const getCategoriesByCategId=(req:Request,res:Response)=>{
-let categ_id:number = req.params.categ_id
+let categ_id:number = parseInt(req.params.categ_id)
 
 ProdCategoryModel.find({_id:categ_id})
 .then(result=>{

@@ -1,14 +1,16 @@
 //Setup for Database (PostgreSQL) connection
 
 import {Client} from 'pg'
+import {user,host,password,database,port} from './environment_variables'
+
 
 //Create client with parameters for connection
 const client = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    password: 'shubham96',
-    database: 'neostore',
-    port: 5432,
+    user:user,
+    host:host,
+    password:password,
+    database:database,
+    port:port
 })
 
 //Create connection with PostgreSQL

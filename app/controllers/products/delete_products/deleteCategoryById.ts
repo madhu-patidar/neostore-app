@@ -4,7 +4,7 @@ import ProdCategoryModel from '../../../models/products/product_category'
 //Delete category by id
 const deleteCategoryById=(req:Request,res:Response)=>{
   
-    const categ_id:number=req.params.categ_id
+    const categ_id:number=parseInt(req.body.categ_id)
 
     ProdCategoryModel.findByIdAndRemove({_id:categ_id})
     .then(result=>{

@@ -1,5 +1,6 @@
 import app from './app'
-const PORT=process.env.PORT||5000
+import {PORT} from './configFiles/environment_variables'
+//const PORT=process.env.PORT||5000
 
 //Server is running on PORT 5000
 app.listen(PORT,()=>{

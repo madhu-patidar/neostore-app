@@ -16,7 +16,7 @@
   "paths": {
     "/register": {
       "post": {
-        "tags": ["Customer Registration"],
+        "tags": ["POST Customer Data"],
         "summary": "Registering new Customer",
         "description": "This API is used for registering details of new customer.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -70,7 +70,7 @@
     },
     "/login": {
       "post": {
-        "tags": ["Customer Authenticate"],
+        "tags": ["POST Customer Data"],
         "summary": "Check for Valid user or not.",
         "description": "This API validates email and password of Customer",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -101,9 +101,221 @@
         }
       }
     },
+    "/address": {
+      "post": {
+        "tags": ["POST Customer Data"],
+        "summary": "Add your address.",
+        "description": "Here, Customer can add his/her address.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "address",
+            "description": "Enter Address",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pincode",
+            "description": "Enter Your Pincode",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "city",
+            "description": "Enter Your City",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "description": "Enter Your State",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "country",
+            "description": "Enter Your Country",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getCustProfile": {
+      "get": {
+        "tags": ["Get Customer Data"],
+        "summary": "Customer Profile Details.",
+        "description": "This API gives profile details of Customer",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+      
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getAllCustProfile": {
+      "get": {
+        "tags": ["Get Customer Data"],
+        "summary": "Customer Profile Details.",
+        "description": "This API gives profile details of Customer",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+      
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getCustAddress": {
+      "get": {
+        "tags": ["Get Customer Data"],
+        "summary": "Customer Address Details.",
+        "description": "This API gives Address details of Customer",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+      
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getCustAllAddress": {
+      "get": {
+        "tags": ["Get Customer Data"],
+        "summary": "Customer Address Details.",
+        "description": "This API gives Address details of Customer",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+      
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/deladdress": {
+      "delete": {
+        "tags": ["Delete Customer Data"],
+        "summary": "Delete your address.",
+        "description": "Here, Customer can delete his/her address.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "address_id",
+            "description": "Enter Address Id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/delAlladdress": {
+      "delete": {
+        "tags": ["Delete Customer Data"],
+        "summary": "Delete your address.",
+        "description": "Here, Customer can delete his/her address.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/delAllCustomer": {
+      "delete": {
+        "tags": ["Delete Customer Data"],
+        "summary": "Delete customer.",
+        "description": "Here, All Customer can be deleted at time.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/delCustomer": {
+      "delete": {
+        "tags": ["Delete Customer Data"],
+        "summary": "One Customer can be deleted.",
+        "description": "Here, Customer can delete his/her data.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "customer_id",
+            "description": "Enter Customer Id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
     "/profile": {
       "put": {
-        "tags": ["Customer Update Profile"],
+        "tags": ["Update Customer Data"],
         "summary": "Update about yourself.",
         "description": "Here, Customer can update his/her profile.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -176,206 +388,55 @@
         }
       }
     },
-    "/getCustProfile": {
-      "get": {
-        "tags": ["Access Customer Profile"],
-        "summary": "Customer Profile Details.",
-        "description": "This API gives profile details of Customer",
+    "/updateAllCustomer": {
+      "put": {
+        "tags": ["Update Customer Data"],
+        "summary": "All Update about customer.",
+        "description": "Here, Admin can update all customer data.",
         "consumes": ["application/x-www-form-urlencoded"],
         "produces": ["application/json"],
-      
-        "responses": {
-          "200": {
-            "description": "Operation Successful"
-          },
-          "404": {
-            "description": "Operation Failed"
-          }
-        }
-      }
-    },
-    "/getAllCustProfile": {
-      "get": {
-        "tags": ["Access for All Customer Profile"],
-        "summary": "Customer Profile Details.",
-        "description": "This API gives profile details of Customer",
-        "consumes": ["application/x-www-form-urlencoded"],
-        "produces": ["application/json"],
-      
-        "responses": {
-          "200": {
-            "description": "Operation Successful"
-          },
-          "404": {
-            "description": "Operation Failed"
-          }
-        }
-      }
-    },
-    "/getCustAddress": {
-      "get": {
-        "tags": ["Access Customer Address"],
-        "summary": "Customer Address Details.",
-        "description": "This API gives Address details of Customer",
-        "consumes": ["application/x-www-form-urlencoded"],
-        "produces": ["application/json"],
-      
-        "responses": {
-          "200": {
-            "description": "Operation Successful"
-          },
-          "404": {
-            "description": "Operation Failed"
-          }
-        }
-      }
-    },
-    "/getCustAllAddress": {
-      "get": {
-        "tags": ["Access for All Customer Address"],
-        "summary": "Customer Address Details.",
-        "description": "This API gives Address details of Customer",
-        "consumes": ["application/x-www-form-urlencoded"],
-        "produces": ["application/json"],
-      
-        "responses": {
-          "200": {
-            "description": "Operation Successful"
-          },
-          "404": {
-            "description": "Operation Failed"
-          }
-        }
-      }
-    },
-    "/address": {
-      "post": {
-        "tags": ["Customer Add Address"],
-        "summary": "Add your address.",
-        "description": "Here, Customer can add his/her address.",
-        "consumes": ["application/x-www-form-urlencoded"],
-        "produces": ["application/json"],
-        "parameters": [
+        "parameters": [ 
           {
-            "name": "address",
-            "description": "Enter Address",
+            "name": "profile_img",
+            "description": "Upload Profile Image ",
             "in": "formData",
-            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "first_name",
+            "description": "Enter First Name",
+            "in": "formData",
             "type": "string"
           },
           {
-            "name": "pincode",
-            "description": "Enter Your Pincode",
+            "name": "last_name",
+            "description": "Enter Last Name",
             "in": "formData",
-            "required": true,
             "type": "string"
           },
           {
-            "name": "city",
-            "description": "Enter Your City",
+            "name": "email",
+            "description": "Enter Email",
             "in": "formData",
-            "required": true,
             "type": "string"
           },
           {
-            "name": "state",
-            "description": "Enter Your State",
+            "name": "dob",
+            "description": "Enter DOB",
             "in": "formData",
-            "required": true,
             "type": "string"
           },
           {
-            "name": "country",
-            "description": "Enter Your Country",
+            "name": "phone_no",
+            "description": "Enter Contact No",
             "in": "formData",
-            "required": true,
             "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Operation Successful"
           },
-          "404": {
-            "description": "Operation Failed"
-          }
-        }
-      }
-    },
-    "/deladdress": {
-      "delete": {
-        "tags": ["Customer Delete Address"],
-        "summary": "Delete your address.",
-        "description": "Here, Customer can delete his/her address.",
-        "consumes": ["application/x-www-form-urlencoded"],
-        "produces": ["application/json"],
-        "parameters": [
           {
-            "name": "address_id",
-            "description": "Enter Address Id",
+            "name": "gender",
+            "description": "Enter Gender",
             "in": "formData",
-            "required": true,
-            "type": "integer"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Operation Successful"
-          },
-          "404": {
-            "description": "Operation Failed"
-          }
-        }
-      }
-    },
-    "/delAlladdress": {
-      "delete": {
-        "tags": ["All Customer Delete Address"],
-        "summary": "Delete your address.",
-        "description": "Here, Customer can delete his/her address.",
-        "consumes": ["application/x-www-form-urlencoded"],
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "Operation Successful"
-          },
-          "404": {
-            "description": "Operation Failed"
-          }
-        }
-      }
-    },
-    "/delAllCustomer": {
-      "delete": {
-        "tags": ["Delete All Customer"],
-        "summary": "Delete customer.",
-        "description": "Here, All Customer can be deleted at time.",
-        "consumes": ["application/x-www-form-urlencoded"],
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "Operation Successful"
-          },
-          "404": {
-            "description": "Operation Failed"
-          }
-        }
-      }
-    },
-    "/delCustomer": {
-      "delete": {
-        "tags": ["Delete Customer by ID"],
-        "summary": "One Customer can be deleted.",
-        "description": "Here, Customer can delete his/her data.",
-        "consumes": ["application/x-www-form-urlencoded"],
-        "produces": ["application/json"],
-        "parameters": [
-          {
-            "name": "customer_id",
-            "description": "Enter Customer Id",
-            "in": "formData",
-            "required": true,
-            "type": "integer"
+            "type": "string"
           }
         ],
         "responses": {
@@ -390,7 +451,7 @@
     },
     "/updateAddress": {
       "put": {
-        "tags": ["Update Address by ID"],
+        "tags": ["Update Customer Data"],
         "summary": "One Customer can update the address.",
         "description": "Here, Customer can update his/her address.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -453,7 +514,7 @@
     },
     "/category": {
       "post": {
-        "tags": ["Product Category"],
+        "tags": ["Post Product Data"],
         "summary": "(Table, Chair, Bed, Sofa)",
         "description": "API, for adding categories of product.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -486,7 +547,7 @@
     },
     "/color": {
       "post": {
-        "tags": ["Product Color"],
+        "tags": ["Post Product Data"],
         "summary": "Products of different colors",
         "description": "API, for adding colors of product.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -533,7 +594,7 @@
     },
     "/product": {
       "post": {
-        "tags": ["Product List"],
+        "tags": ["Post Product Data"],
         "summary": "Products of different types",
         "description": "API, for adding products of different categories.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -636,7 +697,7 @@
     },
     "/getAllProducts": {
       "get": {
-        "tags": ["Access for All Products"],
+        "tags": ["Get Product Data"],
         "summary": "Customer can see all Products",
         "description": "API, for fetching all stored products.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -653,7 +714,7 @@
     },
     "/getAllColors": {
       "get": {
-        "tags": ["Access for All Products Colors"],
+        "tags": ["Get Product Data"],
         "summary": "Customer can see all Products Colors",
         "description": "API, for fetching all stored products Colors.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -670,7 +731,7 @@
     },
     "/getAllCategories": {
       "get": {
-        "tags": ["Access for All Products Categories"],
+        "tags": ["Get Product Data"],
         "summary": "Customer can see all Products categories",
         "description": "API, for fetching all stored products categories.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -687,7 +748,7 @@
     },
     "/getCategoryById/{categ_id}": {
       "get": {
-        "tags": ["Access for Categories by id"],
+        "tags": ["Get Product Data"],
         "summary": "Customer can see categories by id",
         "description": "API, for fetching categories by id.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -713,7 +774,7 @@
     },
     "/getColorById/{color_id}": {
       "get": {
-        "tags": ["Access for Colors by id"],
+        "tags": ["Get Product Data"],
         "summary": "Customer can see colors by id",
         "description": "API, for fetching colors by id.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -739,7 +800,7 @@
     },
     "/getProductByCateg/{categ_id}": {
       "get": {
-        "tags": ["Access for Products by Category"],
+        "tags": ["Get Product Data"],
         "summary": "Filter on Products in terms of categories.",
         "description": "Here, Customer can access the product by applying filter category.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -763,9 +824,35 @@
         }
       }
     },
+    "/getProductBycolor/{color_id}": {
+      "get": {
+        "tags": ["Get Product Data"],
+        "summary": "Filter on Products in terms of categories.",
+        "description": "Here, Customer can access the product by applying filter category.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "color_id",
+            "description": "Enter Color Id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
     "/getProductByProdId/{prod_id}": {
       "get": {
-        "tags": ["Access for Products by product id"],
+        "tags": ["Get Product Data"],
         "summary": "Filter on Products in terms of product id.",
         "description": "Here, Customer can access the product id.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -791,7 +878,7 @@
     },
     "/getProductByColor/{categ_id}/{color_id}": {
       "get": {
-        "tags": ["Access for Products by Category and Color"],
+        "tags": ["Get Product Data"],
         "summary": "Filter on Products in terms of categories and color.",
         "description": "Here, Customer can access the product by applying filter category and color.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -822,9 +909,9 @@
         }
       }
     },
-    "/deleteProductByProdId/{prod_id}": {
+    "/deleteProductByProdId": {
       "delete": {
-        "tags": ["Delete One Product"],
+        "tags": ["Delete Product Data"],
         "summary": "Delete Product by its product id",
         "description": "Here, Admin can delete one product at a time by giving its product id.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -833,7 +920,7 @@
           {
             "name": "prod_id",
             "description": "Enter Product Id",
-            "in": "path",
+            "in": "formData",
             "required": true,
             "type": "integer"
           }
@@ -850,7 +937,7 @@
     },
     "/deleteAllProducts": {
       "delete": {
-        "tags": ["Delete All Products"],
+        "tags": ["Delete Product Data"],
         "summary": "Admin can delete all Products",
         "description": "API, for deleting all stored products in one time.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -867,7 +954,7 @@
     },
     "/deleteAllCategories": {
       "delete": {
-        "tags": ["Delete All Categories"],
+        "tags": ["Delete Product Data"],
         "summary": "Admin can delete all Categories",
         "description": "API, for deleting all stored Categories in one time.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -884,7 +971,7 @@
     },
     "/deleteAllColors": {
       "delete": {
-        "tags": ["Delete All Colors"],
+        "tags": ["Delete Product Data"],
         "summary": "Admin can delete all Products Colors",
         "description": "API, for deleting all stored products colors in one time.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -899,9 +986,9 @@
         }
       }
     },
-    "/deleteCategoryByCategId/{categ_id}": {
+    "/deleteCategoryByCategId": {
       "delete": {
-        "tags": ["Delete One Categories"],
+        "tags": ["Delete Product Data"],
         "summary": "Admin can delete One Categories",
         "description": "API, for deleting  Categories in one time.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -910,7 +997,7 @@
           {
             "name": "categ_id",
             "description": "Enter Category Id",
-            "in": "path",
+            "in": "formData",
             "required": true,
             "type": "integer"
           }
@@ -925,9 +1012,9 @@
         }
       }
     },
-    "/deleteColorByColorId/{color_id}": {
+    "/deleteColorByColorId": {
       "delete": {
-        "tags": ["Delete One Color"],
+        "tags": ["Delete Product Data"],
         "summary": "Admin can delete One Color",
         "description": "API, for deleting  Color in one time.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -936,7 +1023,7 @@
           {
             "name": "color_id",
             "description": "Enter Color Id",
-            "in": "path",
+            "in": "formData",
             "required": true,
             "type": "integer"
           }
@@ -953,7 +1040,7 @@
     },
     "/updateProductByProdId/{prod_id}": {
       "put": {
-        "tags": ["Product Update"],
+        "tags": ["Update Product Data"],
         "summary": "Update exisiting product",
         "description": "API, for update parametres  of product.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -1043,9 +1130,9 @@
         }
       }
     },
-    "/updateProductRatingProdId/{prod_id}": {
+    "/updateProductRatingProdId": {
       "put": {
-        "tags": ["Product Rating Update"],
+        "tags": ["Update Product Data"],
         "summary": "Update exisiting Rating of Product",
         "description": "API, for update rating of product.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -1053,8 +1140,8 @@
         "parameters": [
           {
             "name": "prod_id",
-            "description": "Enter Category Id",
-            "in": "path",
+            "description": "Enter Product Id",
+            "in": "formData",
             "required": true,
             "type": "integer"
           },
@@ -1076,9 +1163,9 @@
         }
       }
     },
-    "/updateCategoryByCategId/{categ_id}": {
+    "/updateCategoryByCategId": {
       "put": {
-        "tags": ["Category Update"],
+        "tags": ["Update Product Data"],
         "summary": "Update exisiting category",
         "description": "API, for update parametres of category.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -1087,7 +1174,7 @@
           {
             "name": "categ_id",
             "description": "Enter Category Id",
-            "in": "path",
+            "in": "formData",
             "required": true,
             "type": "integer"
           },
@@ -1109,9 +1196,9 @@
         }
       }
     },
-    "/updateColorByColorId/{color_id}": {
+    "/updateColorByColorId": {
       "put": {
-        "tags": ["Color Update"],
+        "tags": ["Update Product Data"],
         "summary": "Update exisiting Color",
         "description": "API, for update parametres of Color.",
         "consumes": ["application/x-www-form-urlencoded"],
@@ -1120,7 +1207,7 @@
           {
             "name": "color_id",
             "description": "Enter Color Id",
-            "in": "path",
+            "in": "formData",
             "required": true,
             "type": "integer"
           },
@@ -1144,6 +1231,180 @@
           }
           
         ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/addDataToCart": {
+      "post": {
+        "tags": ["Post Cart Data"],
+        "summary": "(Table, Chair, Bed, Sofa)",
+        "description": "API, for adding product to cart.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "customer_id",
+            "description": "Enter Customer Id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "product_id",
+            "description": "Enter Product Id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "quantity",
+            "description": "Enter Product Quantity",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getCustCartData/{customer_id}": {
+      "get": {
+        "tags": ["Get Cart Data"],
+        "summary": "Access for products which are added on his/her cart.",
+        "description": "Here, Customer can access the product list by customer_id.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "customer_id",
+            "description": "Enter Customer Id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getAllCartData": {
+      "get": {
+        "tags": ["Get Cart Data"],
+        "summary": "Access for all curomer cart data.",
+        "description": "Here, Admin can access the all customer cart data",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/updateQuantityByCustId": {
+      "put": {
+        "tags": ["Update Cart Data"],
+        "summary": "Update exisiting Product quantity",
+        "description": "API, for update quanity of Product.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "customer_id",
+            "description": "Enter Customer Id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "product_id",
+            "description": "Enter Product Id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "quantity",
+            "description": "Enter Product Quantity",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          }
+          
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/deleteCartByCustId": {
+      "delete": {
+        "tags": ["Delete Cart Data"],
+        "summary": "Customer can delete One Cart Data",
+        "description": "API, for deleting  Cart data by customer in one time.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "customer_id",
+            "description": "Enter Customer Id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "product_id",
+            "description": "Enter Product Id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/deleteAllCartData": {
+      "delete": {
+        "tags": ["Delete Cart Data"],
+        "summary": "Admin can delete all Products which are added on Cart",
+        "description": "API, for deleting all cart products in one time.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Operation Successful"

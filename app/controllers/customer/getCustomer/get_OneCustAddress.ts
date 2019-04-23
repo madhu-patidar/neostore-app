@@ -2,7 +2,7 @@ import client from '../../../configFiles/database_postgresql'
 import {Request,Response} from 'express'
 
 const getCustomerAddress = (req:Request,res:Response)=>{
-     const cust_id:number = req.body.id
+     const cust_id:number = parseInt(req.body.id)
      
     client.query('Select * from customer_address where cust_id=$1',[cust_id])
     .then(result=>{
