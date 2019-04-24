@@ -9,9 +9,9 @@ const cartData = (req:Request,res:Response)=>{
         product_id:req.body.product_id,
         quantity:req.body.quantity
     })
-
     newCart.save()
     .then(result=>{
+
         res.status(200).json({success:"true",message:"Product was added to your cart",cart_details:result})
     })
     .catch(err=>{

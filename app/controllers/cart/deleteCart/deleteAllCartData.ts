@@ -4,7 +4,7 @@ import CartModel from '../../../models/cart/cartModel'
 //Delete All Cart Products
 const deleteAllCartData=(req:Request,res:Response)=>{
   
-    CartModel.remove({})
+    CartModel.deleteMany({})
     .then(result=>{
         res.status(200).json({success:result!==null?"true":"false",message:result!==null?"Cart Data Deleted":"No data is available", cart_data:result!==null?result:"No details are available"})
     })

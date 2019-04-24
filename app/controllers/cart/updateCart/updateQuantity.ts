@@ -24,15 +24,14 @@ const updateQuantityByCustId=(req:Request,res:Response)=>{
                   CartModel.updateOne({customer_id:customer_id,product_id:product_id},{quantity:req.body.quantity},{new:true},(err,result)=>{
                         if(err)
                         res.status(404).json({success:"false",error_message:err})
-                    })
-                               
-                }          
-                res.status(200).json({success:"true",message:"ProductUpdated"})
+                    })                        
+                }
+                       
+                res.status(200).json({success:"true",message:"Product Quantity Updated",product_quantity:req.body.quantity})
               }
               else{
                   res.status(404).json({success:"false",message:"Please enter correct data"})
               }
-    
           })
         }
         else{

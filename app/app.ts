@@ -1,9 +1,10 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import path from 'path'
-import { CustomerRoutes } from './routes/customerRoutes'
+import {CustomerRoutes} from './routes/customerRoutes'
 import {ProductRoutes} from './routes/productRoutes'
 import {CartRoutes} from './routes/cartRoutes'
+import {FilesRoutes} from './routes/filesRoutes'
 import swaggerUi from 'swagger-ui-express'
 import cors from 'cors'
 import * as swaggerDocument from './swagger.json'
@@ -15,6 +16,7 @@ export class App{
     public routeCustomer:CustomerRoutes=new CustomerRoutes()
     public routeProduct:ProductRoutes=new ProductRoutes()
     public routeCart:CartRoutes=new CartRoutes()
+    public routeFiles:FilesRoutes=new FilesRoutes()
     
     //Initialisation
     constructor(){
@@ -24,6 +26,7 @@ export class App{
         this.routeCustomer.routes(this.app)
         this.routeProduct.routes(this.app)
         this.routeCart.routes(this.app)
+        this.routeFiles.routes(this.app)
     }
     
     //Configuration setup
@@ -39,9 +42,8 @@ export class App{
     }
 
     //Mongoose Connection Setup
-    private mongooSetup():void{
-       const url:any=URL
-        mongoose.connect(url,{useNewUrlParser:true,useFindAndModify: false})
+    private mongooSetup():void{ 
+        mongoose.connect(URL,{useNewUrlParser:true,useFindAndModify: false})
         .then(()=>console.log("MongoDB Connected Successfully"))
         .catch(err=>console.log(err))
     }

@@ -1414,6 +1414,126 @@
           }
         }
       }
+    },
+    "/files": {
+      "post": {
+        "tags": ["Upload Multiple Files"],
+        "summary": "Files of different types",
+        "description": "Here, API is used for uploading multiple files at a time.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "multiple_files",
+            "description": "Upload Multiple Files ",
+            "in": "formData",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/filesInMongo": {
+      "post": {
+        "tags": ["Upload Multiple Files"],
+        "summary": "Files of different types",
+        "description": "Here, API is used for uploading multiple files at a time.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "multiple_files",
+            "description": "Upload Multiple Files ",
+            "in": "formData",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getFiles": {
+      "get": {
+        "tags": ["Get Multiple Files"],
+        "summary": "All Files can be fetched",
+        "description": "API, for fetching all stored files.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getFilesFromMongo": {
+      "get": {
+        "tags": ["Get Multiple Files"],
+        "summary": "All Files can be fetched from MongoDB",
+        "description": "API, for fetching all stored files in MongoDB.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/deleteAllFiles": {
+      "delete": {
+        "tags": ["Delete Multiple Files"],
+        "summary": "Admin can delete all uploaded multiple files.",
+        "description": "API, for deleting all uploaded files in one time.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/deleteAllFilesFromMongo": {
+      "delete": {
+        "tags": ["Delete Multiple Files"],
+        "summary": "Admin can delete all uploaded multiple files from MongoDB.",
+        "description": "API, for deleting all uploaded files in one time.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -1440,18 +1560,6 @@
           "type": "string"
         },
         "gender": {
-          "type": "string"
-        }
-      }
-    },
-    "CustomerAuthentication": {
-      "type": "object",
-      "required": ["cust_email", "cust_pass"],
-      "properties": {
-        "email": {
-          "type": "string"
-        },
-        "pass": {
           "type": "string"
         }
       }
@@ -1519,15 +1627,6 @@
         },
         "country": {
           "type": "string"
-        }
-      }
-    },
-    "CustomerDeleteAddress": {
-      "type": "object",
-      "required": ["id"],
-      "properties": {
-        "id": {
-          "type": "integer"
         }
       }
     },
@@ -1614,6 +1713,21 @@
         },
         "prod_material": {
           "type": "string"
+        }
+      }
+    },
+    "Cart": {
+      "type": "object",
+      "required": ["customer_id", "product_id","quantity"],
+      "properties": {
+        "customer_id": {
+          "type": "integer"
+        },
+        "product_id": {
+          "type": "integer"
+        },
+        "quantity": {
+          "type": "integer"
         }
       }
     }

@@ -8,7 +8,8 @@ const cartSchema=new Schema({
     },
     product_id:{
         type:Number,
-        ref:'ProductList'
+        ref:'ProductList',
+        required:true
     },
     quantity:{
         type:String,

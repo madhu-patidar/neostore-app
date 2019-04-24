@@ -29,8 +29,6 @@ export class CustomerRoutes{
         app.route('/register')
         .post(insertCustomerData)
 
-        // app.route('/images_allCategories')
-        // .post(upload.array('product_images',12),images_allCategories)
 
         //Authenticate Customer
         app.route('/login')
