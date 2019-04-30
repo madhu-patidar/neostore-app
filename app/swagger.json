@@ -1534,6 +1534,23 @@
           }
         }
       }
+    },
+    "/auth/google": {
+      "get": {
+        "tags": ["Login by Google"],
+        "summary": "Google Login",
+        "description": "API, for login by google.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
     }
   },
   "definitions": {

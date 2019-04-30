@@ -4,12 +4,12 @@ import Joi from 'joi'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
+
 //Authenticate Customer
 const customerAuthentication=(req:Request,res:Response)=>{
     let cust_data:any;
     let id:number;
     let customer_details:any=[]
-
 
     if(!req.body)
     res.status(404).json({success:"false",message:"Please enter your credentials"})
@@ -49,7 +49,8 @@ const customerAuthentication=(req:Request,res:Response)=>{
                                 
                                 if (result) {
                                     jwt.sign({id},'secretkey',(err:any,token:any)=>{
-                                        res.status(200).json({ success:"true",message:"You have logged In",customer_details:customer_details,token:token })           
+                                        
+                                        res.status(200).json({ success:"true",message:"You have logged In",customer_details:customer_details,token:token})           
                                     })
                                     }
                                 else res.status(404).json({success:"false",message:"Password is not matched"})
