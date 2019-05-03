@@ -2,7 +2,7 @@
 
 import passport from 'passport'
 import GoogleStrategy from 'passport-google-oauth20'
-import client from '../../configFiles/database_postgresql'
+import client from '../database_postgresql'
 import {keys} from './socialkeys'
 
 passport.serializeUser((user:any, done) => {

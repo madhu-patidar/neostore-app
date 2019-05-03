@@ -555,7 +555,7 @@
         "parameters": [
           {
             "name": "_id",
-            "description": "Enter Category Id",
+            "description": "Enter Color Id",
             "in": "formData",
             "required": true,
             "type": "integer"

@@ -1,55 +1,32 @@
-
-//Post Product
 import postProductList from '../controllers/products/post_products/product_list'
-
-//Get Products
 import getProducts from '../controllers/products/get_Products/getProducts'
 import getProductsByCategory from '../controllers/products/get_Products/getProductsByCategory'
 import getProductsByColorandCateg from '../controllers/products/get_Products/getProductsByCategandColor'
 import getProductsByProductId from '../controllers/products/get_Products/getProductByProductId'
 import getProductsByColor from '../controllers/products/get_Products/getProductByColorId'
-
-//Delete Products
 import deleteProductByProdId from '../controllers/products/delete_products/deleteProductById'
 import deleteAllProducts from '../controllers/products/delete_products/deleteAllProducts'
-
-//Update Products
 import updateProductsById from '../controllers/products/update_products/updateProductById'
 import updateProductRating from '../controllers/products/update_products/updateProductRating'
-//import updateAllProducts from '../controllers/products/update_products/update_AllProducts'
-
-//Post Product category
 import postProductCategory from '../controllers/products/post_products/product_category'
-
-//Get Product Category
 import getAllCategory from '../controllers/products/get_Products/getAllCategory'
 import getCategoriesByCategId from '../controllers/products/get_Products/getCategoriesById'
-
-//Delete Product Category
 import deleteAllCategories from '../controllers/products/delete_products/deleteAllCategories'
 import deleteCategoryById from '../controllers/products/delete_products/deleteCategoryById'
-
-//Update Product category
 import updateCategoryById from '../controllers/products/update_products/updateCategoryById'
-
-//Post Product Color
 import postProductColor from '../controllers/products/post_products/product_color'
-
-//Get Product Color
 import getAllColors from '../controllers/products/get_Products/getAllColors'
 import getColorsByColorId from '../controllers/products/get_Products/getColorsByColorId'
-
-//Delete Product Color
 import deleteAllColors from '../controllers/products/delete_products/deleteAllColors'
 import deleteColorById from '../controllers/products/delete_products/deleteColorById'
-
-//Update Product Color
 import updateColorById from '../controllers/products/update_products/updateColorById'
-
-//Config files
 import upload from '../configFiles/fileUpload'
 import verifyToken from '../configFiles/verifyTokenMiddleware'
 
+/**
+ * Creating class for defining all Product routing
+ * @class ProductRoutes
+ */
 export class ProductRoutes{
 
     public routes(app:any):void{

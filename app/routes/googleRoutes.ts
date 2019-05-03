@@ -1,10 +1,10 @@
-import {Request,Response,NextFunction} from 'express'
+import {Request,Response} from 'express'
 import passport from 'passport'
 import loginByGoogle from '../controllers/socialCustomer/socialLogin'
 import {authCheck} from '../configFiles/passport/auth'
 
 //Routes for google strategy
-export class SocialRoutes{
+export class GoogleRoutes{
 
     public routes(app:any):void{
     
@@ -17,11 +17,11 @@ export class SocialRoutes{
         //Redirect from google after authentication
         app.route('/auth/google/redirect')
         .get(passport.authenticate('google'),(req:Request,res:Response)=>{
-            res.redirect('/profile')
+            res.redirect('/googleprofile')
         })
 
         //Redirect to profile screen with customer response
-        app.route('/profile')
+        app.route('/googleprofile')
         .get(authCheck,loginByGoogle)
             
         

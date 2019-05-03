@@ -3,9 +3,7 @@ import {Request,Response} from 'express'
 
 //Add Product Category
 const postProductCategory=(req:Request,res:Response)=>{
-    let newCategory=new ProdCategoryModel({
-        
-    })
+    let newCategory=new ProdCategoryModel(req.body)
     newCategory.save()
     .then(result=>{
         res.status(200).json({success:"true",message:"Data was inserted successfully",product_details:result})

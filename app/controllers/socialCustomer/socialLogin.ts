@@ -1,7 +1,7 @@
 import {Request,Response} from 'express'
 import jwt from 'jsonwebtoken';
 
-const loginByGoogle=(req:Request,res:Response)=>{
+const loginBySocial=(req:Request,res:Response)=>{
 
    let customer:any=[]
    let id:number=req.user[0].id
@@ -23,4 +23,4 @@ const loginByGoogle=(req:Request,res:Response)=>{
 
 }
 
-export default loginByGoogle
+export default loginBySocial
