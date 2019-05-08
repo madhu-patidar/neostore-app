@@ -1556,7 +1556,7 @@
       "get": {
         "tags": ["Login by Facebook"],
         "summary": "Facebook Login",
-        "description": "API, for login by google.",
+        "description": "API, for login by Facebook.",
         "consumes": ["application/x-www-form-urlencoded"],
         "produces": ["application/json"],
         "responses": {
