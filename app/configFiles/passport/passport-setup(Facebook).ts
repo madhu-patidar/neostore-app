@@ -8,15 +8,14 @@ passport.use(
     new FacebookStrategy({
     clientID: keys.facebook.clientID,
     clientSecret: keys.facebook.clientSecret,
-    callbackURL: keys.facebook.callbackURL
+    callbackURL: keys.facebook.callbackURL,
+    profileFields: ['id', 'emails', 'name']
   },
   (accessToken:string, refreshToken:string, profile:any, done:any)=> {
     let facebookid=profile.id
-    let name=profile.displayName.split(' ')
-    let first_name=name[0]
-    let last_name=name[name.length-1]
+    let first_name=profile._json.first_name
+    let last_name=profile._json.last_name
     let email=profile._json.email
-  
 
    client.query('Select * from neo_user where facebookid=$1',[facebookid],(err,result)=>{
         if(result.rows.length==0){
