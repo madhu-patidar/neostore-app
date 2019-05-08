@@ -49,12 +49,13 @@ export class App{
         this.app.use(cors())
         this.app.use(bodyParser.json())
         this.app.use(bodyParser.urlencoded({extended:false}))
-        this.app.use(cookieSession({
+      this.app.use(cookieSession({
             maxAge:24*60*60*1000,
 	        keys:[keys.session.cookieKey]
         }))
+        
         this.app.use(passport.initialize())
-        this.app.use(passport.session())
+       this.app.use(passport.session())
         this.app.use('/swagger',swaggerUi.serve,swaggerUi.setup(swaggerDocument))
         
         //Make public upload directory to the front-end

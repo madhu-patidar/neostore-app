@@ -1,18 +1,8 @@
 import passport from 'passport'
 import FacebookStrategy from 'passport-facebook'
 import client from '../database_postgresql'
+import './passport-middleware'
 import {keys} from './socialkeys'
-
-passport.serializeUser((user:any, done) => {
-    done(null,user[0].id);
-});
-
-passport.deserializeUser((id, done) => {
-    client.query('select * from neo_user where id=$1',[id],(err,user)=>{
-        if(user)
-        done(null,user.rows)
-    })
-});
 
 passport.use(
     new FacebookStrategy({
@@ -26,6 +16,7 @@ passport.use(
     let first_name=name[0]
     let last_name=name[name.length-1]
     let email=profile._json.email
+  
 
    client.query('Select * from neo_user where facebookid=$1',[facebookid],(err,result)=>{
         if(result.rows.length==0){

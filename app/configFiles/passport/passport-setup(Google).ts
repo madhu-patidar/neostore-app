@@ -4,17 +4,7 @@ import passport from 'passport'
 import GoogleStrategy from 'passport-google-oauth20'
 import client from '../database_postgresql'
 import {keys} from './socialkeys'
-
-passport.serializeUser((user:any, done) => {
-    done(null,user[0].id);
-});
-
-passport.deserializeUser((id, done) => {
-    client.query('select * from neo_user where id=$1',[id],(err,user)=>{
-        if(user)
-        done(null,user.rows)
-    })
-});
+import './passport-middleware'
 
 
 passport.use(

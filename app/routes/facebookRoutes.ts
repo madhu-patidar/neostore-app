@@ -1,5 +1,6 @@
 import {Request,Response} from 'express'
 import passport from 'passport'
+//import * aspassport from '../configFiles/passport/passport-middleware'
 import loginBySocial from '../controllers/socialCustomer/socialLogin'
 import {authCheck} from '../configFiles/passport/auth'
 
