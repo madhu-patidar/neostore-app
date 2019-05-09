@@ -48,7 +48,7 @@ const customerAuthentication=(req:Request,res:Response)=>{
                             .then((result) => {
                                 
                                 if (result) {
-                                    jwt.sign({id},'secretkey',(err:any,token:any)=>{
+                                    jwt.sign({id},'secretkey',{expiresIn:'30s'},(err:any,token:any)=>{
                                         
                                         res.status(200).json({ success:"true",message:"You have logged In",customer_details:customer_details,token:token})           
                                     })

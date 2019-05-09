@@ -35,7 +35,7 @@ export class App{
     constructor(){
         this.app=express()
         this.config()
-        this.mongooSetup()
+        //this.mongooSetup()
         this.routeCustomer.routes(this.app)
         this.routeProduct.routes(this.app)
         this.routeCart.routes(this.app)
@@ -64,10 +64,11 @@ export class App{
     }
 
     //Mongoose Connection Setup
-    private mongooSetup():void{ 
+        private mongooSetup():void{ 
         mongoose.connect(URL,{useNewUrlParser:true,useFindAndModify: false})
         .then(()=>console.log("MongoDB Connected Successfully"))
         .catch(err=>console.log(err))
+
     }
 }
 

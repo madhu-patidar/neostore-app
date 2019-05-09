@@ -14,9 +14,9 @@ const client = new Client({
 })
 
 //Create connection with PostgreSQL
-client.connect()
-.then(()=>console.log("PostgreSQL Connected Successfully"))
-.catch(err=>console.log(err))
+// client.connect()
+// .then(()=>console.log("PostgreSQL Connected Successfully"))
+// .catch(err=>console.log(err))
 
 //Exporting client for other files to use it.
 export default client;
