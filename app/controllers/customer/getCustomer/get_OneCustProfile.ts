@@ -3,8 +3,7 @@ import {Request,Response} from 'express'
 
 const getCustomerProfile = (req:Request,res:Response)=>{
      const cust_id:number = req.body.id
-
-    client.query('Select id,first_name,last_name,email,phone_no,gender,dob,profile_img,created_at from neo_user where cust_id=$1',[cust_id])
+    client.query('Select id,first_name,last_name,email,phone_no,gender,dob,profile_img,created_at from neo_user where id=$1',[cust_id])
     .then(result=>{
         if(result){    
             res.status(200).json({success:"true",customer_proile:result.rows})
