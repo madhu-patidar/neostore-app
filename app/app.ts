@@ -17,6 +17,7 @@ import {URL} from './configFiles/environment_variables'  //use environment varia
 import passport from 'passport'                          //use passport for handling different strategies
 import {keys} from './configFiles/passport/socialkeys'   //keys which are containing credentials for passport strategies
 import cookieSession from 'cookie-session'               //maintaining cookie session
+//import  './models/customer/customer_model'
 
 /**
 * Create a main class which is managing all resopnsibilities of Application
@@ -45,7 +46,7 @@ export class App{
     }
     
     //Configuration setup
-    private config(){
+        private config(){
         this.app.use(cors())
         this.app.use(bodyParser.json())
         this.app.use(bodyParser.urlencoded({extended:false}))

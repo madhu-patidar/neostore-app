@@ -3,6 +3,7 @@ import dom from "domain";
 import mongoose from "mongoose";
 import { URL, PORT } from "./configFiles/environment_variables";
 import client from "./configFiles/database_postgresql";
+import connection from "./configFiles/sequelize-postgres";
 
 const d = dom.create();
 //const PORT=process.env.PORT||5000
@@ -17,13 +18,22 @@ d.run(() => {
     //Mongoose Connection Setup
     mongoose
       .connect(URL, { useNewUrlParser: true, useFindAndModify: false })
-      .then(() => console.log("MongoDB Connected Successfully"))
+      .then(() => console.log("MongoDB Connection has been established successfully."))
       .catch(err => console.log(err));
 
     //Create connection with PostgreSQL
-    client
-      .connect()
-      .then(() => console.log("PostgreSQL Connected Successfully"))
-      .catch(err => console.log(err));
+    // client
+    //   .connect()
+    //   .then(() => console.log("PostgreSQL Connected Successfully"))
+    //   .catch(err => console.log(err));
+
+    connection
+      .authenticate()
+      .then(() => {
+        console.log("Sequelize Connection has been established successfully.");
+      })
+      .catch((err: string) => {
+        console.error("Unable to connect to the database:", err);
+      });
   });
 });

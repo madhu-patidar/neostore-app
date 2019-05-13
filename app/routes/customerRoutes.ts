@@ -19,11 +19,11 @@ import verifyToken from '../configFiles/verifyTokenMiddleware'
 import upload from '../configFiles/fileUpload'
 //import images_allCategories from '../controllers/imagesAllCategories'
 
-
-
 export class CustomerRoutes{
 
     public routes(app:any):void{
+
+
 
         //Register New Customer
         app.route('/register')
