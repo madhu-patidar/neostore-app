@@ -18,7 +18,7 @@ const getCustomerProfile = (req: Request, res: Response) => {
     })*/
 
   connection.sync().then(() => {
-    Customer.findAll({
+    Customer.findOne({
       attributes: {
         include: [
           "first_name",

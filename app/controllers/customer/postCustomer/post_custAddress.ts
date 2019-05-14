@@ -1,4 +1,4 @@
-import client from "../../../configFiles/database_postgresql";
+//import client from "../../../configFiles/database_postgresql";
 import { Request, Response } from "express";
 import Joi from "joi";
 import Address from "../../../models/customer/custAddress_model";
@@ -62,10 +62,11 @@ const addAddress = (req: Request, res: Response) => {
                 state: req.body.state,
                 country: req.body.country
               })
-                .then((result: string) => {
+                .then((result) => {
                   res.status(200).json({
                     success: true,
-                    message: "Customer Address was registered successfully"
+                    message: "Customer Address was registered successfully",
+                    address:result
                   });
                 })
                 .catch((err: { errors: { message: string }[] }) => {

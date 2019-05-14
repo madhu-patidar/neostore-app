@@ -34,7 +34,7 @@ const customerAuthentication = (req: Request, res: Response) => {
         } else {
           connection.sync().then(() => {
             Customer.findOne({ where: { email: req.body.email } })
-              .then((result: string) => {
+              .then((result) => {
                 if (result == null) {
                   res.status(404).send("Customer is not registered");
                 } else {

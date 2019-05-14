@@ -7,8 +7,6 @@ import connection from "../../../configFiles/sequelize-postgres";
 
 
 
-
-
 //Register New Customer
 const insertCustomerData = (req: Request, res: Response) => {
   let pass: string = req.body.pass;
@@ -61,16 +59,16 @@ const insertCustomerData = (req: Request, res: Response) => {
                     })*/
                 connection.sync().then(() => {
                   Customer.findOne({ where: { email: req.body.email } })
-                    .then((result: string) => {
+                    .then((result) => {
                       if (result==null) {
-                        console.log(typeof(Customer))
-                        Customer.create({
+                       return Customer.create({
                           email: req.body.email,
                           password: hash_pass,
                           phone_no: req.body.phone_no,
                           gender: req.body.gender
                         })
-                          .then((result: string) => {
+                          .then((result) => {
+                            console.log("Insrt>>",result)
                             res
                               .status(200)
                               .json({

@@ -1,47 +1,65 @@
 import connection from "../../configFiles/sequelize-postgres";
-import * as Sequelize from "sequelize";
+import {Model, DataTypes, BuildOptions } from "sequelize";
 
-const Customer = connection.define(
+interface CustomerModel extends Model {
+    customer_id:number;
+    first_name:string;
+    last_name:string;
+    email:string;
+    password:string;
+    phone_no:number;
+    gender:string;
+    dob:string;
+    profile_img:string;
+    googleid:number;
+    facebookid:number;
+  }
+
+type CustomerModelStatic = typeof Model & {
+    new (values?: object, options?: BuildOptions): CustomerModel;
+  }
+
+const Customer = <CustomerModelStatic>connection.define(
   "customer",
   {
     customer_id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true
     },
 
     first_name: {
-      type: Sequelize.TEXT
+      type: DataTypes.TEXT
     },
 
     last_name: {
-      type: Sequelize.TEXT
+      type: DataTypes.TEXT
     },
     email: {
-      type: Sequelize.TEXT,
+      type: DataTypes.TEXT,
       unique: true
     },
     password: {
-      type: Sequelize.TEXT
+      type: DataTypes.TEXT
     },
     phone_no: {
-      type: Sequelize.TEXT
+      type: DataTypes.TEXT
     },
     gender: {
-      type: Sequelize.TEXT
+      type: DataTypes.TEXT
     },
     dob: {
-      type: Sequelize.TEXT
+      type: DataTypes.TEXT
     },
     profile_img: {
-      type: Sequelize.TEXT
+      type: DataTypes.TEXT
     },
     googleid: {
-      type: Sequelize.TEXT
+      type: DataTypes.TEXT
     },
     facebookid: {
-      type: Sequelize.TEXT
+      type: DataTypes.TEXT
     }
   },
   { freezeTableName: false }

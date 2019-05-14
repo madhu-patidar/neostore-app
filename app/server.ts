@@ -22,15 +22,15 @@ d.run(() => {
       .catch(err => console.log(err));
 
     //Create connection with PostgreSQL
-    // client
-    //   .connect()
-    //   .then(() => console.log("PostgreSQL Connected Successfully"))
-    //   .catch(err => console.log(err));
+    client
+      .connect()
+      .then(() => console.log("PostgreSQL Connection has been established successfully."))
+      .catch(err => console.log(err));
 
     connection
       .authenticate()
       .then(() => {
-        console.log("Sequelize Connection has been established successfully.");
+        console.log("PostgreSQL Connection using Sequelize has been established successfully.");
       })
       .catch((err: string) => {
         console.error("Unable to connect to the database:", err);

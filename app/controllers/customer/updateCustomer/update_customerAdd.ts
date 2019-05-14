@@ -17,8 +17,7 @@ else{
   connection.sync().then(()=>{
     if(req.body.address){
       Address.update({address:req.body.address},{where:{customer_id:id1,address_id:id2}})
-      .then()
-      .catch()
+     
     }
     if(req.body.pincode){
       Address.update({pincode:req.body.pincode},{where:{customer_id:id1,address_id:id2}})
@@ -26,18 +25,15 @@ else{
     }
     if(req.body.city){
       Address.update({city:req.body.city},{where:{customer_id:id1,address_id:id2}})
-      .then()
-      .catch()
+      
     }
     if(req.body.state){
       Address.update({state:req.body.state},{where:{customer_id:id1,address_id:id2}})
-      .then()
-      .catch()
+      
     }
     if(req.body.country){
       Address.update({country:req.body.country},{where:{customer_id:id1,address_id:id2}})
-      .then()
-      .catch()
+      
     }
     res.status(200).json({success:true,message:"Address Updated"})
   })

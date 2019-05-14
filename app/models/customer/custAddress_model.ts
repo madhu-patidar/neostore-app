@@ -1,15 +1,29 @@
 import connection from "../../configFiles/sequelize-postgres";
-import * as Sequelize from "sequelize";
+import {Model, DataTypes, BuildOptions } from "sequelize";
 
-const Address = connection.define('cust_address',{
+interface CustomerAddressModel extends Model {
+    address_id: number;
+    customer_id:number;
+    address:string;
+    pincode:number;
+    city:string;
+    state:string;
+    country:string
+  }
+
+type CustomerAddressModelStatic = typeof Model & {
+    new (values?: object, options?: BuildOptions): CustomerAddressModel;
+  }
+
+ const Address = <CustomerAddressModelStatic>connection.define('cust_address',{
     address_id:{
-        type:Sequelize.INTEGER,
+        type:DataTypes.INTEGER,
         autoIncrement:true,
         allowNull:false,
         primaryKey:true
     },
     customer_id:{
-        type:Sequelize.INTEGER,
+        type:DataTypes.INTEGER,
         allowNull:false,
         references:{
             model:'customers',
@@ -18,19 +32,19 @@ const Address = connection.define('cust_address',{
         onDelete: 'CASCADE'
     },
     address:{
-        type:Sequelize.TEXT
+        type:DataTypes.TEXT
     },
     pincode:{
-        type:Sequelize.INTEGER
+        type:DataTypes.INTEGER
     },
     city:{
-        type:Sequelize.TEXT
+        type:DataTypes.TEXT
     },
     state:{
-        type:Sequelize.TEXT
+        type:DataTypes.TEXT
     },
     country:{
-        type:Sequelize.TEXT
+        type:DataTypes.TEXT
     }
 },{freezeTableName:false})
 
