@@ -12,13 +12,13 @@ if(customer_id===parseInt(req.body.id)){
   .populate([{ path: 'product_id', populate: { path: 'color_id' }}])
   .exec((err,product)=>{     
     if(err)
-    res.status(404).json({success:"false",error_message:err})
+    res.status(404).json({success:false,error_message:err})
     else
-    res.status(200).json({success:product.length!==0?"true":"false",message:product.length!==0?"Product on Cart":"No Product is available",product_details:product.length!==0?product:"No details are available"})  
+    res.status(200).json({success:product.length!==0?true:false,message:product.length!==0?"Product on Cart":"No Product is available",product_details:product.length!==0?product:"No details are available"})  
 })
 }
 else{
-    res.status(404).json({success:"false",message:"Customer id not matched"})
+    res.status(404).json({success:false,message:"Customer id not matched"})
 
 }
 }

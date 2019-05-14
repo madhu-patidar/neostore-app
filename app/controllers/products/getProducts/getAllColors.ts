@@ -5,10 +5,10 @@ const getAllColors= (req:Request,res:Response)=>{
 
     ProductColorModel.find({})
     .then(result=>{
-        res.status(200).json({success:"true",message:"All Colors",color_details:result})
+        res.status(200).json({success:true,message:"All Colors",color_details:result})
     })
     .catch(err=>{
-        res.status(404).json({success:"false",message:"Something went wrong",error_message:err})
+        res.status(404).json({success:false,message:"Something went wrong",error_message:err})
     })
 
 }

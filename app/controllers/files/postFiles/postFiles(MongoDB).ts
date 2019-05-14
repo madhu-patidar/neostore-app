@@ -5,7 +5,7 @@ import {Request,Response} from 'express'
 const postFileInMongo=(req:Request,res:Response)=>{
     let fileArray:any[]=[]
     if(!req.files)
-    res.status(404).json({success:"false",message:"Please select files"})
+    res.status(404).json({success:false,message:"Please select files"})
     else{
         let files:any=req.files
     for(let i:number=0;i<files.length;i++){
@@ -19,10 +19,10 @@ const postFileInMongo=(req:Request,res:Response)=>{
 
     newfiles.save()
     .then(result=>{
-        res.status(200).json({success:"true",message:"Files were uploaded successfully"})
+        res.status(200).json({success:true,message:"Files were uploaded successfully"})
     })
     .catch(err=>{
-        res.status(404).json({success:"false",message:"Something went wrong",error_message:err})
+        res.status(404).json({success:false,message:"Something went wrong",error_message:err})
     })
 }
    

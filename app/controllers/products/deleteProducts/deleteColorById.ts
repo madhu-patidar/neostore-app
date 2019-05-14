@@ -8,10 +8,10 @@ const deleteColorById=(req:Request,res:Response)=>{
 
     ProductColorModel.findByIdAndRemove({_id:color_id})
     .then(result=>{
-        res.status(200).json({success:result!==null?"true":"false",message:result!==null?"Color Deleted":"No data is available", color_details:result!==null?result:"No details are available"})
+        res.status(200).json({success:result!==null?true:false,message:result!==null?"Color Deleted":"No data is available", color_details:result!==null?result:"No details are available"})
     })
     .catch(err=>{
-        res.status(404).json({success:"false",error_message:err})
+        res.status(404).json({success:false,error_message:err})
     })
 }
 

@@ -15,7 +15,7 @@ const insertCustomerData = (req: Request, res: Response) => {
   if (!req.body)
     res
       .status(404)
-      .json({ success: "false", message: "Body can not be blank" });
+      .json({ success: false, message: "Body can not be blank" });
   const schema = Joi.object().keys({
     u_email: Joi.string()
       .email({ minDomainAtoms: 2 })
@@ -40,7 +40,7 @@ const insertCustomerData = (req: Request, res: Response) => {
     schema,
     (err, result) => {
       if (err) {
-        res.status(404).json({ success: "false", error_message: err.message });
+        res.status(404).json({ success: false, error_message: err.message });
       } else {
         if (pass.localeCompare(confirm_pass) == 0) {
           bcrypt.genSalt(10, (err, salt) => {
@@ -68,7 +68,6 @@ const insertCustomerData = (req: Request, res: Response) => {
                           gender: req.body.gender
                         })
                           .then((result) => {
-                            console.log("Insrt>>",result)
                             res
                               .status(200)
                               .json({
@@ -112,7 +111,7 @@ const insertCustomerData = (req: Request, res: Response) => {
           res
             .status(404)
             .json({
-              success: "false",
+              success: false,
               message: "Password and confirm passwod should be same"
             });
         }

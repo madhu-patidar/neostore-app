@@ -7,10 +7,10 @@ let categ_id:number = parseInt(req.params.categ_id)
 
 ProdCategoryModel.find({_id:categ_id})
 .then(result=>{
-    res.status(200).json({success:"true",message:"Category Fetched",category_details:result})
+    res.status(200).json({success:true,message:"Category Fetched",category_details:result})
 })
 .catch(err=>{
-    res.status(404).json({success:"false",message:"Something went wrong",error_message:err})
+    res.status(404).json({success:false,message:"Something went wrong",error_message:err})
 })
 
 }

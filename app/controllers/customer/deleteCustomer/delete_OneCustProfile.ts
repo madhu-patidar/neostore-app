@@ -21,16 +21,16 @@ const deleteOneCustomer= (req:Request,res:Response)=>{
             connection.sync().then(()=>{
                 Customer.destroy({where:{customer_id:id1}})
                 .then(()=>{
-                    res.status(200).json({success:"true",message:"One Customer Deleted"})
+                    res.status(200).json({success:true,message:"One Customer Deleted"})
                 })
                 .catch((err:any)=>{
-                    res.status(404).json({success:"false",error_message:err})
+                    res.status(404).json({success:false,error_message:err})
     
                 })
             }) 
         }
         else{
-            res.status(404).json({success:"false",message:"Customer id not matched"})
+            res.status(404).json({success:false,message:"Customer id not matched"})
         }     
 }
 

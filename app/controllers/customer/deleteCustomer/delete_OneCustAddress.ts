@@ -10,7 +10,7 @@ const deleteAddress= (req:Request,res:Response)=>{
 
     
     if(req.body.address_id==undefined){
-        res.status(404).json({success:"false",message:"Please provide your address id"})
+        res.status(404).json({success:false,message:"Please provide your address id"})
     }
     else{
         /*client.query('Select id,address_id from customer_address where id=$1 and address_id=$2',[id,id1])
@@ -29,13 +29,13 @@ const deleteAddress= (req:Request,res:Response)=>{
             Address.destroy({where:{address_id:id1,customer_id:id}})
             .then((result:any)=>{
                 if(result!==0)
-                res.status(200).json({success:"true",message:"One Customer Address Deleted"})
+                res.status(200).json({success:true,message:"One Customer Address Deleted"})
                 else
                 res.status(404).json({success:false,message:"Address is not there. Please enter correct address id."})
 
             })
             .catch((err:any)=>{
-                res.status(404).json({success:"false",error_message:err})
+                res.status(404).json({success:false,error_message:err})
 
             })
         })  

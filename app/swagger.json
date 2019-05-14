@@ -512,6 +512,63 @@
         }
       }
     },
+    "/topRatingProduct": {
+      "post": {
+        "tags": ["Post Product Data"],
+        "summary": "Customer can see all Top Rating Products",
+        "description": "API, for fetching all Top rating products.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/productImages": {
+      "post": {
+        "tags": ["Post Product Data"],
+        "summary": "(Table, Chair, Bed, Sofa)",
+        "description": "API, for adding images of product.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "_id",
+            "description": "Enter Category Id",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "category_name",
+            "description": "Enter Category Name",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "product_image",
+            "description": "Enter Product Image",
+            "in": "formData",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
     "/category": {
       "post": {
         "tags": ["Post Product Data"],
@@ -685,6 +742,23 @@
             "type": "string"
           }
         ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getAllProductsImages": {
+      "get": {
+        "tags": ["Get Product Data"],
+        "summary": "Customer can see all Products Images",
+        "description": "API, for fetching all stored products Images.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Operation Successful"

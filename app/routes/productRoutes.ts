@@ -22,6 +22,9 @@ import deleteColorById from '../controllers/products/deleteProducts/deleteColorB
 import updateColorById from '../controllers/products/updateProducts/updateColorById'
 import upload from '../configFiles/fileUpload'
 import verifyToken from '../configFiles/verifyTokenMiddleware'
+import postProductImages from '../controllers/products/postProducts/postProductImages'
+import getProductImages from '../controllers/products/getProducts/getProductImages'
+import topRatingImage from '../controllers/products/postProducts/postTopRatingImage'
 
 /**
  * Creating class for defining all Product routing
@@ -30,6 +33,15 @@ import verifyToken from '../configFiles/verifyTokenMiddleware'
 export class ProductRoutes{
 
     public routes(app:any):void{
+
+
+          //Top Product Images
+          app.route('/topRatingProduct')
+          .post(topRatingImage)
+
+        //Add Product Images
+        app.route('/productImages')
+        .post(upload.single('product_image'),postProductImages)
 
         //Add Product Category
         app.route('/category')
@@ -42,6 +54,10 @@ export class ProductRoutes{
         //Add Product 
         app.route('/product')
         .post(upload.single('prod_image'),postProductList)
+
+        //Get all Products Images
+        app.route('/getAllProductsImages')
+        .get(getProductImages)
 
         //Get all Products
         app.route('/getAllProducts')

@@ -15,7 +15,7 @@ const customerAuthentication = (req: Request, res: Response) => {
   if (!req.body)
     res
       .status(404)
-      .json({ success: "false", message: "Please enter your credentials" });
+      .json({ success: false, message: "Please enter your credentials" });
   else {
     const schema = Joi.object().keys({
       u_email: Joi.string()
@@ -30,7 +30,7 @@ const customerAuthentication = (req: Request, res: Response) => {
         if (err) {
           res
             .status(404)
-            .json({ success: "false", error_message: err.message });
+            .json({ success:false, error_message: err.message });
         } else {
           connection.sync().then(() => {
             Customer.findOne({ where: { email: req.body.email } })
@@ -71,7 +71,7 @@ const customerAuthentication = (req: Request, res: Response) => {
                             res
                               .status(200)
                               .json({
-                                success: "true",
+                                success: true,
                                 message: "You have logged In",
                                 customer_details: customer_details,
                                 token: token
@@ -82,7 +82,7 @@ const customerAuthentication = (req: Request, res: Response) => {
                         res
                           .status(404)
                           .json({
-                            success: "false",
+                            success: false,
                             message: "Password is not matched"
                           });
                     });
@@ -92,7 +92,7 @@ const customerAuthentication = (req: Request, res: Response) => {
                 res
                   .status(404)
                   .json({
-                    success: "false",
+                    success: false,
                     message: "Email is not registered"
                   })
               );

@@ -5,7 +5,7 @@ import client from '../../../configFiles/database_postgresql'
 const postFilesinPostgreSQL=(req:Request,res:Response)=>{
     let fileArray:any[]=[]
     if(!req.files)
-    res.status(404).json({success:"false",message:"Please select files"})
+    res.status(404).json({success:false,message:"Please select files"})
     else{
         let files:any=req.files
     for(let i:number=0;i<files.length;i++){

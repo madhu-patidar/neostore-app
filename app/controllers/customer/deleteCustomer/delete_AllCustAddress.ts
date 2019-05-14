@@ -18,10 +18,10 @@ const deleteAllAddress= (req:Request,res:Response)=>{
             connection.sync().then(()=>{
                 Address.destroy({where:{},truncate:false})
                 .then((result:any)=>{
-                    res.status(200).json({success:"true",message:"All Customer Address Deleted"})
+                    res.status(200).json({success:true,message:"All Customer Address Deleted"})
                 })
                 .catch((err:any)=>{
-                    res.status(404).json({success:"false",error_message:err})
+                    res.status(404).json({success:false,error_message:err})
     
                 })
             }) 

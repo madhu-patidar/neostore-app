@@ -38,7 +38,7 @@ const addAddress = (req: Request, res: Response) => {
     schema,
     (err, result) => {
       if (err) {
-        res.status(404).json({ success: "false", error_message: err.message });
+        res.status(404).json({ success: false, error_message: err.message });
       } else {
         /*client.query('Insert into customer_address(id,address,pincode,city,state,country) values($1,$2,$3,$4,$5,$6)',[id,req.body.address,req.body.pincode,req.body.city,req.body.state,req.body.country])
         .then(()=>{

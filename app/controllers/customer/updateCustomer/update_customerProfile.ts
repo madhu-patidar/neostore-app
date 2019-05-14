@@ -42,66 +42,69 @@ const updateProfile = (req: Request, res: Response) => {
     schema,
     (err, result) => {
       if (err) {
-        res.status(404).json({ success: "false", error_message: err.message });
+        res.status(404).json({ success: false, error_message: err.message });
       } else {
         if (id === id1) {
-          Customer.update(
-            {
-              first_name: req.body.first_name,
-              last_name: req.body.last_name,
-              email: req.body.email,
-              dob: req.body.dob,
-              phone_no: req.body.phone_no,
-              gender: req.body.gender,
-              profile_img: req.file.filename
-            },
-            { where: { customer_id: id } }
-          )
-            .then((result: any) => {
-              if (result) {
-                Customer.findOne({
-                  attributes: {
-                    include: [
-                      "first_name",
-                      "last_name",
-                      "email",
-                      "dob",
-                      "phone_no",
-                      "gender",
-                      "profile_img"
-                    ],
-                    exclude: ["password", "googleid", "facebookid"]
-                  },
-                  where: { customer_id: id }
-                })
-                  .then((result: any) => {
-                    if (result !== null)
-                      res
-                        .status(200)
-                        .json({
-                          success: "true",
-                          message: "Updated profile",
-                          customer_details: result
-                        });
-                    else {
+
+          connection.sync().then(()=>{
+            Customer.update(
+              {
+                first_name: req.body.first_name,
+                last_name: req.body.last_name,
+                email: req.body.email,
+                dob: req.body.dob,
+                phone_no: req.body.phone_no,
+                gender: req.body.gender,
+                profile_img: req.file.filename
+              },
+              { where: { customer_id: id } }
+            )
+              .then((result: any) => {
+                if (result) {
+                  Customer.findOne({
+                    attributes: {
+                      include: [
+                        "first_name",
+                        "last_name",
+                        "email",
+                        "dob",
+                        "phone_no",
+                        "gender",
+                        "profile_img"
+                      ],
+                      exclude: ["password", "googleid", "facebookid"]
+                    },
+                    where: { customer_id: id }
+                  })
+                    .then((result: any) => {
+                      if (result !== null)
+                        res
+                          .status(200)
+                          .json({
+                            success: true,
+                            message: "Updated profile",
+                            customer_details: result
+                          });
+                      else {
+                        res
+                          .status(404)
+                          .json({
+                            success: false,
+                            message: "Something went wrong"
+                          });
+                      }
+                    })
+                    .catch((err: any) => {
                       res
                         .status(404)
-                        .json({
-                          success: "false",
-                          message: "Something went wrong"
-                        });
-                    }
-                  })
-                  .catch((err: any) => {
-                    res
-                      .status(404)
-                      .json({ success: "false", erro_message: err });
-                  });
-              }
-            })
-            .catch((err: any) => {
-              res.status(404).json({ success: "false", erro_message: err });
-            });
+                        .json({ success: false, erro_message: err });
+                    });
+                }
+              })
+              .catch((err: any) => {
+                res.status(404).json({ success: false, erro_message: err });
+              });
+          })
 
           /*client.query('Update neo_user set first_name=$1,last_name=$2,email=$3,dob=$4,phone_no=$5,gender=$6,profile_img=$7 where id=$8',[req.body.first_name,req.body.last_name,req.body.email,req.body.dob,req.body.phone_no,req.body.gender,req.file.filename,id])
             .then(user=>{
@@ -123,7 +126,7 @@ const updateProfile = (req: Request, res: Response) => {
         } else {
           res
             .status(404)
-            .json({ success: "false", message: "Customer id not matched" });
+            .json({ success: false, message: "Customer id not matched" });
         }
       }
     }

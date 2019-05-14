@@ -23,7 +23,7 @@ const verifyToken=(req:Request,res:Response,next:NextFunction)=>{
 
     }
     else{
-      res.status(403).json({success:"false",message:"Not a valid user"})
+      res.status(403).json({success:false,message:"Not a valid user"})
     } 
 
 
