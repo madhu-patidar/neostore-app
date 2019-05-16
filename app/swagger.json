@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "3.0.0",
-    "title": "NeoSTORE (Shopping Website)",
+    "title": "NeoSTORE (Shopping Platform)",
     "description": "A most attracting platform for purchasing different products according to your choice. Online shopping is a form of electronic commerce which allows consumers to directly buy goods or services from a seller over the Internet using a web browser. Consumers find a product of interest by visiting the website of the retailer directly or by searching among alternative vendors using a shopping search engine, which displays the same product's availability and pricing at different e-retailers. \n\n ABOUT TECHSTACK\n\nFront-end:- AngularJS\nBack-end:- NodeJS\nDatabase:- PostgreSQL, MongoDB",
     "license": {
       "name": "MIT",
