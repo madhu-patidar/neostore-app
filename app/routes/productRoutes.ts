@@ -53,7 +53,7 @@ export class ProductRoutes{
 
         //Add Product 
         app.route('/product')
-        .post(upload.single('prod_image'),postProductList)
+        .post(upload.single('product_image'),postProductList)
 
         //Get all Products Images
         app.route('/getAllProductsImages')
@@ -64,11 +64,11 @@ export class ProductRoutes{
         .get(getProducts)
 
         //Get Products By its category
-        app.route('/getProductByCateg/:categ_id')
+        app.route('/getProductByCateg/:category_id')
         .get(getProductsByCategory)
 
         //Get Products By its Id
-        app.route('/getProductByProdId/:prod_id')
+        app.route('/getProductByProdId/:product_id')
         .get(getProductsByProductId)
 
         //Get Products By its color
@@ -76,7 +76,7 @@ export class ProductRoutes{
         .get(getProductsByColor)
 
         //Get Products By its category and color
-        app.route('/getProductByColor/:categ_id/:color_id')
+        app.route('/getProductByColor/:category_id/:color_id')
         .get(getProductsByColorandCateg)
 
         //Get all Category of Products
@@ -84,7 +84,7 @@ export class ProductRoutes{
         .get(getAllCategory)
 
         //Get Category by category id
-        app.route('/getCategoryById/:categ_id')
+        app.route('/getCategoryById/:category_id')
         .get(getCategoriesByCategId)
 
         //Get all Color of Products
@@ -120,8 +120,8 @@ export class ProductRoutes{
         .delete(deleteColorById)
 
         //Update Products By id
-        app.route('/updateProductByProdId/:prod_id')
-        .put(upload.single('prod_image'),updateProductsById)
+        app.route('/updateProductByProdId/:product_id')
+        .put(upload.single('product_image'),updateProductsById)
 
         //Update Product Rating
         app.route('/updateProductRatingProdId')

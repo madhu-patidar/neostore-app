@@ -6,7 +6,7 @@ const topRatingImage = (req: Request, res: Response) => {
     [
       {
         $sort: {
-          prod_rating: -1
+          product_rating: -1
         }
       },
       {

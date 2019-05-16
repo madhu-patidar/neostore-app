@@ -3,9 +3,9 @@ import ProdCategoryModel from '../../../models/products/product_category'
 
 //Update Products by id
 const updateCategoryById=(req:Request,res:Response)=>{
-    const categ_id:number=parseInt(req.body.categ_id)
+    const category_id:number=parseInt(req.body.category_id)
   
-    if(categ_id==undefined){
+    if(category_id==undefined){
         res.status(404).json({success:false,message:"Please Provide Category Id"})
     }
     else{
@@ -14,12 +14,12 @@ const updateCategoryById=(req:Request,res:Response)=>{
           res.status(404).json({success:false,message:"No Data found to update"})
         }
         else{
-            ProdCategoryModel.find({_id:categ_id},(err,result)=>{
+            ProdCategoryModel.find({_id:category_id},(err,result)=>{
               if(err)
               res.status(404).json({success:false,error_message:err})
               else if(result.length!==0){
                 if(req.body.category_name){
-                    ProdCategoryModel.findByIdAndUpdate(categ_id,{category_name:req.body.category_name},(err,result)=>{
+                    ProdCategoryModel.findByIdAndUpdate(category_id,{category_name:req.body.category_name},(err,result)=>{
                         if(err)
                         res.status(404).json({success:false,error_message:err})
                     })

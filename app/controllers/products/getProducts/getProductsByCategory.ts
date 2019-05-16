@@ -3,10 +3,10 @@ import ProductListModel from '../../../models/products/product_list'
 
 //Get Products By its category
 const getProductsByCategory=(req:Request,res:Response)=>{
-let categ_id:number = req.params.categ_id
+let category_id:number = req.params.category_id
 
-ProductListModel.find({categ_id:categ_id})
-.populate('categ_id')
+ProductListModel.find({category_id:category_id})
+.populate('category_id')
 .populate('color_id')
 .exec((err,product)=>{     
     if(err)

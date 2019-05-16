@@ -4,10 +4,10 @@ import ProductListModel from '../../../models/products/product_list'
 //Get Products By its category and color
 const getProductsByColorandCateg=(req:Request,res:Response)=>{
 let color_id:number = req.params.color_id
-let categ_id:number = req.params.categ_id
+let category_id:number = req.params.category_id
 
-ProductListModel.find({color_id:color_id,categ_id:categ_id})
-.populate('categ_id')
+ProductListModel.find({color_id:color_id,category_id:category_id})
+.populate('category_id')
 .populate('color_id')
 .exec((err,product)=>{
     if(err)

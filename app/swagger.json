@@ -665,7 +665,7 @@
             "type": "integer"
           },
           {
-            "name": "categ_id",
+            "name": "category_id",
             "description": "Enter Category Id",
             "in": "formData",
             "required": true,
@@ -679,63 +679,63 @@
             "type": "integer"
           },
           {
-            "name": "prod_name",
+            "name": "product_name",
             "description": "Enter Product Name",
             "in": "formData",
             "required": true,
             "type": "string"
           },
           {
-            "name": "prod_image",
+            "name": "product_image",
             "description": "Enter Product Image",
             "in": "formData",
             "required": true,
             "type": "file"
           },
           {
-            "name": "prod_desc",
+            "name": "product_desc",
             "description": "Enter Product Description",
             "in": "formData",
             "required": true,
             "type": "string"
           },
           {
-            "name": "prod_rating",
+            "name": "product_rating",
             "description": "Enter Product Rating",
             "in": "formData",
             "required": true,
             "type": "number"
           },
           {
-            "name": "prod_producer",
+            "name": "product_producer",
             "description": "Enter Product Producer",
             "in": "formData",
             "required": true,
             "type": "string"
           },
           {
-            "name": "prod_cost",
+            "name": "product_cost",
             "description": "Enter Product Cost",
             "in": "formData",
             "required": true,
             "type": "string"
           },
           {
-            "name": "prod_stock",
+            "name": "product_stock",
             "description": "Enter Product Stock",
             "in": "formData",
             "required": true,
             "type": "string"
           },
           {
-            "name": "prod_dimension",
+            "name": "product_dimension",
             "description": "Enter Product Dimensions",
             "in": "formData",
             "required": true,
             "type": "string"
           },
           {
-            "name": "prod_material",
+            "name": "product_material",
             "description": "Enter Product Material",
             "in": "formData",
             "required": true,
@@ -820,7 +820,7 @@
         }
       }
     },
-    "/getCategoryById/{categ_id}": {
+    "/getCategoryById/{category_id}": {
       "get": {
         "tags": ["Get Product Data"],
         "summary": "Customer can see categories by id",
@@ -829,7 +829,7 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "categ_id",
+            "name": "category_id",
             "description": "Enter Category Id",
             "in": "path",
             "required": true,
@@ -872,7 +872,7 @@
         }
       }
     },
-    "/getProductByCateg/{categ_id}": {
+    "/getProductByCateg/{category_id}": {
       "get": {
         "tags": ["Get Product Data"],
         "summary": "Filter on Products in terms of categories.",
@@ -881,7 +881,7 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "categ_id",
+            "name": "category_id",
             "description": "Enter Category Id",
             "in": "path",
             "required": true,
@@ -924,7 +924,7 @@
         }
       }
     },
-    "/getProductByProdId/{prod_id}": {
+    "/getProductByProdId/{product_id}": {
       "get": {
         "tags": ["Get Product Data"],
         "summary": "Filter on Products in terms of product id.",
@@ -933,7 +933,7 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "prod_id",
+            "name": "product_id",
             "description": "Enter Product Id",
             "in": "path",
             "required": true,
@@ -950,7 +950,7 @@
         }
       }
     },
-    "/getProductByColor/{categ_id}/{color_id}": {
+    "/getProductByColor/{category_id}/{color_id}": {
       "get": {
         "tags": ["Get Product Data"],
         "summary": "Filter on Products in terms of categories and color.",
@@ -959,7 +959,7 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "categ_id",
+            "name": "category_id",
             "description": "Enter Category Id",
             "in": "path",
             "required": true,
@@ -992,7 +992,7 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "prod_id",
+            "name": "product_id",
             "description": "Enter Product Id",
             "in": "formData",
             "required": true,
@@ -1069,7 +1069,7 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "categ_id",
+            "name": "category_id",
             "description": "Enter Category Id",
             "in": "formData",
             "required": true,
@@ -1112,7 +1112,7 @@
         }
       }
     },
-    "/updateProductByProdId/{prod_id}": {
+    "/updateProductByProdId/{product_id}": {
       "put": {
         "tags": ["Update Product Data"],
         "summary": "Update exisiting product",
@@ -1121,14 +1121,14 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "prod_id",
+            "name": "product_id",
             "description": "Enter Product Id",
             "in": "path",
             "required": true,
             "type": "integer"
           },
           {
-            "name": "categ_id",
+            "name": "category_id",
             "description": "Enter Category Id",
             "in": "formData",
             "type": "integer"
@@ -1140,55 +1140,55 @@
             "type": "integer"
           },
           {
-            "name": "prod_name",
+            "name": "product_name",
             "description": "Enter Product Name",
             "in": "formData",
             "type": "string"
           }, 
           {
-            "name": "prod_image",
+            "name": "product_image",
             "description": "Enter Product Image",
             "in": "formData",
             "type": "file"
           },
           {
-            "name": "prod_desc",
+            "name": "product_desc",
             "description": "Enter Product Description",
             "in": "formData",
             "type": "string"
           },
           {
-            "name": "prod_rating",
+            "name": "product_rating",
             "description": "Enter Product Rating",
             "in": "formData",
             "type": "number"
           },
           {
-            "name": "prod_producer",
+            "name": "product_producer",
             "description": "Enter Product Producer",
             "in": "formData",
             "type": "string"
           },
           {
-            "name": "prod_cost",
+            "name": "product_cost",
             "description": "Enter Product Cost",
             "in": "formData",
             "type": "string"
           },
           {
-            "name": "prod_stock",
+            "name": "product_stock",
             "description": "Enter Product Stock",
             "in": "formData",
             "type": "string"
           },
           {
-            "name": "prod_dimension",
+            "name": "product_dimension",
             "description": "Enter Product Dimensions",
             "in": "formData",
             "type": "string"
           },
           {
-            "name": "prod_material",
+            "name": "product_material",
             "description": "Enter Product Material",
             "in": "formData",
             "type": "string"
@@ -1213,14 +1213,14 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "prod_id",
+            "name": "product_id",
             "description": "Enter Product Id",
             "in": "formData",
             "required": true,
             "type": "integer"
           },
           {
-            "name": "prod_rating",
+            "name": "product_rating",
             "description": "Enter Product Rating",
             "in": "formData",
             "type": "number"
@@ -1246,7 +1246,7 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "categ_id",
+            "name": "category_id",
             "description": "Enter Category Id",
             "in": "formData",
             "required": true,

@@ -6,7 +6,7 @@ import ProductListModel from '../../../models/products/product_list'
 const getAllProducts=(req:Request,res:Response)=>{
 
   ProductListModel.find({})
-  .populate('categ_id')
+  .populate('category_id')
   .populate('color_id')
   .exec((err,product)=>{
     if(err)

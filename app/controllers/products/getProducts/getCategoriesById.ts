@@ -3,9 +3,9 @@ import ProdCategoryModel from '../../../models/products/product_category'
 
 //Get Products By its Id
 const getCategoriesByCategId=(req:Request,res:Response)=>{
-let categ_id:number = parseInt(req.params.categ_id)
+let category_id:number = parseInt(req.params.category_id)
 
-ProdCategoryModel.find({_id:categ_id})
+ProdCategoryModel.find({_id:category_id})
 .then(result=>{
     res.status(200).json({success:true,message:"Category Fetched",category_details:result})
 })

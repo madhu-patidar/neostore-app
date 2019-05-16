@@ -5,18 +5,17 @@ import ProductListModel from '../../../models/products/product_list'
 const postProductList = (req:Request,res:Response)=>{
     const newProduct = new ProductListModel({
         _id:req.body._id,
-        categ_id:req.body.categ_id,
+        category_id:req.body.category_id,
         color_id:req.body.color_id,
-        prod_name:req.body.prod_name,
-        prod_image:req.file.filename,
-        prod_desc:req.body.prod_desc,
-        prod_rating:req.body.prod_rating,
-        prod_producer:req.body.prod_producer,
-        prod_cost:req.body.prod_cost,
-        prod_stock:req.body.prod_stock,
-        prod_created_at:req.body.prod_created_at,
-        prod_dimension:req.body.prod_dimension,
-        prod_material:req.body.prod_material
+        product_name:req.body.product_name,
+        product_image:req.file.filename,
+        product_desc:req.body.product_desc,
+        product_rating:req.body.product_rating,
+        product_producer:req.body.product_producer,
+        product_cost:req.body.product_cost,
+        product_stock:req.body.product_stock,
+        product_dimension:req.body.product_dimension,
+        product_material:req.body.product_material
     })
     
     newProduct.save()
