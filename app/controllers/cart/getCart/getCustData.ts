@@ -8,7 +8,7 @@ if(customer_id===parseInt(req.body.id)){
    
     //Fetch data first from Product collection then category and color collection
     CartModel.find({customer_id:customer_id})
-  .populate([{ path: 'product_id', populate: { path: 'categ_id' }}])
+  .populate([{ path: 'product_id', populate: { path: 'category_id' }}])
   .populate([{ path: 'product_id', populate: { path: 'color_id' }}])
   .exec((err,product)=>{     
     if(err)
