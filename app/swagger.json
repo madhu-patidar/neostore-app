@@ -1838,6 +1838,15 @@
           "type": "integer"
         }
       }
+    },
+    "Files": {
+      "type": "object",
+      "required": ["fileName"],
+      "properties": {
+        "fileName": {
+          "type": "string"
+        }
+      }
     }
   },
   "securityDefinitions": {
