@@ -4,10 +4,10 @@ import path from 'path'                    //Importing path npm package
 
     //Storing file on disk
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+    destination:(req, file, cb)=>{
       cb(null, path.resolve('uploads/'));
    },
-    filename: function (req, file, cb) {
+    filename: (req, file, cb)=>{
       cb(null, new Date().toISOString().replace(/:/g, "-") + file.originalname);
     }
   });
