@@ -55,7 +55,9 @@ const customerAuthentication = (req: Request, res: Response) => {
                     profile_img:
                       customer.profile_img == null ? "" : customer.profile_img,
                     created_at:
-                      customer.created_at == null ? "" : customer.created_at
+                      customer.createdAt == null ? "" : customer.createdAt,
+                      updated_at:
+                      customer.updatedAt == null ? "" : customer.updatedAt
                   });
 
                   //Compare requested password with database password
