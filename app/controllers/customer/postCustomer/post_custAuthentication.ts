@@ -54,9 +54,9 @@ const customerAuthentication = (req: Request, res: Response) => {
                     dob: customer.dob == null ? "" : customer.dob,
                     profile_img:
                       customer.profile_img == null ? "" : customer.profile_img,
-                    created_at:
+                    createdAt:
                       customer.createdAt == null ? "" : customer.createdAt,
-                      updated_at:
+                      updatedAt:
                       customer.updatedAt == null ? "" : customer.updatedAt
                   });
 
