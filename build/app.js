@@ -19,6 +19,7 @@ var cartRoutes_1 = require("./routes/cartRoutes"); //@class of Cart Routing
 var filesRoutes_1 = require("./routes/filesRoutes"); //@class of Files Routing
 var googleRoutes_1 = require("./routes/googleRoutes"); //@class of Google Routing
 var facebookRoutes_1 = require("./routes/facebookRoutes"); //@class of Facebook Routing
+var footerRoutes_1 = require("./routes/footerRoutes");
 var swagger_ui_express_1 = __importDefault(require("swagger-ui-express")); //swagger for creating documentation
 require("./configFiles/passport/passport-setup(Google)"); //configure passport google strategy
 require("./configFiles/passport/passport-setup(Facebook)"); //configure passport facebook strategy
@@ -42,6 +43,7 @@ var App = /** @class */ (function () {
         this.routeFiles = new filesRoutes_1.FilesRoutes();
         this.routeGoogle = new googleRoutes_1.GoogleRoutes();
         this.routeFacebook = new facebookRoutes_1.FacebookRoutes();
+        this.routeFooter = new footerRoutes_1.FooterRoutes();
         this.app = express_1.default();
         this.config();
         //this.mongooSetup()
@@ -51,6 +53,7 @@ var App = /** @class */ (function () {
         this.routeFiles.routes(this.app);
         this.routeGoogle.routes(this.app);
         this.routeFacebook.routes(this.app);
+        this.routeFooter.routes(this.app);
     }
     //Configuration setup
     App.prototype.config = function () {

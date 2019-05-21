@@ -4,7 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var product_list_1 = __importDefault(require("../../../models/products/product_list"));
-var topRatingImage = function (req, res) {
+var topRatingProduct = function (req, res) {
+    var count = parseInt(req.body.limit);
     product_list_1.default.aggregate([
         {
             $sort: {
@@ -13,14 +14,14 @@ var topRatingImage = function (req, res) {
         },
         {
             $group: {
-                _id: "$categ_id",
+                _id: "$category_id",
                 products: { $push: "$$ROOT" }
             }
         },
         {
             $project: {
                 DashboardProducts: {
-                    $slice: ["$products", 1]
+                    $slice: ["$products", count]
                 }
             }
         }
@@ -32,4 +33,4 @@ var topRatingImage = function (req, res) {
         }
     });
 };
-exports.default = topRatingImage;
+exports.default = topRatingProduct;

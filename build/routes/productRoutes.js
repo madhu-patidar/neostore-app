@@ -29,7 +29,8 @@ var fileUpload_1 = __importDefault(require("../configFiles/fileUpload"));
 var verifyTokenMiddleware_1 = __importDefault(require("../configFiles/verifyTokenMiddleware"));
 var postProductImages_1 = __importDefault(require("../controllers/products/postProducts/postProductImages"));
 var getProductImages_1 = __importDefault(require("../controllers/products/getProducts/getProductImages"));
-var postTopRatingImage_1 = __importDefault(require("../controllers/products/postProducts/postTopRatingImage"));
+var postTopRatingProduct_1 = __importDefault(require("../controllers/products/postProducts/postTopRatingProduct"));
+var getTopRatingProduct_1 = __importDefault(require("../controllers/products/getProducts/getTopRatingProduct"));
 /**
  * Creating class for defining all Product routing
  * @class ProductRoutes
@@ -40,7 +41,9 @@ var ProductRoutes = /** @class */ (function () {
     ProductRoutes.prototype.routes = function (app) {
         //Top Product Images
         app.route('/topRatingProduct')
-            .post(postTopRatingImage_1.default);
+            .post(postTopRatingProduct_1.default);
+        app.route('/defaultTopRatingProduct')
+            .get(getTopRatingProduct_1.default);
         //Add Product Images
         app.route('/productImages')
             .post(fileUpload_1.default.single('product_image'), postProductImages_1.default);
