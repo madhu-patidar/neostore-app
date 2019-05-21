@@ -7,6 +7,7 @@ import {CartRoutes} from './routes/cartRoutes'           //@class of Cart Routin
 import {FilesRoutes} from './routes/filesRoutes'         //@class of Files Routing
 import {GoogleRoutes} from './routes/googleRoutes'       //@class of Google Routing
 import {FacebookRoutes} from './routes/facebookRoutes'   //@class of Facebook Routing
+import {FooterRoutes} from './routes/footerRoutes'
 import swaggerUi from 'swagger-ui-express'               //swagger for creating documentation
 import './configFiles/passport/passport-setup(Google)'   //configure passport google strategy
 import './configFiles/passport/passport-setup(Facebook)' //configure passport facebook strategy
@@ -31,6 +32,7 @@ export class App{
     public routeFiles:FilesRoutes=new FilesRoutes()
     public routeGoogle:GoogleRoutes=new GoogleRoutes()
     public routeFacebook:FacebookRoutes=new FacebookRoutes()
+    public routeFooter:FooterRoutes=new FooterRoutes()
     
     //Initialisation
     constructor(){
@@ -43,6 +45,7 @@ export class App{
         this.routeFiles.routes(this.app)
         this.routeGoogle.routes(this.app)
         this.routeFacebook.routes(this.app)
+        this.routeFooter.routes(this.app)
     }
     
     //Configuration setup

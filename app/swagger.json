@@ -519,6 +519,15 @@
         "description": "API, for fetching all Top rating products.",
         "consumes": ["application/x-www-form-urlencoded"],
         "produces": ["application/json"],
+        "parameters":[
+          {
+            "name": "limit",
+            "description": "Enter Limit",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Operation Successful"
@@ -757,6 +766,23 @@
         "tags": ["Get Product Data"],
         "summary": "Customer can see all Products Images",
         "description": "API, for fetching all stored products Images.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/defaultTopRatingProduct": {
+      "get": {
+        "tags": ["Get Product Data"],
+        "summary": "Customer can see all Top Rating Products",
+        "description": "API, for fetching all Top rating products.",
         "consumes": ["application/x-www-form-urlencoded"],
         "produces": ["application/json"],
         "responses": {
@@ -1642,7 +1668,157 @@
           }
         }
       }
-    }
+    },
+    "/postData": {
+      "post": {
+        "tags": ["POST Company Website Footer Data"],
+        "summary": "Add your Webiste Footer.",
+        "description": "Here, we are posting our webiste footer data.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "about_company",
+            "description": "Enter About Company ",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "description": "Enter Email",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "phone_no",
+            "description": "Enter Phone No",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "address",
+            "description": "Enter Address",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/postTermsAndConditions": {
+      "post": {
+        "tags": ["POST Company Website Footer Data"],
+        "summary": "Terms and Conditions Files",
+        "description": "Here, API is used for uploading files for Company Terms and Conditions.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "fileName",
+            "description": "Upload File ",
+            "in": "formData",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/postGuarantee": {
+      "post": {
+        "tags": ["POST Company Website Footer Data"],
+        "summary": "Guarantee & return policy Files",
+        "description": "Here, API is used for uploading files for Company Guarantee & return policy.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "fileName",
+            "description": "Upload File ",
+            "in": "formData",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getData": {
+      "get": {
+        "tags": ["Get Company Website Footer Data"],
+        "summary": "Add your Webiste Footer.",
+        "description": "Here, we are getting our webiste footer data.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getTermsAndConditions": {
+      "get": {
+        "tags": ["Get Company Website Footer Data"],
+        "summary": "Get your Website Terms and Conditions.",
+        "description": "Here, we are getting our Website Terms and Conditions.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getGuarantee": {
+      "get": {
+        "tags": ["Get Company Website Footer Data"],
+        "summary": "Get your Website Guarantee & Return Policy.",
+        "description": "Here, we are getting our Website Guarantee & Return Policy.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    }       
   },
   "definitions": {
     "CustomerRegistration": {
@@ -1844,6 +2020,24 @@
       "required": ["fileName"],
       "properties": {
         "fileName": {
+          "type": "string"
+        }
+      }
+    },
+    "Website Footer": {
+      "type": "object",
+      "required": ["about_company","email","phone_no","address"],
+      "properties": {
+        "about_company": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone_no": {
+          "type": "string"
+        },
+        "address": {
           "type": "string"
         }
       }

@@ -27,7 +27,7 @@ var verifyToken = function (req, res, next) {
         });
     }
     else {
-        res.status(403).json({ success: "false", message: "Not a valid user" });
+        res.status(403).json({ success: false, message: "Not a valid user" });
     }
 };
 //Exporting verifyToken for other files to use it.

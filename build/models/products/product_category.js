@@ -9,6 +9,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose = __importStar(require("mongoose"));
 var Schema = mongoose.Schema;
+//Mongoose Schema for Product Category
 var ProductCategorySchema = new Schema({
     _id: {
         type: Number,
@@ -24,5 +25,7 @@ var ProductCategorySchema = new Schema({
         required: true
     }
 });
+//Product Category Model
 var ProdCategoryModel = mongoose.model('ProductCategory', ProductCategorySchema);
+//Available for controller
 exports.default = ProdCategoryModel;

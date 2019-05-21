@@ -24,7 +24,8 @@ import upload from '../configFiles/fileUpload'
 import verifyToken from '../configFiles/verifyTokenMiddleware'
 import postProductImages from '../controllers/products/postProducts/postProductImages'
 import getProductImages from '../controllers/products/getProducts/getProductImages'
-import topRatingImage from '../controllers/products/postProducts/postTopRatingImage'
+import topRatingProduct from '../controllers/products/postProducts/postTopRatingProduct'
+import gettopRatingProduct from '../controllers/products/getProducts/getTopRatingProduct'
 
 /**
  * Creating class for defining all Product routing
@@ -37,7 +38,10 @@ export class ProductRoutes{
 
           //Top Product Images
           app.route('/topRatingProduct')
-          .post(topRatingImage)
+          .post(topRatingProduct)
+
+          app.route('/defaultTopRatingProduct')
+          .get(gettopRatingProduct)
 
         //Add Product Images
         app.route('/productImages')

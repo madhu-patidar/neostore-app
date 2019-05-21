@@ -9,6 +9,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose = __importStar(require("mongoose"));
 var Schema = mongoose.Schema;
+//Mongoose Schema for Product Color
 var ProductColorSchema = new Schema({
     _id: {
         type: Number,
@@ -27,5 +28,7 @@ var ProductColorSchema = new Schema({
         required: true
     }
 });
+//Product Color Model
 var ProductColorModel = mongoose.model('ProductColor', ProductColorSchema);
+//Available for controller
 exports.default = ProductColorModel;

@@ -9,12 +9,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose = __importStar(require("mongoose"));
 var Schema = mongoose.Schema;
+//Mongoose Schema for Product List
 var ProductListSchema = new Schema({
     _id: {
         type: Number,
         required: true
     },
-    categ_id: {
+    category_id: {
         type: Number,
         ref: "ProductCategory"
     },
@@ -22,44 +23,46 @@ var ProductListSchema = new Schema({
         type: Number,
         ref: "ProductColor"
     },
-    prod_name: {
+    product_name: {
         type: String,
         required: true
     },
-    prod_image: {
+    product_image: {
         type: String,
         required: true
     },
-    prod_desc: {
+    product_desc: {
         type: String,
         required: true
     },
-    prod_rating: {
+    product_rating: {
         type: Number,
         required: true
     },
-    prod_producer: {
+    product_producer: {
         type: String,
         required: true
     },
-    prod_cost: {
+    product_cost: {
         type: Number,
         required: true
     },
-    prod_stock: {
+    product_stock: {
         type: Number,
         required: true
     },
-    prod_created_at: {
+    created_at: {
         type: Date,
         default: Date.now
     },
-    prod_dimension: {
+    product_dimension: {
         type: String
     },
-    prod_material: {
+    product_material: {
         type: String
     }
 });
+//Product List Model
 var ProductListModel = mongoose.model('ProductList', ProductListSchema);
+//Available for controller
 exports.default = ProductListModel;
