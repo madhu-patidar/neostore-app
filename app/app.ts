@@ -24,7 +24,7 @@ import cookieSession from 'cookie-session'               //maintaining cookie se
 * Create a main class which is managing all resopnsibilities of Application
 * @class App
 */
-export class App{
+ class App{
     public app:express.Application
     public routeCustomer:CustomerRoutes=new CustomerRoutes()
     public routeProduct:ProductRoutes=new ProductRoutes()
