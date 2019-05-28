@@ -6,8 +6,9 @@ const getAllCartData=(req:Request,res:Response)=>{
   
     //Fetch data first from Product collection then category and color collection
     CartModel.find()
-  .populate([{ path: 'product_id', populate: { path: 'category_id' }}])
+  .populate([{ path: 'product_id', populate: { path: 'category_id'}}])
   .populate([{ path: 'product_id', populate: { path: 'color_id' }}])
+  .populate([{ path: 'product_id', populate: { path: '_id' }}])
   .exec((err,product)=>{     
     if(err)
     res.status(404).json({success:false,error_message:err})

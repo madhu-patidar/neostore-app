@@ -26,6 +26,8 @@ import postProductImages from '../controllers/products/postProducts/postProductI
 import getProductImages from '../controllers/products/getProducts/getProductImages'
 import topRatingProduct from '../controllers/products/postProducts/postTopRatingProduct'
 import gettopRatingProduct from '../controllers/products/getProducts/getTopRatingProduct'
+import postProductSubImages from '../controllers/products/postProducts/post_productSubImages'
+import getAllProductSubImages from '../controllers/products/getProducts/getAllProductSubImages'
 
 /**
  * Creating class for defining all Product routing
@@ -47,6 +49,10 @@ export class ProductRoutes{
         app.route('/productImages')
         .post(upload.single('product_image'),postProductImages)
 
+        //Add Product Sub Images
+        app.route('/productSubImages')
+        .post(upload.array('product_subImages',12),postProductSubImages)
+
         //Add Product Category
         app.route('/category')
         .post(postProductCategory)
@@ -62,6 +68,10 @@ export class ProductRoutes{
         //Get all Products Images
         app.route('/getAllProductsImages')
         .get(getProductImages)
+
+        //Get all Products Sub Images
+        app.route('/getAllProductsSubImages')
+        .get(getAllProductSubImages)
 
         //Get all Products
         app.route('/getAllProducts')

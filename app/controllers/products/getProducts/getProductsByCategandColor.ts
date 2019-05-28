@@ -7,6 +7,7 @@ let color_id:number = req.params.color_id
 let category_id:number = req.params.category_id
 
 ProductListModel.find({color_id:color_id,category_id:category_id})
+.populate('_id')
 .populate('category_id')
 .populate('color_id')
 .exec((err,product)=>{

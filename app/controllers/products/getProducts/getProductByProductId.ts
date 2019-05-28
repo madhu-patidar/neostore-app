@@ -6,6 +6,7 @@ const getProductsByProductId=(req:Request,res:Response)=>{
 let product_id:number = req.params.product_id
 
 ProductListModel.find({_id:product_id})
+.populate('_id')
 .populate('category_id')
 .populate('color_id')
 .exec((err,product)=>{

@@ -6,6 +6,7 @@ const getProductsByColor=(req:Request,res:Response)=>{
 let color_id:number = req.params.color_id
 
 ProductListModel.find({color_id:color_id})
+.populate('_id')
 .populate('category_id')
 .populate('color_id')
 .exec((err,product)=>{     

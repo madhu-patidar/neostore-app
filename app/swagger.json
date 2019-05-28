@@ -554,18 +554,44 @@
             "type": "integer"
           },
           {
-            "name": "category_name",
+            "name": "product_subImages",
             "description": "Enter Category Name",
             "in": "formData",
             "required": true,
-            "type": "string"
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
           },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/productSubImages": {
+      "post": {
+        "tags": ["Post Product Data"],
+        "summary": "(Table, Chair, Bed, Sofa)",
+        "description": "API, for adding categories of product.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
           {
-            "name": "product_image",
-            "description": "Enter Product Image",
+            "name": "_id",
+            "description": "Enter Product Id",
             "in": "formData",
             "required": true,
-            "type": "file"
+            "type": "integer"
+          },
+          {
+            "name": "product_subImages",
+            "description": "Upload Sub Images",
+            "in": "formData",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
@@ -766,6 +792,23 @@
         "tags": ["Get Product Data"],
         "summary": "Customer can see all Products Images",
         "description": "API, for fetching all stored products Images.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getAllProductsSubImages": {
+      "get": {
+        "tags": ["Get Product Data"],
+        "summary": "Customer can see all Products Sub-Images",
+        "description": "API, for fetching all stored products sub-Images.",
         "consumes": ["application/x-www-form-urlencoded"],
         "produces": ["application/json"],
         "responses": {
