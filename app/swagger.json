@@ -2131,7 +2131,7 @@
     },
     "Cart": {
       "type": "object",
-      "required": ["customer_id", "product_id","quantity"],
+      "required": ["customer_id", "product_id","quantity","total_cost"],
       "properties": {
         "customer_id": {
           "type": "integer"
@@ -2140,6 +2140,36 @@
           "type": "integer"
         },
         "quantity": {
+          "type": "integer"
+        },
+        "total_cost":{
+          "type":"string"
+        }
+      }
+    },
+    "Order": {
+      "type": "object",
+      "required": ["customer_id", "order_id" ,"product_id","quantity","status","isDelivered","total_cost"],
+      "properties": {
+        "customer_id": {
+          "type": "integer"
+        },
+        "order_id": {
+          "type": "string"
+        },
+        "product_id": {
+          "type": "integer"
+        },
+        "quantity": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "string"
+        },
+        "isDelivered": {
+          "type": "boolean"
+        },
+        "total_cost": {
           "type": "integer"
         }
       }
