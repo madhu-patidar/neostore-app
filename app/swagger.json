@@ -2170,7 +2170,7 @@
           "type": "boolean"
         },
         "total_cost": {
-          "type": "integer"
+          "type": "string"
         }
       }
     },
