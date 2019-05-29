@@ -996,8 +996,8 @@
     "/getProductBySearchText/{text}": {
       "get": {
         "tags": ["Get Product Data"],
-        "summary": "Filter on Products in terms of product id.",
-        "description": "Here, Customer can access the product id.",
+        "summary": "Filter on Products in terms of search text.",
+        "description": "Here, Customer can access the product by its name.",
         "consumes": ["application/x-www-form-urlencoded"],
         "produces": ["application/json"],
         "parameters": [
