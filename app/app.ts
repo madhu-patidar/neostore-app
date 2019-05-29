@@ -8,6 +8,7 @@ import {FilesRoutes} from './routes/filesRoutes'         //@class of Files Routi
 import {GoogleRoutes} from './routes/googleRoutes'       //@class of Google Routing
 import {FacebookRoutes} from './routes/facebookRoutes'   //@class of Facebook Routing
 import {FooterRoutes} from './routes/footerRoutes'
+import {OrderRoutes} from './routes/orderRoutes'
 import swaggerUi from 'swagger-ui-express'               //swagger for creating documentation
 import './configFiles/passport/passport-setup(Google)'   //configure passport google strategy
 import './configFiles/passport/passport-setup(Facebook)' //configure passport facebook strategy
@@ -33,6 +34,7 @@ import cookieSession from 'cookie-session'               //maintaining cookie se
     public routeGoogle:GoogleRoutes=new GoogleRoutes()
     public routeFacebook:FacebookRoutes=new FacebookRoutes()
     public routeFooter:FooterRoutes=new FooterRoutes()
+    public routeOrder:OrderRoutes=new OrderRoutes()
     
     //Initialisation
     constructor(){
@@ -46,6 +48,7 @@ import cookieSession from 'cookie-session'               //maintaining cookie se
         this.routeGoogle.routes(this.app)
         this.routeFacebook.routes(this.app)
         this.routeFooter.routes(this.app)
+        this.routeOrder.routes(this.app)
     }
     
     //Configuration setup

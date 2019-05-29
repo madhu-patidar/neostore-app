@@ -38,11 +38,11 @@ export class ProductRoutes{
     public routes(app:any):void{
 
 
-          //Top Product Images
-          app.route('/topRatingProduct')
+        //Top Product Images
+        app.route('/topRatingProduct')
           .post(topRatingProduct)
 
-          app.route('/defaultTopRatingProduct')
+        app.route('/defaultTopRatingProduct')
           .get(gettopRatingProduct)
 
         //Add Product Images

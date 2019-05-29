@@ -14,6 +14,9 @@ const cartSchema=new Schema({
     quantity:{
         type:String,
         required:true
+    },
+    total_cost:{
+        type:String,
     }
 })
 

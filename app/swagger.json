@@ -1861,7 +1861,67 @@
           }
         }
       }
-    }       
+    },
+    "/postCustomerOrder": {
+      "post": {
+        "tags": ["Post Customer Order Data"],
+        "summary": "(Table, Chair, Bed, Sofa)",
+        "description": "API, for adding Order from cart.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getCustomerOrder": {
+      "get": {
+        "tags": ["Get Customer Order Data"],
+        "summary": "(Table, Chair, Bed, Sofa)",
+        "description": "API, for adding Order from cart.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getCustomerOrderInDetail/{order_id}": {
+      "get": {
+        "tags": ["Get Customer Order Data"],
+        "summary": "(Table, Chair, Bed, Sofa)",
+        "description": "API, for adding Order from cart.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "order_id",
+            "description": "Enter Order number",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    }         
   },
   "definitions": {
     "CustomerRegistration": {

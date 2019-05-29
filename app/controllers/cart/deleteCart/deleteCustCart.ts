@@ -1,5 +1,6 @@
 import {Request,Response} from 'express'
 import CartModel from '../../../models/cart/cartModel'
+import OrderModel from '../../../models/order/orderModel'
 
 //Update Products by id
 const deleteCartByCustId=(req:Request,res:Response)=>{
@@ -24,10 +25,17 @@ const deleteCartByCustId=(req:Request,res:Response)=>{
                   CartModel.deleteOne({customer_id:customer_id,product_id:product_id},(err)=>{
                         if(err)
                         res.status(404).json({success:false,error_message:err})
-                    })
+                        else{
+                          OrderModel.deleteOne({customer_id:customer_id,product_id:product_id})
+                          .then(()=>{
+                          })
+                          res.status(200).json({success:true,message:"Product Deleted"})
+                        
+                        }
+                      })
                                
                           
-                res.status(200).json({success:true,message:"Product Deleted"})
+                
               }
               else{
                   res.status(404).json({success:false,message:"Please enter correct data"})
