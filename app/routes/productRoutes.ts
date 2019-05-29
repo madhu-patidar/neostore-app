@@ -28,6 +28,7 @@ import topRatingProduct from '../controllers/products/postProducts/postTopRating
 import gettopRatingProduct from '../controllers/products/getProducts/getTopRatingProduct'
 import postProductSubImages from '../controllers/products/postProducts/post_productSubImages'
 import getAllProductSubImages from '../controllers/products/getProducts/getAllProductSubImages'
+import getAllProductsBySearchText from '../controllers/products/getProducts/getProductsBySearchText'
 
 /**
  * Creating class for defining all Product routing
@@ -76,6 +77,10 @@ export class ProductRoutes{
         //Get all Products
         app.route('/getAllProducts')
         .get(getProducts)
+
+        //Get Products by Search Text
+        app.route('/getProductBySearchText/:text')
+        .get(getAllProductsBySearchText)
 
         //Get Products By its category
         app.route('/getProductByCateg/:category_id')

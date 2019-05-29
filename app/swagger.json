@@ -993,6 +993,32 @@
         }
       }
     },
+    "/getProductBySearchText/{text}": {
+      "get": {
+        "tags": ["Get Product Data"],
+        "summary": "Filter on Products in terms of product id.",
+        "description": "Here, Customer can access the product id.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "text",
+            "description": "Enter Text",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
     "/getProductByProdId/{product_id}": {
       "get": {
         "tags": ["Get Product Data"],
