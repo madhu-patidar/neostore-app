@@ -2077,54 +2077,54 @@
       "type": "object",
       "required": [
         "_id",
-        "categ_id",
+        "category_id",
         "color_id",
-        "prod_name",
-        "prod_image",
-        "prod_desc",
-        "prod_rating",
-        "prod_producer",
-        "prod_cost",
-        "prod_stock"
+        "product_name",
+        "product_image",
+        "product_desc",
+        "product_rating",
+        "product_producer",
+        "product_cost",
+        "product_stock"
       ],
       "properties": {
         "_id": {
           "type": "integer"
         },
-        "categ_id": {
+        "category_id": {
           "type": "integer"
         },
         "color_id": {
           "type": "integer"
         },
-        "prod_name": {
+        "product_name": {
           "type": "string"
         },
-        "prod_image": {
+        "product_image": {
           "type": "string"
         },
-        "prod_desc": {
+        "product_desc": {
           "type": "string"
         },
-        "prod_rating": {
+        "product_rating": {
           "type": "integer"
         },
-        "prod_producer": {
+        "product_producer": {
           "type": "string"
         },
-        "prod_cost": {
+        "product_cost": {
           "type": "integer"
         },
-        "prod_stock": {
+        "product_stock": {
           "type": "integer"
         },
-        "prod_created_at": {
+        "created_at": {
           "type": "date"
         },
-        "prod_dimension": {
+        "product_dimension": {
           "type": "string"
         },
-        "prod_material": {
+        "product_material": {
           "type": "string"
         }
       }
@@ -2171,6 +2171,9 @@
         },
         "total_cost": {
           "type": "string"
+        },
+        "created_at": {
+          "type": "date"
         }
       }
     },
