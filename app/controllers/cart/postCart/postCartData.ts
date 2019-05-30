@@ -19,6 +19,7 @@ const cartData = (req:Request,res:Response)=>{
                             customer_id:parseInt(req.body.id),
                             product_id:product_id,
                             quantity:quantity,
+                            product_cost:result[0].product_cost,
                             total_cost:result[0].product_cost*quantity
                         })
                         newCart.save()

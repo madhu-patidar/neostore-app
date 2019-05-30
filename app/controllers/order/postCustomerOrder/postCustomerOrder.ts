@@ -8,7 +8,7 @@ const postCustomerOrder = (req:Request,res:Response)=>{
     let isDelivered:boolean=false
     let count:any=0
     let order_id:any=0
-    CartModel.find({customer_id:customer_id}).select('product_id').select('quantity').select('total_cost')
+    CartModel.find({customer_id:customer_id})
     .then((cart:any)=>{
         if(cart.length!==0){
             OrderModel.aggregate([{
@@ -35,6 +35,7 @@ const postCustomerOrder = (req:Request,res:Response)=>{
                                 customer_id:customer_id,
                                 product_id:cart[i].product_id,
                                 quantity:cart[i].quantity,
+                                product_cost:cart[i].product_cost,
                                 status:status,
                                 isDelivered:isDelivered,
                                 total_cost:cart[i].total_cost

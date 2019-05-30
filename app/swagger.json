@@ -1947,7 +1947,67 @@
           }
         }
       }
-    }         
+    },
+    "/deleteAllCustomerOrders": {
+      "delete": {
+        "tags": ["Delete Customer Order Data"],
+        "summary": "Admin can delete all added orders.",
+        "description": "API, for deleting all stored Orders in one time.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/deleteOrderByCustomerId": {
+      "delete": {
+        "tags": ["Delete Customer Order Data"],
+        "summary": "Admin can delete customer orders.",
+        "description": "API, for deleting customer stored Orders in one time.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/deleteOrderByCustomerAndOrderId": {
+      "delete": {
+        "tags": ["Delete Customer Order Data"],
+        "summary": "Admin can delete customer orders.",
+        "description": "API, for deleting customer stored Orders in one time.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "order_id",
+            "description": "Enter Order number",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    }       
   },
   "definitions": {
     "CustomerRegistration": {
@@ -2142,6 +2202,9 @@
         "quantity": {
           "type": "integer"
         },
+        "product_cost": {
+          "type": "integer"
+        },
         "total_cost":{
           "type":"string"
         }
@@ -2161,6 +2224,9 @@
           "type": "integer"
         },
         "quantity": {
+          "type": "integer"
+        },
+        "product_cost": {
           "type": "integer"
         },
         "status": {

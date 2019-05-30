@@ -19,6 +19,9 @@ const orderSchema=new Schema({
         type:Number,
         required:true
     },
+    product_cost:{
+        type:Number
+    },
     status:{
         type:String,
         required:true

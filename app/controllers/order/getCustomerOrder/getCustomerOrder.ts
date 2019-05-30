@@ -24,11 +24,11 @@ const getCustomerOrder = (req: Request, res: Response) => {
             onTheWay = onTheWay + 1;
           }
           order_details.push({
-            customer_id: result[i].customer_id,
             order_id: result[i].order_id
           });
         }
         order_details.push({
+          customer_id:customer_id,
           orders_shipped: shipped,
           orders_onTheWay: onTheWay
         });
