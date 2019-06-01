@@ -4,7 +4,8 @@ import Joi from "joi";
 import bcrypt from "bcryptjs";
 import Customer from "../../../models/customer/customer_model";
 import connection from "../../../configFiles/sequelize-postgres";
-
+import sendEmail from '../../../configFiles/sendEmail'
+import output from '../../../configFiles/welcome-message'
 
 
 //Register New Customer
@@ -12,10 +13,14 @@ const insertCustomerData = (req: Request, res: Response) => {
   let pass: string = req.body.pass;
   let confirm_pass: string = req.body.confirmPass;
   let hash_pass: string;
+  let email:string=req.body.email
   if (!req.body)
     res
       .status(404)
       .json({ success: false, message: "Body can not be blank" });
+
+   
+
   const schema = Joi.object().keys({
     u_email: Joi.string()
       .email({ minDomainAtoms: 2 })
@@ -68,6 +73,17 @@ const insertCustomerData = (req: Request, res: Response) => {
                           gender: req.body.gender
                         })
                           .then((result) => {
+                           if(result){
+
+                            // Send Email
+                            sendEmail({
+                              from: "sgshubham04@gmail.com",
+                              to: email,
+                              cc:'sgshubham04@gmail.com',
+                              subject: 'Welcome Greetings',
+                              html: output
+                          });
+
                             res
                               .status(200)
                               .json({
@@ -75,6 +91,7 @@ const insertCustomerData = (req: Request, res: Response) => {
                                 message:
                                   "New Customer was registered successfully"
                               });
+                            }
                           })
                           .catch((err: { errors: { message: string }[] }) => {
                             res

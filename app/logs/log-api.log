@@ -1,0 +1,5 @@
+dbeaa5b4-641b-4e2f-8c25-ac82e9149b59 GET /getAllCustProfile 81.396
+[0mGET /getAllCustProfile [36m304 [0m92.644 ms - -[0m
+::1 - - [01/Jun/2019:10:39:55 +0000] "GET /getAllCustProfile HTTP/1.1" 304 - "http://localhost:5000/swagger/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36"
+::1 - - [01/Jun/2019:11:37:12 +0000] "POST /register HTTP/1.1" 200 69 "http://localhost:5000/swagger/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36"
+::1 - - [01/Jun/2019:11:38:47 +0000] "POST /register HTTP/1.1" 200 69 "http://localhost:5000/swagger/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36"

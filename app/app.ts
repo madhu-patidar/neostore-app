@@ -19,6 +19,8 @@ import {URL} from './configFiles/environment_variables'  //use environment varia
 import passport from 'passport'                          //use passport for handling different strategies
 import {keys} from './configFiles/passport/socialkeys'   //keys which are containing credentials for passport strategies
 import cookieSession from 'cookie-session'               //maintaining cookie session
+import morgan from 'morgan' 
+import accessLogStream from './configFiles/morgan-setup'
 
 
 /**
@@ -60,14 +62,16 @@ import cookieSession from 'cookie-session'               //maintaining cookie se
             maxAge:24*60*60*1000,
 	        keys:[keys.session.cookieKey]
         }))
-        
         this.app.use(passport.initialize())
-       this.app.use(passport.session())
+        this.app.use(passport.session())
         this.app.use('/swagger',swaggerUi.serve,swaggerUi.setup(swaggerDocument))
         
         //Make public upload directory to the front-end
         const publicDir=path.join(__dirname,'../uploads')
         this.app.use(express.static(publicDir))
+
+        this.app.use(morgan('combined',{stream:accessLogStream}))
+           
     }
 
     //Mongoose Connection Setup
