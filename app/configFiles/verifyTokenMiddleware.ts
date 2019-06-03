@@ -1,6 +1,7 @@
 //Setup for verify token which is sent by logged-in user
 import {Request,Response,NextFunction} from 'express'
 import * as jwt from 'jsonwebtoken'
+import { auth } from 'firebase';
 
 const verifyToken=(req:Request,res:Response,next:NextFunction)=>{ 
   //const token=<any>req.headers['authorization'];
@@ -14,6 +15,7 @@ const verifyToken=(req:Request,res:Response,next:NextFunction)=>{
          jwt.verify(token,'secretkey',(err:any,authdata:any) => {
           if(!err){
             req.body.id=authdata.id
+            req.body.email=authdata.email
             next()
           }
           else{

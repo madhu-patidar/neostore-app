@@ -29,6 +29,9 @@ import gettopRatingProduct from '../controllers/products/getProducts/getTopRatin
 import postProductSubImages from '../controllers/products/postProducts/post_productSubImages'
 import getAllProductSubImages from '../controllers/products/getProducts/getAllProductSubImages'
 import getAllProductsBySearchText from '../controllers/products/getProducts/getProductsBySearchText'
+import sortByDescending from '../controllers/products/getProducts/sortProductsByDescending'
+import sortByAscending from '../controllers/products/getProducts/sortProductsByAscending'
+
 
 /**
  * Creating class for defining all Product routing
@@ -65,6 +68,14 @@ export class ProductRoutes{
         //Add Product 
         app.route('/product')
         .post(upload.single('product_image'),postProductList)
+
+         //Get all Products in Descending Order
+         app.route('/getAllProductsInDescending/:customer_id')
+         .get(verifyToken,sortByDescending)
+
+         //Get all Products in Ascending Order
+         app.route('/getAllProductsInAscending/:customer_id')
+         .get(verifyToken,sortByAscending)
 
         //Get all Products Images
         app.route('/getAllProductsImages')

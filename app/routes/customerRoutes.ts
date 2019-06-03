@@ -4,6 +4,9 @@ import customerAuthentication from '../controllers/customer/postCustomer/post_cu
 import updateProfile from '../controllers/customer/updateCustomer/update_customerProfile'
 import addAddress from '../controllers/customer/postCustomer/post_custAddress'
 import deleteAddress from '../controllers/customer/deleteCustomer/delete_OneCustAddress'
+import changePassword from '../controllers/customer/postCustomer/changePassword'
+import forgotPassword from '../controllers/customer/postCustomer/forgotPassword'
+import recoverPassword from '../controllers/customer/postCustomer/recoverForgotPassword'
 import getCustomerProfile from '../controllers/customer/getCustomer/get_OneCustProfile'
 import getAllCustomerProfile from '../controllers/customer/getCustomer/get_AllCustProfile'
 import getCustomerAddress from '../controllers/customer/getCustomer/get_OneCustAddress'
@@ -41,6 +44,18 @@ export class CustomerRoutes{
         //Add Customer Address
         app.route('/address')
         .post(verifyToken,addAddress)
+
+         //Change Customer Password
+         app.route('/changePassword')
+         .post(verifyToken,changePassword)
+
+         //Forgot Password
+         app.route('/forgotPassword')
+         .post(forgotPassword)
+
+         //Change Forgot Password
+         app.route('/recoverPassword')
+         .post(verifyToken,recoverPassword)
 
         //Delete Customer Address
         app.route('/deladdress')

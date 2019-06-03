@@ -4,22 +4,18 @@ import Joi from "joi";
 import bcrypt from "bcryptjs";
 import Customer from "../../../models/customer/customer_model";
 import connection from "../../../configFiles/sequelize-postgres";
-import sendEmail from '../../../configFiles/sendEmail'
-import output from '../../../configFiles/welcome-message'
-
+import sendEmail from "../../../configFiles/sendEmail";
+import {output} from "../../../configFiles/welcome-message";
 
 //Register New Customer
 const insertCustomerData = (req: Request, res: Response) => {
   let pass: string = req.body.pass;
   let confirm_pass: string = req.body.confirmPass;
   let hash_pass: string;
-  let email:string=req.body.email
-  if (!req.body)
-    res
-      .status(404)
-      .json({ success: false, message: "Body can not be blank" });
-
-   
+  let email: string = req.body.email;
+  if (req.body == null) {
+    res.status(404).json({ success: false, message: "Body can not be blank" });
+  }
 
   const schema = Joi.object().keys({
     u_email: Joi.string()
@@ -64,29 +60,26 @@ const insertCustomerData = (req: Request, res: Response) => {
                     })*/
                 connection.sync().then(() => {
                   Customer.findOne({ where: { email: req.body.email } })
-                    .then((result) => {
-                      if (result==null) {
-                       return Customer.create({
+                    .then(result => {
+                      if (result == null) {
+                        return Customer.create({
                           email: req.body.email,
                           password: hash_pass,
                           phone_no: req.body.phone_no,
                           gender: req.body.gender
                         })
-                          .then((result) => {
-                           if(result){
+                          .then(result => {
+                            if (result) {
+                              // Send Email
+                              sendEmail({
+                                from: "sgshubham04@gmail.com",
+                                to: email,
+                                cc: "sgshubham04@gmail.com",
+                                subject: "Welcome Greetings",
+                                html: output
+                              });
 
-                            // Send Email
-                            sendEmail({
-                              from: "sgshubham04@gmail.com",
-                              to: email,
-                              cc:'sgshubham04@gmail.com',
-                              subject: 'Welcome Greetings',
-                              html: output
-                          });
-
-                            res
-                              .status(200)
-                              .json({
+                              res.status(200).json({
                                 success: true,
                                 message:
                                   "New Customer was registered successfully"
@@ -94,43 +87,34 @@ const insertCustomerData = (req: Request, res: Response) => {
                             }
                           })
                           .catch((err: { errors: { message: string }[] }) => {
-                            res
-                              .status(404)
-                              .json({
-                                success: false,
-                                message: "Something went wrong",
-                              });
+                            res.status(404).json({
+                              success: false,
+                              message: "Something went wrong"
+                            });
                           });
                       } else {
-                        res
-                          .status(404)
-                          .json({
-                            success: false,
-                            message: "This email is already registered with us."
-                          });
+                        res.status(404).json({
+                          success: false,
+                          message: "This email is already registered with us."
+                        });
                       }
                     })
                     .catch((err: { errors: { message: string }[] }) => {
-                      res
-                        .status(404)
-                        .json({
-                          success: false,
-                          message: "Something went wrong",
-                          error_message: err.errors[0].message
-                        });
+                      res.status(404).json({
+                        success: false,
+                        message: "Something went wrong",
+                        error_message: err.errors[0].message
+                      });
                     });
                 });
-              
               }
             });
           });
         } else {
-          res
-            .status(404)
-            .json({
-              success: false,
-              message: "Password and confirm passwod should be same"
-            });
+          res.status(404).json({
+            success: false,
+            message: "Password and confirm passwod should be same"
+          });
         }
       }
     }

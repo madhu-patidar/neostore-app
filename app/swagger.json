@@ -155,6 +155,105 @@
         }
       }
     },
+    "/changePassword": {
+      "post": {
+        "tags": ["POST Customer Data"],
+        "summary": "Change your password.",
+        "description": "Here, Customer can change his/her password.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "oldPass",
+            "description": "Enter Old Password",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "newPass",
+            "description": "Enter New Password",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "confirmPass",
+            "description": "Enter Password again",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/recoverPassword": {
+      "post": {
+        "tags": ["POST Customer Data"],
+        "summary": "Recover your password.",
+        "description": "Here, Customer can recover his/her password.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "newPass",
+            "description": "Enter New Password",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "confirmPass",
+            "description": "Enter Password again",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/forgotPassword": {
+      "post": {
+        "tags": ["POST Customer Data"],
+        "summary": "Forgot password.",
+        "description": "Here, Customer can create his/her new password, if he/she has forgotten.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "email",
+            "description": "Enter Your registered email",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
     "/getCustProfile": {
       "get": {
         "tags": ["Get Customer Data"],
@@ -794,6 +893,58 @@
         "description": "API, for fetching all stored products Images.",
         "consumes": ["application/x-www-form-urlencoded"],
         "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getAllProductsInDescending/{customer_id}": {
+      "get": {
+        "tags": ["Get Product Data"],
+        "summary": "Customer can see all Products In Descending Order",
+        "description": "API, for fetching all stored products.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "customer_id",
+            "description": "Enter Customer Id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          },
+          "404": {
+            "description": "Operation Failed"
+          }
+        }
+      }
+    },
+    "/getAllProductsInAscending/{customer_id}": {
+      "get": {
+        "tags": ["Get Product Data"],
+        "summary": "Customer can see all Products In Ascending Order",
+        "description": "API, for fetching all stored products.",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "customer_id",
+            "description": "Enter Customer Id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Operation Successful"

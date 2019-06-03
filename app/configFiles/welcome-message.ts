@@ -1,5 +1,5 @@
    //Email Body
-   const output = `
+  export const output = `
    <p><font color="red" size='6'><strong><center>NeoSTORE (Shopping Platform)</center></strong></font></p>
    <br>
    <br>
@@ -15,4 +15,12 @@
    <p><font color="black" size='3'>Thank you for joining us.</font></p>
    <img  src="https://d1hbpr09pwz0sk.cloudfront.net/logo_url/neosoft-technologies-377c095a" height=50 width=140>
  `;
-export default output
+
+ export const output1=`
+ <p><font color="black" size='4'><strong>Dear Customer, you changed your password successfully.</strong></font></p>
+ <br>
+   <br>
+   <br>
+   <p><font color="black" size='3'>Thank you for joining us.</font></p>
+   <img  src="https://d1hbpr09pwz0sk.cloudfront.net/logo_url/neosoft-technologies-377c095a" height=50 width=140>
+ `

@@ -11,16 +11,13 @@ const pad =(num:number)=> {
     return (num > 9 ? "" : "0") + num;
 }
 
-const generator=(time:any, index:number)=> {
-    if (!time){ 
-        return "log-api.log";
-    }
-    var month = time.getFullYear() + "" + pad(time.getMonth() + 1);
-    var day = pad(time.getDate());
-    var hour = pad(time.getHours());
-    var minute = pad(time.getMinutes());
- 
-    return month + "/" + month + day + "-" + hour + minute + "-" + index + "-log-api.log";
+const generator=()=> {
+
+    let d = new Date();
+    let month = d.toLocaleString('en-us', { month: 'long' });
+    let year = d.getFullYear()
+
+    return month+"-"+year + "/" + d.toDateString() + "-" + "-log-api.log";
 }
  
 // create a rotating write stream
