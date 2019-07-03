@@ -8,6 +8,7 @@ var product_list_1 = __importDefault(require("../../../models/products/product_l
 var getProductsByColor = function (req, res) {
     var color_id = req.params.color_id;
     product_list_1.default.find({ color_id: color_id })
+        .populate('_id')
         .populate('category_id')
         .populate('color_id')
         .exec(function (err, product) {

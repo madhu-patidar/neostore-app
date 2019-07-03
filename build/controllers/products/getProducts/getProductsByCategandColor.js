@@ -9,6 +9,7 @@ var getProductsByColorandCateg = function (req, res) {
     var color_id = req.params.color_id;
     var category_id = req.params.category_id;
     product_list_1.default.find({ color_id: color_id, category_id: category_id })
+        .populate('_id')
         .populate('category_id')
         .populate('color_id')
         .exec(function (err, product) {

@@ -13,7 +13,8 @@ var Schema = mongoose.Schema;
 var ProductListSchema = new Schema({
     _id: {
         type: Number,
-        required: true
+        required: true,
+        ref: 'ProductSubImages'
     },
     category_id: {
         type: Number,

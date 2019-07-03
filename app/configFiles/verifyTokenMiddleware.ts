@@ -1,7 +1,6 @@
 //Setup for verify token which is sent by logged-in user
 import {Request,Response,NextFunction} from 'express'
 import * as jwt from 'jsonwebtoken'
-import { auth } from 'firebase';
 
 const verifyToken=(req:Request,res:Response,next:NextFunction)=>{ 
   //const token=<any>req.headers['authorization'];

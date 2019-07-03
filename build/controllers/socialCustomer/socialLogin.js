@@ -17,8 +17,8 @@ var loginBySocial = function (req, res) {
             gender: req.user.gender == null ? '' : req.user.gender,
             dob: req.user.dob == null ? '' : req.user.dob,
             profile_img: req.user.profile_img == null ? '' : req.user.profile_img,
-            created_at: req.user.createdAt == null ? '' : req.user.createdAt,
-            updated_at: req.user.updatedAt == null ? '' : req.user.updatedAt,
+            createdAt: req.user.createdAt == null ? '' : req.user.createdAt,
+            updatedAt: req.user.updatedAt == null ? '' : req.user.updatedAt,
             token_value: token
         });
         res.status(200).json({ success: true, data: customer });

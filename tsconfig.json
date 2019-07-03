@@ -12,7 +12,7 @@
     "strictNullChecks":false
   },
   "include": [
-    "app/**/*.ts", "index.d.ts", "app/models/customer/customer_model.ts"
+    "app/**/*.ts", "index.d.ts", "app/models/customer/customer_model.ts", "web.ts"
   ],
   "exclude": [
     "node_modules"

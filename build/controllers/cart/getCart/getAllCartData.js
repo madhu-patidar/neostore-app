@@ -10,6 +10,7 @@ var getAllCartData = function (req, res) {
     cartModel_1.default.find()
         .populate([{ path: 'product_id', populate: { path: 'category_id' } }])
         .populate([{ path: 'product_id', populate: { path: 'color_id' } }])
+        .populate([{ path: 'product_id', populate: { path: '_id' } }])
         .exec(function (err, product) {
         if (err)
             res.status(404).json({ success: false, error_message: err });

@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var sequelize_postgres_1 = __importDefault(require("../../configFiles/sequelize-postgres"));
 var sequelize_1 = require("sequelize");
+// TS can't derive a proper class definition from a `.define` call, therefor we need to cast here.
 var Customer = sequelize_postgres_1.default.define("customer", {
     customer_id: {
         type: sequelize_1.DataTypes.INTEGER,

@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var cartModel_1 = __importDefault(require("../../../models/cart/cartModel"));
+var orderModel_1 = __importDefault(require("../../../models/order/orderModel"));
 //Update Products by id
 var deleteCartByCustId = function (req, res) {
     var customer_id = parseInt(req.body.customer_id);
@@ -24,8 +25,13 @@ var deleteCartByCustId = function (req, res) {
                         cartModel_1.default.deleteOne({ customer_id: customer_id, product_id: product_id }, function (err) {
                             if (err)
                                 res.status(404).json({ success: false, error_message: err });
+                            else {
+                                orderModel_1.default.deleteOne({ customer_id: customer_id, product_id: product_id })
+                                    .then(function () {
+                                });
+                                res.status(200).json({ success: true, message: "Product Deleted" });
+                            }
                         });
-                        res.status(200).json({ success: true, message: "Product Deleted" });
                     }
                     else {
                         res.status(404).json({ success: false, message: "Please enter correct data" });

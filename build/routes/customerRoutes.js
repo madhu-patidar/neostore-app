@@ -9,6 +9,9 @@ var post_custAuthentication_1 = __importDefault(require("../controllers/customer
 var update_customerProfile_1 = __importDefault(require("../controllers/customer/updateCustomer/update_customerProfile"));
 var post_custAddress_1 = __importDefault(require("../controllers/customer/postCustomer/post_custAddress"));
 var delete_OneCustAddress_1 = __importDefault(require("../controllers/customer/deleteCustomer/delete_OneCustAddress"));
+var changePassword_1 = __importDefault(require("../controllers/customer/postCustomer/changePassword"));
+var forgotPassword_1 = __importDefault(require("../controllers/customer/postCustomer/forgotPassword"));
+var recoverForgotPassword_1 = __importDefault(require("../controllers/customer/postCustomer/recoverForgotPassword"));
 var get_OneCustProfile_1 = __importDefault(require("../controllers/customer/getCustomer/get_OneCustProfile"));
 var get_AllCustProfile_1 = __importDefault(require("../controllers/customer/getCustomer/get_AllCustProfile"));
 var get_OneCustAddress_1 = __importDefault(require("../controllers/customer/getCustomer/get_OneCustAddress"));
@@ -38,6 +41,15 @@ var CustomerRoutes = /** @class */ (function () {
         //Add Customer Address
         app.route('/address')
             .post(verifyTokenMiddleware_1.default, post_custAddress_1.default);
+        //Change Customer Password
+        app.route('/changePassword')
+            .post(verifyTokenMiddleware_1.default, changePassword_1.default);
+        //Forgot Password
+        app.route('/forgotPassword')
+            .post(forgotPassword_1.default);
+        //Change Forgot Password
+        app.route('/recoverPassword')
+            .post(verifyTokenMiddleware_1.default, recoverForgotPassword_1.default);
         //Delete Customer Address
         app.route('/deladdress')
             .delete(verifyTokenMiddleware_1.default, delete_OneCustAddress_1.default);

@@ -19,6 +19,7 @@ var verifyToken = function (req, res, next) {
         jwt.verify(token, 'secretkey', function (err, authdata) {
             if (!err) {
                 req.body.id = authdata.id;
+                req.body.email = authdata.email;
                 next();
             }
             else {

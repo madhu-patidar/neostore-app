@@ -155,6 +155,105 @@
                 }
             }
         },
+        "/changePassword": {
+            "post": {
+                "tags": ["POST Customer Data"],
+                "summary": "Change your password.",
+                "description": "Here, Customer can change his/her password.",
+                "consumes": ["application/x-www-form-urlencoded"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "oldPass",
+                        "description": "Enter Old Password",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "newPass",
+                        "description": "Enter New Password",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "confirmPass",
+                        "description": "Enter Password again",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation Successful"
+                    },
+                    "404": {
+                        "description": "Operation Failed"
+                    }
+                }
+            }
+        },
+        "/recoverPassword": {
+            "post": {
+                "tags": ["POST Customer Data"],
+                "summary": "Recover your password.",
+                "description": "Here, Customer can recover his/her password.",
+                "consumes": ["application/x-www-form-urlencoded"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "newPass",
+                        "description": "Enter New Password",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "confirmPass",
+                        "description": "Enter Password again",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation Successful"
+                    },
+                    "404": {
+                        "description": "Operation Failed"
+                    }
+                }
+            }
+        },
+        "/forgotPassword": {
+            "post": {
+                "tags": ["POST Customer Data"],
+                "summary": "Forgot password.",
+                "description": "Here, Customer can create his/her new password, if he/she has forgotten.",
+                "consumes": ["application/x-www-form-urlencoded"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "description": "Enter Your registered email",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation Successful"
+                    },
+                    "404": {
+                        "description": "Operation Failed"
+                    }
+                }
+            }
+        },
         "/getCustProfile": {
             "get": {
                 "tags": ["Get Customer Data"],
@@ -550,18 +649,44 @@
                         "type": "integer"
                     },
                     {
-                        "name": "category_name",
+                        "name": "product_subImages",
                         "description": "Enter Category Name",
                         "in": "formData",
                         "required": true,
-                        "type": "string"
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation Successful"
                     },
+                    "404": {
+                        "description": "Operation Failed"
+                    }
+                }
+            }
+        },
+        "/productSubImages": {
+            "post": {
+                "tags": ["Post Product Data"],
+                "summary": "(Table, Chair, Bed, Sofa)",
+                "description": "API, for adding categories of product.",
+                "consumes": ["application/x-www-form-urlencoded"],
+                "produces": ["application/json"],
+                "parameters": [
                     {
-                        "name": "product_image",
-                        "description": "Enter Product Image",
+                        "name": "_id",
+                        "description": "Enter Product Id",
                         "in": "formData",
                         "required": true,
-                        "type": "file"
+                        "type": "integer"
+                    },
+                    {
+                        "name": "product_subImages",
+                        "description": "Upload Sub Images",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -774,6 +899,75 @@
                 }
             }
         },
+        "/getAllProductsInDescending/{customer_id}": {
+            "get": {
+                "tags": ["Get Product Data"],
+                "summary": "Customer can see all Products In Descending Order",
+                "description": "API, for fetching all stored products.",
+                "consumes": ["application/x-www-form-urlencoded"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "customer_id",
+                        "description": "Enter Customer Id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation Successful"
+                    },
+                    "404": {
+                        "description": "Operation Failed"
+                    }
+                }
+            }
+        },
+        "/getAllProductsInAscending/{customer_id}": {
+            "get": {
+                "tags": ["Get Product Data"],
+                "summary": "Customer can see all Products In Ascending Order",
+                "description": "API, for fetching all stored products.",
+                "consumes": ["application/x-www-form-urlencoded"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "customer_id",
+                        "description": "Enter Customer Id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation Successful"
+                    },
+                    "404": {
+                        "description": "Operation Failed"
+                    }
+                }
+            }
+        },
+        "/getAllProductsSubImages": {
+            "get": {
+                "tags": ["Get Product Data"],
+                "summary": "Customer can see all Products Sub-Images",
+                "description": "API, for fetching all stored products sub-Images.",
+                "consumes": ["application/x-www-form-urlencoded"],
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "Operation Successful"
+                    },
+                    "404": {
+                        "description": "Operation Failed"
+                    }
+                }
+            }
+        },
         "/defaultTopRatingProduct": {
             "get": {
                 "tags": ["Get Product Data"],
@@ -934,6 +1128,32 @@
                         "in": "path",
                         "required": true,
                         "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation Successful"
+                    },
+                    "404": {
+                        "description": "Operation Failed"
+                    }
+                }
+            }
+        },
+        "/getProductBySearchText/{text}": {
+            "get": {
+                "tags": ["Get Product Data"],
+                "summary": "Filter on Products in terms of search text.",
+                "description": "Here, Customer can access the product by its name.",
+                "consumes": ["application/x-www-form-urlencoded"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "text",
+                        "description": "Enter Text",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -1810,6 +2030,126 @@
                     }
                 }
             }
+        },
+        "/postCustomerOrder": {
+            "post": {
+                "tags": ["Post Customer Order Data"],
+                "summary": "(Table, Chair, Bed, Sofa)",
+                "description": "API, for adding Order from cart.",
+                "consumes": ["application/x-www-form-urlencoded"],
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "Operation Successful"
+                    },
+                    "404": {
+                        "description": "Operation Failed"
+                    }
+                }
+            }
+        },
+        "/getCustomerOrder": {
+            "get": {
+                "tags": ["Get Customer Order Data"],
+                "summary": "(Table, Chair, Bed, Sofa)",
+                "description": "API, for adding Order from cart.",
+                "consumes": ["application/x-www-form-urlencoded"],
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "Operation Successful"
+                    },
+                    "404": {
+                        "description": "Operation Failed"
+                    }
+                }
+            }
+        },
+        "/getCustomerOrderInDetail/{order_id}": {
+            "get": {
+                "tags": ["Get Customer Order Data"],
+                "summary": "(Table, Chair, Bed, Sofa)",
+                "description": "API, for adding Order from cart.",
+                "consumes": ["application/x-www-form-urlencoded"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "order_id",
+                        "description": "Enter Order number",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation Successful"
+                    },
+                    "404": {
+                        "description": "Operation Failed"
+                    }
+                }
+            }
+        },
+        "/deleteAllCustomerOrders": {
+            "delete": {
+                "tags": ["Delete Customer Order Data"],
+                "summary": "Admin can delete all added orders.",
+                "description": "API, for deleting all stored Orders in one time.",
+                "consumes": ["application/x-www-form-urlencoded"],
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "Operation Successful"
+                    },
+                    "404": {
+                        "description": "Operation Failed"
+                    }
+                }
+            }
+        },
+        "/deleteOrderByCustomerId": {
+            "delete": {
+                "tags": ["Delete Customer Order Data"],
+                "summary": "Admin can delete customer orders.",
+                "description": "API, for deleting customer stored Orders in one time.",
+                "consumes": ["application/x-www-form-urlencoded"],
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "Operation Successful"
+                    },
+                    "404": {
+                        "description": "Operation Failed"
+                    }
+                }
+            }
+        },
+        "/deleteOrderByCustomerAndOrderId": {
+            "delete": {
+                "tags": ["Delete Customer Order Data"],
+                "summary": "Admin can delete customer orders.",
+                "description": "API, for deleting customer stored Orders in one time.",
+                "consumes": ["application/x-www-form-urlencoded"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "order_id",
+                        "description": "Enter Order number",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation Successful"
+                    },
+                    "404": {
+                        "description": "Operation Failed"
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -1940,61 +2280,61 @@
             "type": "object",
             "required": [
                 "_id",
-                "categ_id",
+                "category_id",
                 "color_id",
-                "prod_name",
-                "prod_image",
-                "prod_desc",
-                "prod_rating",
-                "prod_producer",
-                "prod_cost",
-                "prod_stock"
+                "product_name",
+                "product_image",
+                "product_desc",
+                "product_rating",
+                "product_producer",
+                "product_cost",
+                "product_stock"
             ],
             "properties": {
                 "_id": {
                     "type": "integer"
                 },
-                "categ_id": {
+                "category_id": {
                     "type": "integer"
                 },
                 "color_id": {
                     "type": "integer"
                 },
-                "prod_name": {
+                "product_name": {
                     "type": "string"
                 },
-                "prod_image": {
+                "product_image": {
                     "type": "string"
                 },
-                "prod_desc": {
+                "product_desc": {
                     "type": "string"
                 },
-                "prod_rating": {
+                "product_rating": {
                     "type": "integer"
                 },
-                "prod_producer": {
+                "product_producer": {
                     "type": "string"
                 },
-                "prod_cost": {
+                "product_cost": {
                     "type": "integer"
                 },
-                "prod_stock": {
+                "product_stock": {
                     "type": "integer"
                 },
-                "prod_created_at": {
+                "created_at": {
                     "type": "date"
                 },
-                "prod_dimension": {
+                "product_dimension": {
                     "type": "string"
                 },
-                "prod_material": {
+                "product_material": {
                     "type": "string"
                 }
             }
         },
         "Cart": {
             "type": "object",
-            "required": ["customer_id", "product_id", "quantity"],
+            "required": ["customer_id", "product_id", "quantity", "total_cost"],
             "properties": {
                 "customer_id": {
                     "type": "integer"
@@ -2004,6 +2344,45 @@
                 },
                 "quantity": {
                     "type": "integer"
+                },
+                "product_cost": {
+                    "type": "integer"
+                },
+                "total_cost": {
+                    "type": "string"
+                }
+            }
+        },
+        "Order": {
+            "type": "object",
+            "required": ["customer_id", "order_id", "product_id", "quantity", "status", "isDelivered", "total_cost"],
+            "properties": {
+                "customer_id": {
+                    "type": "integer"
+                },
+                "order_id": {
+                    "type": "string"
+                },
+                "product_id": {
+                    "type": "integer"
+                },
+                "quantity": {
+                    "type": "integer"
+                },
+                "product_cost": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "isDelivered": {
+                    "type": "boolean"
+                },
+                "total_cost": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "date"
                 }
             }
         },

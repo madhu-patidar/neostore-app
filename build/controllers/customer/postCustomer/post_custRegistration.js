@@ -7,15 +7,17 @@ var joi_1 = __importDefault(require("joi"));
 var bcryptjs_1 = __importDefault(require("bcryptjs"));
 var customer_model_1 = __importDefault(require("../../../models/customer/customer_model"));
 var sequelize_postgres_1 = __importDefault(require("../../../configFiles/sequelize-postgres"));
+var sendEmail_1 = __importDefault(require("../../../configFiles/sendEmail"));
+var welcome_message_1 = require("../../../configFiles/welcome-message");
 //Register New Customer
 var insertCustomerData = function (req, res) {
     var pass = req.body.pass;
     var confirm_pass = req.body.confirmPass;
     var hash_pass;
-    if (!req.body)
-        res
-            .status(404)
-            .json({ success: false, message: "Body can not be blank" });
+    var email = req.body.email;
+    if (req.body == null) {
+        res.status(404).json({ success: false, message: "Body can not be blank" });
+    }
     var schema = joi_1.default.object().keys({
         u_email: joi_1.default.string()
             .email({ minDomainAtoms: 2 })
@@ -66,35 +68,37 @@ var insertCustomerData = function (req, res) {
                                             gender: req.body.gender
                                         })
                                             .then(function (result) {
-                                            res
-                                                .status(200)
-                                                .json({
-                                                success: true,
-                                                message: "New Customer was registered successfully"
-                                            });
+                                            if (result) {
+                                                // Send Email
+                                                sendEmail_1.default({
+                                                    from: "sgshubham04@gmail.com",
+                                                    to: email,
+                                                    cc: "sgshubham04@gmail.com",
+                                                    subject: "Welcome Greetings",
+                                                    html: welcome_message_1.output
+                                                });
+                                                res.status(200).json({
+                                                    success: true,
+                                                    message: "New Customer was registered successfully"
+                                                });
+                                            }
                                         })
                                             .catch(function (err) {
-                                            res
-                                                .status(404)
-                                                .json({
+                                            res.status(404).json({
                                                 success: false,
-                                                message: "Something went wrong",
+                                                message: "Something went wrong"
                                             });
                                         });
                                     }
                                     else {
-                                        res
-                                            .status(404)
-                                            .json({
+                                        res.status(404).json({
                                             success: false,
                                             message: "This email is already registered with us."
                                         });
                                     }
                                 })
                                     .catch(function (err) {
-                                    res
-                                        .status(404)
-                                        .json({
+                                    res.status(404).json({
                                         success: false,
                                         message: "Something went wrong",
                                         error_message: err.errors[0].message
@@ -106,9 +110,7 @@ var insertCustomerData = function (req, res) {
                 });
             }
             else {
-                res
-                    .status(404)
-                    .json({
+                res.status(404).json({
                     success: false,
                     message: "Password and confirm passwod should be same"
                 });

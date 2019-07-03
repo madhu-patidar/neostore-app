@@ -31,6 +31,11 @@ var postProductImages_1 = __importDefault(require("../controllers/products/postP
 var getProductImages_1 = __importDefault(require("../controllers/products/getProducts/getProductImages"));
 var postTopRatingProduct_1 = __importDefault(require("../controllers/products/postProducts/postTopRatingProduct"));
 var getTopRatingProduct_1 = __importDefault(require("../controllers/products/getProducts/getTopRatingProduct"));
+var post_productSubImages_1 = __importDefault(require("../controllers/products/postProducts/post_productSubImages"));
+var getAllProductSubImages_1 = __importDefault(require("../controllers/products/getProducts/getAllProductSubImages"));
+var getProductsBySearchText_1 = __importDefault(require("../controllers/products/getProducts/getProductsBySearchText"));
+var sortProductsByDescending_1 = __importDefault(require("../controllers/products/getProducts/sortProductsByDescending"));
+var sortProductsByAscending_1 = __importDefault(require("../controllers/products/getProducts/sortProductsByAscending"));
 /**
  * Creating class for defining all Product routing
  * @class ProductRoutes
@@ -47,6 +52,9 @@ var ProductRoutes = /** @class */ (function () {
         //Add Product Images
         app.route('/productImages')
             .post(fileUpload_1.default.single('product_image'), postProductImages_1.default);
+        //Add Product Sub Images
+        app.route('/productSubImages')
+            .post(fileUpload_1.default.array('product_subImages', 12), post_productSubImages_1.default);
         //Add Product Category
         app.route('/category')
             .post(product_category_1.default);
@@ -56,12 +64,24 @@ var ProductRoutes = /** @class */ (function () {
         //Add Product 
         app.route('/product')
             .post(fileUpload_1.default.single('product_image'), product_list_1.default);
+        //Get all Products in Descending Order
+        app.route('/getAllProductsInDescending/:customer_id')
+            .get(verifyTokenMiddleware_1.default, sortProductsByDescending_1.default);
+        //Get all Products in Ascending Order
+        app.route('/getAllProductsInAscending/:customer_id')
+            .get(verifyTokenMiddleware_1.default, sortProductsByAscending_1.default);
         //Get all Products Images
         app.route('/getAllProductsImages')
             .get(getProductImages_1.default);
+        //Get all Products Sub Images
+        app.route('/getAllProductsSubImages')
+            .get(getAllProductSubImages_1.default);
         //Get all Products
         app.route('/getAllProducts')
             .get(getProducts_1.default);
+        //Get Products by Search Text
+        app.route('/getProductBySearchText/:text')
+            .get(getProductsBySearchText_1.default);
         //Get Products By its category
         app.route('/getProductByCateg/:category_id')
             .get(getProductsByCategory_1.default);

@@ -20,6 +20,8 @@ var filesRoutes_1 = require("./routes/filesRoutes"); //@class of Files Routing
 var googleRoutes_1 = require("./routes/googleRoutes"); //@class of Google Routing
 var facebookRoutes_1 = require("./routes/facebookRoutes"); //@class of Facebook Routing
 var footerRoutes_1 = require("./routes/footerRoutes");
+var orderRoutes_1 = require("./routes/orderRoutes");
+var notificationRoutes_1 = require("./routes/notificationRoutes");
 var swagger_ui_express_1 = __importDefault(require("swagger-ui-express")); //swagger for creating documentation
 require("./configFiles/passport/passport-setup(Google)"); //configure passport google strategy
 require("./configFiles/passport/passport-setup(Facebook)"); //configure passport facebook strategy
@@ -30,6 +32,8 @@ var environment_variables_1 = require("./configFiles/environment_variables"); //
 var passport_1 = __importDefault(require("passport")); //use passport for handling different strategies
 var socialkeys_1 = require("./configFiles/passport/socialkeys"); //keys which are containing credentials for passport strategies
 var cookie_session_1 = __importDefault(require("cookie-session")); //maintaining cookie session
+var morgan_1 = __importDefault(require("morgan"));
+var morgan_setup_1 = __importDefault(require("./configFiles/morgan-setup"));
 /**
 * Create a main class which is managing all resopnsibilities of Application
 * @class App
@@ -44,6 +48,8 @@ var App = /** @class */ (function () {
         this.routeGoogle = new googleRoutes_1.GoogleRoutes();
         this.routeFacebook = new facebookRoutes_1.FacebookRoutes();
         this.routeFooter = new footerRoutes_1.FooterRoutes();
+        this.routeOrder = new orderRoutes_1.OrderRoutes();
+        this.routeNotify = new notificationRoutes_1.NotificationRoutes();
         this.app = express_1.default();
         this.config();
         //this.mongooSetup()
@@ -54,6 +60,8 @@ var App = /** @class */ (function () {
         this.routeGoogle.routes(this.app);
         this.routeFacebook.routes(this.app);
         this.routeFooter.routes(this.app);
+        this.routeOrder.routes(this.app);
+        this.routeNotify.routes(this.app);
     }
     //Configuration setup
     App.prototype.config = function () {
@@ -70,6 +78,7 @@ var App = /** @class */ (function () {
         //Make public upload directory to the front-end
         var publicDir = path_1.default.join(__dirname, '../uploads');
         this.app.use(express_1.default.static(publicDir));
+        this.app.use(morgan_1.default('combined', { stream: morgan_setup_1.default }));
     };
     //Mongoose Connection Setup
     App.prototype.mongooSetup = function () {
@@ -79,5 +88,4 @@ var App = /** @class */ (function () {
     };
     return App;
 }());
-exports.App = App;
 exports.default = new App().app;

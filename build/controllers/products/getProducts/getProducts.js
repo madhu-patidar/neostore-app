@@ -7,6 +7,7 @@ var product_list_1 = __importDefault(require("../../../models/products/product_l
 //Get all Products
 var getAllProducts = function (req, res) {
     product_list_1.default.find({})
+        .populate('_id')
         .populate('category_id')
         .populate('color_id')
         .exec(function (err, product) {

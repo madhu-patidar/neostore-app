@@ -17,4 +17,4 @@ const sendEmail = (options: sendmail.MailInput): Promise<boolean> =>
         });
     });
 
-    export default sendEmail;
+export default sendEmail;

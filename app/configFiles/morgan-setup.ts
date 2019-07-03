@@ -7,9 +7,6 @@ const logDirectory = path.join(__dirname, '../logs')
 // ensure log directory exists
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory)
  
-const pad =(num:number)=> {
-    return (num > 9 ? "" : "0") + num;
-}
 
 const generator=()=> {
 

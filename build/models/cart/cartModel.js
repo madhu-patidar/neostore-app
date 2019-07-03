@@ -20,8 +20,14 @@ var cartSchema = new Schema({
         required: true
     },
     quantity: {
-        type: String,
+        type: Number,
         required: true
+    },
+    product_cost: {
+        type: Number
+    },
+    total_cost: {
+        type: String,
     }
 });
 var CartModel = mongoose.model('Cart', cartSchema);

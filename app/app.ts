@@ -9,6 +9,7 @@ import {GoogleRoutes} from './routes/googleRoutes'       //@class of Google Rout
 import {FacebookRoutes} from './routes/facebookRoutes'   //@class of Facebook Routing
 import {FooterRoutes} from './routes/footerRoutes'
 import {OrderRoutes} from './routes/orderRoutes'
+import {NotificationRoutes} from './routes/notificationRoutes'
 import swaggerUi from 'swagger-ui-express'               //swagger for creating documentation
 import './configFiles/passport/passport-setup(Google)'   //configure passport google strategy
 import './configFiles/passport/passport-setup(Facebook)' //configure passport facebook strategy
@@ -37,6 +38,7 @@ import accessLogStream from './configFiles/morgan-setup'
     public routeFacebook:FacebookRoutes=new FacebookRoutes()
     public routeFooter:FooterRoutes=new FooterRoutes()
     public routeOrder:OrderRoutes=new OrderRoutes()
+    public routeNotify:NotificationRoutes=new NotificationRoutes()
     
     //Initialisation
     constructor(){
@@ -51,6 +53,7 @@ import accessLogStream from './configFiles/morgan-setup'
         this.routeFacebook.routes(this.app)
         this.routeFooter.routes(this.app)
         this.routeOrder.routes(this.app)
+        this.routeNotify.routes(this.app)
     }
     
     //Configuration setup
