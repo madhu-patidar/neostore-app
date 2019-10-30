@@ -67,7 +67,7 @@
     "process": "^0.11.10",
     "rotating-file-stream": "^1.4.1",
     "sendmail": "^1.4.1",
-    "sequelize": "^5.8.6",
+    "sequelize": "^5.15.1",
     "sequelize-typescript": "^0.6.10",
     "swagger-ui-dist": "^3.22.1",
     "swagger-ui-express": "^4.0.2",
